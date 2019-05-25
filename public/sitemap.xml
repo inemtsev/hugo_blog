@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.ilikedos.com/</loc>
+    <lastmod>2019-04-27T17:21:11+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ilikedos.com/posts/</loc>
+    <lastmod>2019-04-27T17:21:11+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ilikedos.com/posts/typescript-future/</loc>
+    <lastmod>2019-04-27T17:21:11+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.ilikedos.com/posts/hugo-blog-on-azure/</loc>
+    <lastmod>2018-12-09T15:51:09-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.ilikedos.com/docs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ilikedos.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

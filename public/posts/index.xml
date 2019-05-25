@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on I Like DOS</title>
+    <link>https://www.ilikedos.com/posts/</link>
+    <description>Recent content in Posts on I Like DOS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2017</copyright>
+    <lastBuildDate>Sat, 27 Apr 2019 17:21:11 +0700</lastBuildDate>
+    
+	<atom:link href="https://www.ilikedos.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typescript and its future</title>
+      <link>https://www.ilikedos.com/posts/typescript-future/</link>
+      <pubDate>Sat, 27 Apr 2019 17:21:11 +0700</pubDate>
+      
+      <guid>https://www.ilikedos.com/posts/typescript-future/</guid>
+      <description>Typescript and the future of web development Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&amp;hellip;) with TypeScript support out of the box.</description>
+    </item>
+    
+    <item>
+      <title>Hugo Blog on Azure</title>
+      <link>https://www.ilikedos.com/posts/hugo-blog-on-azure/</link>
+      <pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate>
+      
+      <guid>https://www.ilikedos.com/posts/hugo-blog-on-azure/</guid>
+      <description>Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
+Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found Hugo. They have great documentation, modern CLI and great tooling, regardless of your OS preference.</description>
+    </item>
+    
+  </channel>
+</rss>

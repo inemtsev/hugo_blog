@@ -1,0 +1,129 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>I Like DOS</title>
+    <link>https://www.ilikedos.com/</link>
+    <description>Recent content on I Like DOS</description>
+    <generator>Hugo - gohugo.io</generator>
+    <language>en</language>
+    <contact>ribice@gmail.com</contact>
+    <copyright>&copy; Ilya Nemtsev 2017</copyright>
+    
+        <atom:link href="https://www.ilikedos.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typescript and its future</title>
+      <link>https://www.ilikedos.com/posts/typescript-future/</link>
+      <pubDate>Sat, 27 Apr 2019 17:21:11 +0700</pubDate>
+      <author>Emir Ribic</author>
+      <guid>https://www.ilikedos.com/posts/typescript-future/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;typescript-and-the-future-of-web-development&#34;&gt;Typescript and the future of web development&lt;/h3&gt;
+
+&lt;p&gt;Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&amp;hellip;) with TypeScript support out of the box. By default.&lt;/p&gt;
+
+&lt;p&gt;You can imagine this gave TypeScript a strong boost in popularity.
+&lt;p&gt;&lt;img alt=&#34;Typescript 5 year trend&#34; src=&#34;../img/typescript-future/typescript-trend.png&#34; style=&#34;width:600px; display: block; padding: {{ .params.imgpad }}&#34;&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;Angular received some initial backlash from the drastic changes that were introduced, not just due to Typescript, but also from drastic changes in syntax. The initial disappointment of AngularJS fans overshadowed the drastic improvements in performance and new features like Dependency Injection and Lazy Loading of components.
+&lt;p&gt;&lt;img alt=&#34;Typescript 5 year trend&#34; src=&#34;../img/typescript-future/angular-trend.png&#34; style=&#34;width:600px; display: block; padding: {{ .params.imgpad }}&#34;&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;And yet, Angular survived and is doing quite well. This was helped in part by the oncoming pressure from Javascript ES2015/ES6, developers had to learn new things and learn they did.&lt;/p&gt;
+
+&lt;h3 id=&#34;making-the-hard-choice&#34;&gt;Making the hard choice&lt;/h3&gt;
+
+&lt;p&gt;So, which should you choose? Like with every other question in technology, it depends.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Browser support&lt;/strong&gt;: TypeScript is not supported by any browser out there, thus a transpiler has to be used to transpile the code into JavaScript ES5. Seems like an extra step right? Well, it looks like ES6 suffers from the same problem. As of writing, the marketshare of browsers that support ES6 well is not great enough to use ES6 in production, thus you guessed it, a transpiler still has to be used. Therefore the browser support point is moot.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;To Type or not to Type&lt;/strong&gt;: That is the question? This point will probably make up most of your decision making. This is where I think TypeScript truly shines. Typed code while slightly more verbose, results in code that is far less error prone. Having strict types allows the compiler to notify the developer of any type mismatching and other type related problems during development, instead of during testing. In addition, web development IDEs like &lt;a href=&#34;https://www.jetbrains.com/webstorm/&#34;&gt;WebStorm&lt;/a&gt; and &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;VS Code&lt;/a&gt; among others, have excellent plugins and autocomplete capabilities that are far better than those for vanilla javascript.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Future of TypeScript&lt;/strong&gt;: Another extremely important factor to consider, when choosing a technology is its future. Anyone with a few years of professional experience knows how painful it is to use a library or technology that is no longer supported and there are still bugs that need to be fixed. Thankfully, TypeScript is not one of those cases. Adoption of types is only increasing (so if you thought of not learning TypeScript because it will never take off, down a quality Lagger and go learn it). As of writing, the upcoming and increasingly popular VueJS is already supporting TypeScript via its CLI, but is promising to significantly improve TypeScript integration with Class Based components and TSX support upon the next major release 3.x. Angular and React already have excellent support for TypeScript, so why pass on it?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Why you may not want TypeScript&lt;/strong&gt;: You think this will convert your back-end developers into front-end developers, or better yet full-stack! It won&amp;rsquo;t. Understanding Javascript concepts and its nuances is still very important.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you still aren&amp;rsquo;t sold on adding TypeScript to your arsenal, consider the opinions of many via &lt;a href=&#34;https://insights.stackoverflow.com/survey/2018#most-loved-dreaded-and-wanted&#34;&gt;2018 StackOverflow Annual Survey&lt;/a&gt; where TypeScript was rated #4 most loved programming language.&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
+      <title>Hugo Blog on Azure</title>
+      <link>https://www.ilikedos.com/posts/hugo-blog-on-azure/</link>
+      <pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate>
+      <author>Emir Ribic</author>
+      <guid>https://www.ilikedos.com/posts/hugo-blog-on-azure/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.&lt;/p&gt;
+
+&lt;p&gt;Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. They have great documentation, modern CLI and great tooling, regardless of your OS preference.&lt;/p&gt;
+
+&lt;p&gt;Since I already have a Microsoft Azure account, I decided to host my static files there. Here is how I set-up my blog, from Hugo installation on Windows to publishing to the cloud.&lt;/p&gt;
+
+&lt;h3 id=&#34;install-hugo-on-windows&#34;&gt;Install Hugo on Windows&lt;/h3&gt;
+
+&lt;p&gt;The easiest way to install Hugo is through a package manager called &lt;a href=&#34;https://chocolatey.org/install&#34;&gt;Chocolatey&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once chocolatey is installed, run the following at command line/Powershell:
+&amp;gt; choco install hugo -confirm&lt;/p&gt;
+
+&lt;p&gt;Voila! Installation is complete.&lt;/p&gt;
+
+&lt;h3 id=&#34;setup-a-basic-blog&#34;&gt;Setup a basic blog&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create an easy to find folder for your blogs, let&amp;rsquo;s say &lt;em&gt;C:/blogs&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Run the below command, this will create a blog in the folder hugo_blog
+&amp;gt; hugo new site hugo_blog&lt;/li&gt;
+&lt;li&gt;Now you need to get a theme for your blog, &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;https://themes.gohugo.io/&lt;/a&gt; has some solid options. Each theme has a github page with instructions on how to install.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Once, your theme files are in your hugo_blog/themes/&amp;hellip; and your &lt;strong&gt;config.toml&lt;/strong&gt; has been updated, time to create your first post by going to your hugo_blog directory and running the command
+&amp;gt; hugo new posts/my-first-cool-post.md
+Be sure to have the extension, otherwise you will have problems rendering that page. If you forgot go to &lt;em&gt;&amp;hellip;hugo_blog\content\posts&lt;/em&gt; and delete the generated file here and try again. Do not try to rename the file and adding the extension, as this will not work.&lt;/li&gt;
+&lt;li&gt;You can now edit my-first-cool-post.md if you like. To test run your generated blog, go to your blog root &lt;strong&gt;hugo_blog&lt;/strong&gt; and run the command
+&amp;gt; hugo server -D
+If you did everything correctly you should now be able to view your blog locally by going to: &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;setup-azure-storage&#34;&gt;Setup Azure Storage&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;After signing up for Microsoft Azure, search for &lt;strong&gt;storage account&lt;/strong&gt; if you haven&amp;rsquo;t set it up already and click &lt;strong&gt;Add&lt;/strong&gt;.
+&lt;p&gt;&lt;img alt=&#34;Search for Storage Account&#34; src=&#34;../img/hugo-blog-on-azure/storage_account.png&#34; style=&#34;width: 650px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Fill out the configuration with your desired names, and with these settings.
+&lt;p&gt;&lt;img alt=&#34;Storage Account Configuration&#34; src=&#34;../img/hugo-blog-on-azure/create_storage_acc_1.png&#34;  style=&#34;width: 650px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;After creating the storage account, open it and navigate to &lt;strong&gt;Static Website&lt;/strong&gt;* under Settings. &lt;strong&gt;Primary endpoint&lt;/strong&gt; is how you will access your published blog (for now). Make sure to add &lt;strong&gt;index.html&lt;/strong&gt; to your &lt;strong&gt;index document name&lt;/strong&gt; field, to establish your website&amp;rsquo;s entry point.
+&lt;p&gt;&lt;img alt=&#34;Setup static website&#34; src=&#34;../img/hugo-blog-on-azure/create_storage_acc_2.png&#34; style=&#34;width:500px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;publish-to-azure-using-vs-code-azure-storage-extension&#34;&gt;Publish to Azure using VS Code + Azure Storage Extension&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To get a compiled, release version of your blog, run the simple command below. This will generate a static html version of your blog into the &lt;strong&gt;public&lt;/strong&gt; folder at the root of your blog
+&amp;gt; hugo&lt;/li&gt;
+&lt;li&gt;I use Visual Studio Code daily, as it is one of the cleanest IDEs for Front-end development. But if you do not yet use it, you can download it &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Once installed, click on Extensions (lowest icon on the left), search for Azure Storage, hit install and restart VS Code
+&lt;p&gt;&lt;img alt=&#34;VS Code Azure Storage Extension&#34; src=&#34;../img/hugo-blog-on-azure/storage_extension.png&#34; style=&#34;width: 500px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Now you have a cool new Azure icon below the extensions one. Click on it, select login and follow the instructions. Once you put in the code, you should be able to see your storage account through VS Code.&lt;/li&gt;
+&lt;li&gt;Open the folder &amp;hellip;hugo_blog/public in VS Code&lt;/li&gt;
+&lt;li&gt;In VS Code Explorer (top icon on the left), assumming your are at root level of your blog, right click and select &lt;strong&gt;Deploy to Static Website&lt;/strong&gt;.
+&lt;p&gt;&lt;img alt=&#34;Deploy to Static Website&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy.png&#34; style=&#34;width: 500px; display:block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;
+At this point you will be prompted to select your subscription and azure storage account
+&lt;p&gt;&lt;img alt=&#34;Select your storage account&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy1.png&#34; style=&#34;width: 500px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;
+You should get a success message in a few seconds
+&lt;p&gt;&lt;img alt=&#34;Successful deployment&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy2.png&#34; style=&#34;width: 500px; display:block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You are good to go! Keep adding pages and deploying in the same way :)&lt;/p&gt;
+</content>
+      
+    </item>
+    
+  </channel>
+</rss>
