@@ -12,6 +12,232 @@
     
     
     <item>
+      <title>Becoming a Developer in 2019</title>
+      <link>https://www.ilikedos.com/posts/becoming-a-developer-in-2019/</link>
+      <pubDate>Sun, 12 May 2019 14:41:36 +0700</pubDate>
+      <author>Emir Ribic</author>
+      <guid>https://www.ilikedos.com/posts/becoming-a-developer-in-2019/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;There has never been a better time to become a web developer than now. The United States &lt;a href=&#34;https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm#tab-1&#34;&gt;Bureau of Labour Statistics&lt;/a&gt; predicts an increase of job postings by 15% between 2016-2026, in comparison to 7% average across all occupations. According to &lt;a href=&#34;https://www.ziprecruiter.com/Salaries/Web-Developer-Salary&#34;&gt;ZipRecruiter&lt;/a&gt; the current average salary of a Web Developer in United states is $74,080 with top 1% earning $123,000 to $133,000. Among the general specializations of web developers (front-end, back-end and full-stack); full-stack developers on avereage are paid the highest, which is logical since they have to stay up-to date on both back-end and fron-end technologies.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-kind-of-person-do-i-have-to-be-to-become-a-web-developer-in-2019&#34;&gt;What kind of person do I have to be, to become a web developer in 2019?&lt;/h3&gt;
+
+&lt;p&gt;A person that likes to problem solve, create things, pays attention to detail and does not get frustrated easily. Do I need to be good at math? It depends. Most jobs in web development do not require any math knowledge beyond 9th grade, however people who are bettter at math tend to pick up more advanced concepts like Big Data and Machine Learning more easily. This does not mean that if you didn&amp;rsquo;t study hard sciences or computer science you cannot become a web developer; I know several talented web developers that had background in Music or the Arts for example. Do I need a degree? Not at all, but like with any training, it helps. Some big name companies may toss your resume if you don&amp;rsquo;t have a degree, but most will overlook this deficiency if you have done interesting side projects or even better, if you have experience.&lt;/p&gt;
+
+&lt;p&gt;
+    &lt;img alt=&#34;Average wages by education&#34; src=&#34;../img/becoming-a-web-developer-in-2019/general-wages-by-college-level-degrees.jpg&#34;/&gt;
+    &lt;div&gt;Source: Microsoft Visual Studio Magazine&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;My experience in the industry, taught me that education is not the greatest factor in becomming a successful web developer. There are plenty of developers that have degrees and are terrible at what they do and there are plenty of developers without a degree who are legends in the field. Getting a university degree in this field will certainly be a boost, but what you do after that is really up to you. If you are passionate about learning, after 2-3 years of experience whether you have a degree or not, strarts to matter much less. &lt;strong&gt;So what are the success factors in web development?&lt;/strong&gt; Enthusiasm, grit and easy-going personality. &lt;strong&gt;Enthusiasm&lt;/strong&gt; is an obvious one; developers who keep themselves up-to-date on their own time and read about their field, tend to have broader skillsets which translate into higher salaries. &lt;strong&gt;Grit&lt;/strong&gt; is important in many fields, especially those that require prolonged periods of thought; developers who do not easily give up on a problem tend to learn more quickly, develop better mental endurance and usually progress faster in their careers. Last, but equally important, is &lt;strong&gt;personality&lt;/strong&gt;. If you are the type that does not work well with others, you may struggle in this field in the long-term. Developers who have a good personality are generally open-minded, flexible and are a pleasure to work with. They check their ego at the door and value the input and opinions of others. Listening to the opinions of others allows them to learn more quickly and co-workers tend to speak well of them, leading to promotions and salary increases. To put it simply, developers that do not think it is important to be &amp;lsquo;right&amp;rsquo; all the time, have better careers.&lt;/p&gt;
+
+&lt;p&gt;So, if you read the above and think you have what it takes, read on.
+&lt;p&gt;
+    &lt;img alt=&#34;Chuck Norris approves&#34; src=&#34;../img/becoming-a-web-developer-in-2019/chuck_norris_approves.gif&#34;/&gt;
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;choosing-what-to-learn&#34;&gt;Choosing what to learn&lt;/h3&gt;
+
+&lt;p&gt;Noobie developers spend a bit too much time on this, decision of choice has always been a time-waster. The important thing is to start learning and doing as soon as possible. As long as you choose one of the more popular tech stacks, you should have no trouble job-wise; plus once you know one you can always switch later. To become a full-stack developer you will need to learn at least one front-end framework and one back-end framework. Back-end frameworks run on the server, talk to the database and crunch data. Front-end frameworks generate the UI and run in the browser. What are the top tech stack as of 2019 you may ask?
+&lt;p&gt;
+    &lt;img alt=&#34;The problem is choice&#34; src=&#34;../img/becoming-a-web-developer-in-2019/problem-is-choice.jpg&#34;/&gt;
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;top-back-end-frameworks-from-most-recommended-to-least&#34;&gt;Top back-end frameworks (From most recommended to least)&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Java based frameworks:&lt;/strong&gt; Java which runs on the Java Virtual Machine (JVM) has been around for a long time and is quite mature. It isn&amp;rsquo;t as popular as it used to be in new projects, but it has a massive foothold in the corporate world. So if you are targeting a job at the big banks or any other &lt;a href=&#34;http://fortune.com/fortune500/&#34;&gt;Fortune 500 company&lt;/a&gt;, there is a good chance they are using Java. Even though most cool kids these days are not using Java for their side projects, there are numerous hot programming languages that have been created that target JVM. This means that if you are comfortable with Java you should have no trouble transitioning to one of these newer languages. Some of these include: Scala, Kotlin and Groovy. That being said, if you decide to focus your learning on JVM supported languages, I still recommend starting with &lt;strong&gt;Java&lt;/strong&gt; because its vast community online and thorough documentation will serve you well when learning your first language. Once you have a decent grip on the language, focus on one of the popular web frameworks for Java. &lt;strong&gt;Spring&lt;/strong&gt; and &lt;strong&gt;Struts&lt;/strong&gt; are good choices.
+&lt;p&gt;
+    &lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/b-Cr0EWwaTk&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Python with Django framework:&lt;/strong&gt; Python has one of the fastest growing communities on the internet and is considered one of the hottest languages in the industry right now. Websites like &lt;a href=&#34;https://www.instagram.com/&#34;&gt;Instagram&lt;/a&gt;, &lt;a href=&#34;https://www.pinterest.ca/&#34;&gt;Pinterest&lt;/a&gt; and &lt;a href=&#34;https://disqus.com/&#34;&gt;Disqus&lt;/a&gt; are great examples of websites running on Django. While not quite as mature as Java and C# based frameworks, Python community is very active and the open source community is very strong.&lt;/p&gt;
+
+&lt;p&gt;
+    &lt;img alt=&#34;Python&#39;s extraordinary growth&#34; src=&#34;../img/becoming-a-web-developer-in-2019/language_projections.png&#34;&gt;
+    &lt;div&gt;Source: https://stackoverflow.blog/2017/09/06/incredible-growth-python/
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;C# and ASP.NET Core:&lt;/strong&gt; C# which runs on the .NET Framework has been around for almost as long as Java and is a very mature platform with one of the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/csharp/&#34;&gt;best documentations&lt;/a&gt; in the industry. C# is known for its friendly community and excellent tools developed by Microsoft, which in recent years have mostly been free. ASP.NET framework has undergone a radical transformation in recent years, it has been rebuilt from scratch as ASP.NET Core and is now fully Open Source. The new framework has brought about massive performance improvements and cross-platform capabilities; thus it is recommended that ASP.NET Core is used for all new projects. C#&amp;rsquo;s popularity was held back by not embracing the Open Source community in its earlier years, but after Open Sourcing the C# compiler and more recently the .NET Framework there is plenty to get excited about. Popular website that run on ASP.NET include: &lt;a href=&#34;https://www.stackoverflow.com&#34;&gt;Stackoverflow&lt;/a&gt;, &lt;a href=&#34;https://www.marketwatch.com&#34;&gt;MarketWatch&lt;/a&gt; and &lt;a href=&#34;https://www.visualstudio.com&#34;&gt;VisualStudio.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;JavaScript and Node.js+Express:&lt;/strong&gt; Javascript has been around for quite some time, mostly in the realm of the browsers, to make websites more interactive. This has changed about 10 years ago when NodeJS environment was created, which allowed JavaScript to run outside of the browser. Node.js was built on Google&amp;rsquo;s V8 JavaScript engine and changed the way developers think about JavaScript. The open source community developed numerous web frameworks which made server-side development using JavaScript significantly easier. &lt;a href=&#34;https://expressjs.com/&#34;&gt;Express&lt;/a&gt; is one of the most popular web frameworks that run on Node.js and if Node tickles your fancy I recommend starting there. Before getting started with Node.js I do recommend spending a good amount of time learning JavaScript alone and building a strong foundation there; learning curve for Node.js is quite steep for those not comfortable with JavaScript. Popular websites that run on Node.js and Express include: &lt;a href=&#34;https://myspace.com/&#34;&gt;MySpace&lt;/a&gt;, &lt;a href=&#34;https://ghost.org/&#34;&gt;Ghost CMS&lt;/a&gt; and &lt;a href=&#34;https://www.ancestry.com/&#34;&gt;Ancestry&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PHP:&lt;/strong&gt; Is a very mature language that has come a long way since its debut over a decade ago. It is not known to be a very elegant programming language, but it is very easy to pick up and the online community is absolutely massive. Historically PHP web-frameworks have not been known to be very performant, but this has changed in 2015 with the release of PHP 7, which essentially doubled its performance. Recent benchmarks show that PHP 7.X.X is on par with Node.js in requests served per second. Currently, it appears that the PHP community is here to stay and with giants like Wordpress and Yahoo using it, support will be around for a long time. &lt;a href=&#34;https://laravel.com/&#34;&gt;Laravel&lt;/a&gt; and &lt;a href=&#34;http://www.zend.com/&#34;&gt;Zend&lt;/a&gt; are popular web-frameworks that use PHP and either one will serve you well if you choose to go down the PHP path.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ruby on Rails:&lt;/strong&gt; Ruby on Rails web framework which uses Ruby as its programming language, is a perfect example of a technology that imploded and fell behind. On the surface Ruby is a fantastic language, it is known for being very readable, easy to understand and easy to write. Unfortunately, there are some aspects of Ruby on Rails framework that reduced its adoption significantly. First, its very opinionated community has lost many of its significant open source contributors. Second, its mediocre performance is significantly behind any of the web frameworks listed above. It was for this reason Twitter, has moved away from Ruby on Rails to Java/Scala. Similarly, linkedIn also moved away from Ruby on Rails and on to Node.js. Unless, you already have an offer ready for a job using Ruby on Rails, I do not recommend starting with this framework in 2019.
+&lt;p&gt;
+    &lt;img alt=&#34;Ruby on Rails is dying&#34; src=&#34;../img/becoming-a-web-developer-in-2019/ruby-on-rails-trends.jpg&#34;/&gt;
+    &lt;div&gt;Source: &lt;a href=&#34;https://naturaily.com/blog/who-gives-f-about-rails&#34;&gt;https://naturaily.com/blog/who-gives-f-about-rails&lt;/a&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metric&lt;/th&gt;
+&lt;th&gt;Java&lt;/th&gt;
+&lt;th&gt;Python&lt;/th&gt;
+&lt;th&gt;C#&lt;/th&gt;
+&lt;th&gt;Node.js&lt;/th&gt;
+&lt;th&gt;PHP&lt;/th&gt;
+&lt;th&gt;Ruby on Rails&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Jobs on Indeed (New York State)&lt;/td&gt;
+&lt;td&gt;1649&lt;/td&gt;
+&lt;td&gt;1736&lt;/td&gt;
+&lt;td&gt;1174&lt;/td&gt;
+&lt;td&gt;488&lt;/td&gt;
+&lt;td&gt;662&lt;/td&gt;
+&lt;td&gt;180&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Jobs on LinkedIn (New York State)&lt;/td&gt;
+&lt;td&gt;1000+&lt;/td&gt;
+&lt;td&gt;495&lt;/td&gt;
+&lt;td&gt;553&lt;/td&gt;
+&lt;td&gt;1000+&lt;/td&gt;
+&lt;td&gt;464&lt;/td&gt;
+&lt;td&gt;62&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Jobs on Indeed (Hong Kong)&lt;/td&gt;
+&lt;td&gt;903&lt;/td&gt;
+&lt;td&gt;358&lt;/td&gt;
+&lt;td&gt;328&lt;/td&gt;
+&lt;td&gt;192&lt;/td&gt;
+&lt;td&gt;423&lt;/td&gt;
+&lt;td&gt;35&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Jobs on LinkedIn (Hong Kong)&lt;/td&gt;
+&lt;td&gt;73&lt;/td&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;41&lt;/td&gt;
+&lt;td&gt;116&lt;/td&gt;
+&lt;td&gt;75&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;top-front-end-frameworks-from-most-recommended-to-least&#34;&gt;Top front-end frameworks (from most recommended to least)&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;React:&lt;/strong&gt; In the world of front-end, having React on your resume is the best you can do for yourself. When React first came out it was very fast, and over time it became even faster. Newer versions of React have added innovative ways of caching and lazy-loading features and it looks like TypeScript is gaining adoption in the React community as well; it&amp;rsquo;s safe to say React has matured vary well and is here to stay. Unfortunately, React is not the easiest front-end framework to learn, especially if it is your first. React uses JSX syntax out of the box, which can be awkward for newbies because it mixes javascript with html-like syntax. The React community can be somewhat devided on best practices, so don&amp;rsquo;t be surprised when one tutorial recommends a pattern or library that another tutorial does not follow. React&amp;rsquo;s flexibility can be a gift and a curse while learning, but this flexibility is also what most developers love about this framework. React is an open sourced framework backed by Facebook, with a very active cummunity of about 1300 contributors on Github at the time of writing. Companies that use React include &lt;strong&gt;Facebook&lt;/strong&gt;, &lt;strong&gt;Instagram&lt;/strong&gt; and &lt;strong&gt;Netflix&lt;/strong&gt; among others.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Angular:&lt;/strong&gt; There was a time not long ago, when Angular was the coolest thing on the technological block. React definitely took over the top spot, but Angular still has a large, active community of 935 contributors on Github. It was the first framework to embrace TypeScript and it is well regarded in the corporate world. Angular&amp;rsquo;s approach is more strict than React&amp;rsquo;s, it has a specific and maybe &amp;ldquo;opinionated&amp;rdquo; way of developing, which can be gift and a curse. Some developers agree that Angular framework is somewhat over-engineered in comparison to React and especially Vue.js. Be wary of the older angular.js (note the js in the name), which refers to the first version of Angular which is vastly different from Angular 2 and up. Companies that use this framework include &lt;strong&gt;BMW&lt;/strong&gt;, &lt;strong&gt;ETrade&lt;/strong&gt;, &lt;strong&gt;Wix&lt;/strong&gt; and &lt;strong&gt;VmWare&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Vue.js:&lt;/strong&gt; This is my favorite framework, so I may be biased. I really like the minimalistic syntax of Vue.js, it is one of the most performant JS frameworks currently available and it&amp;rsquo;s also the lightest in terms of Kilobyte footprint. It was created by a former employee of Google, who wanted to take the best parts of the existing frameworks and combine them in a minimalistic form. In terms of popularity, Vue.js is still no where near Angular or React, but it is climbing fast. Its growth has been especially impressive Asia, where companies like &lt;strong&gt;Alibaba&lt;/strong&gt;, &lt;strong&gt;Baidu&lt;/strong&gt; and &lt;strong&gt;Expedia&lt;/strong&gt; are making use of this framework. If getting a job as soon as possible is a priority for you, I would still recommend learning Angular or React first. If landing a hip job at a startup is a priority for you, then Vue.js will make you stand out. Vue.js currently has 275 contributors on Github.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metric&lt;/th&gt;
+&lt;th&gt;React&lt;/th&gt;
+&lt;th&gt;Angular&lt;/th&gt;
+&lt;th&gt;Vue.js&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Release&lt;/td&gt;
+&lt;td&gt;2013&lt;/td&gt;
+&lt;td&gt;2010&lt;/td&gt;
+&lt;td&gt;2014&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;KB Footprint&lt;/td&gt;
+&lt;td&gt;133 KB&lt;/td&gt;
+&lt;td&gt;566 KB&lt;/td&gt;
+&lt;td&gt;59 KB&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GitHub Contributors&lt;/td&gt;
+&lt;td&gt;1300&lt;/td&gt;
+&lt;td&gt;935&lt;/td&gt;
+&lt;td&gt;275&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Jobs on Indeed (New York State)&lt;/td&gt;
+&lt;td&gt;1037&lt;/td&gt;
+&lt;td&gt;747&lt;/td&gt;
+&lt;td&gt;150&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Jobs on LinkedIn (New York State)&lt;/td&gt;
+&lt;td&gt;1000+&lt;/td&gt;
+&lt;td&gt;1000+&lt;/td&gt;
+&lt;td&gt;300&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Jobs on Indeed (Hong Kong)&lt;/td&gt;
+&lt;td&gt;282&lt;/td&gt;
+&lt;td&gt;184&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Jobs on LinkedIn (Hong Kong)&lt;/td&gt;
+&lt;td&gt;57&lt;/td&gt;
+&lt;td&gt;119&lt;/td&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+    &lt;img alt=&#34;Trends of major js frameworks&#34; src=&#34;../img/becoming-a-web-developer-in-2019/js_framework_trend.PNG&#34;&gt;
+    &lt;div&gt; Source: Google Trends&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;so-i-picked-my-learning-path-now-what&#34;&gt;So, I picked my learning path, now what?&lt;/h3&gt;
+
+&lt;p&gt;There are many ways you can hone your skills, but to get an interview you will need to put in some time. If you think the &lt;strong&gt;todo&lt;/strong&gt; list you created from a tutorial is going to be enough, I doubt it. Pick the technology stack you are best at and build something I wouldn&amp;rsquo;t find in tutorial sites. To prove to me that you know something, you need to be able to create something on your own, not reproduce something from a guide. The best way to do this is to pick an idea on your own and create it; be wary that you are still new, so don&amp;rsquo;t pick the next stock market trading platform as your idea. Pick something challenging but doable within a week or two or three; a recipe website that stores recipies in the database and allows image uploading would be a good start, or maybe a repository of all the basketball players in the NBA with adding and sorting capabilities.&lt;/p&gt;
+
+&lt;p&gt;To get any entry-level web dev position most interviewers are interested in seeing that you can create some sort of CRUD (Create, Read, Update and Delete) application. This demonstrated that you have some basic knowledge of a back-end technology and most likely some knowledge of databases. If you can throw in React or Angular or Vue on the front-end, they will really be impressed. So, if you can demonstrate these things in your pet application and be able to explain how you did it (to make sure that your wiz-dev uncle didn&amp;rsquo;t do it for you) you have a solid chance of getting an interview.&lt;/p&gt;
+
+&lt;p&gt;Obviously, the more you can show the better, but a pet project that demonstrates what you are capable of will go a long way, and as a bonus will sharpen your skillset as well. Another tip I can give you, is to spend a few days and make a good resume. You won&amp;rsquo;t have too much to put at this point of your career, but mentioning your pet projects while providing your github account as proof, as well as listing the online courses and learning websites you have used, will help. The point of your resume at this stage is to demonstrate your enthusiasm on paper, any experienced developer or technical manager will see where you are as a developer. What they want to see, is not who you are right now, but who you are going to be.&lt;/p&gt;
+
+&lt;p&gt;Lastly, make sure you can explain any technical terms you have mentioned on your resume. You won&amp;rsquo;t believe how many people I have interviewed that mentioned MVC for example, and when esked to explain what it is, couldn&amp;rsquo;t, at all. For a junior developer position, the interviewer is not looking for anything in depth, but if you cannot explain something you have mentioned four times in your resume, you are likely to have a very short interview.&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://www.ilikedos.com/about-me/</link>
+      <pubDate>Sun, 05 May 2019 17:43:12 +0700</pubDate>
+      <author>Emir Ribic</author>
+      <guid>https://www.ilikedos.com/about-me/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;My name is Ilya, and I am a Full Stack Software Engineer working in Bangkok, Thailand. I grew up in Canada, and I completed my Undergraduate studies in Applied Mathematics. I am a completely self-taught programmer and I am still hungry for more. Hopefully you find something interesting in my blog posts.&lt;/p&gt;
+
+&lt;p&gt;
+    &lt;img alt=&#34;Me in Bangkok, Thailand&#34; src=&#34;../posts/img/about-me/self-in-thailand.jpg&#34;&gt;
+&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>Typescript and its future</title>
       <link>https://www.ilikedos.com/posts/typescript-future/</link>
       <pubDate>Sat, 27 Apr 2019 17:21:11 +0700</pubDate>
@@ -21,15 +247,19 @@
       
       <content>
 
-&lt;h3 id=&#34;typescript-and-the-future-of-web-development&#34;&gt;Typescript and the future of web development&lt;/h3&gt;
-
 &lt;p&gt;Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&amp;hellip;) with TypeScript support out of the box. By default.&lt;/p&gt;
 
 &lt;p&gt;You can imagine this gave TypeScript a strong boost in popularity.
-&lt;p&gt;&lt;img alt=&#34;Typescript 5 year trend&#34; src=&#34;../img/typescript-future/typescript-trend.png&#34; style=&#34;width:600px; display: block; padding: {{ .params.imgpad }}&#34;&gt;&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;
+    &lt;img alt=&#34;Typescript, 5 year trend&#34; src=&#34;../img/typescript-future/typescript-trend.png&#34; style=&#34;width:600px; display: block; padding: {{ .params.imgpad }}&#34;&gt;
+    &lt;div&gt;Source: Google Trends for TypeScript&lt;/div&gt;
+&lt;/p&gt;&lt;/p&gt;
 
 &lt;p&gt;Angular received some initial backlash from the drastic changes that were introduced, not just due to Typescript, but also from drastic changes in syntax. The initial disappointment of AngularJS fans overshadowed the drastic improvements in performance and new features like Dependency Injection and Lazy Loading of components.
-&lt;p&gt;&lt;img alt=&#34;Typescript 5 year trend&#34; src=&#34;../img/typescript-future/angular-trend.png&#34; style=&#34;width:600px; display: block; padding: {{ .params.imgpad }}&#34;&gt;&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;
+    &lt;img alt=&#34;Angular, 5 year trend&#34; src=&#34;../img/typescript-future/angular-trend.png&#34; style=&#34;width:600px; display: block; padding: {{ .params.imgpad }}&#34;&gt;
+    &lt;div&gt;Source: Google Trends for Angular&lt;/div&gt;
+&lt;/p&gt;&lt;/p&gt;
 
 &lt;p&gt;And yet, Angular survived and is doing quite well. This was helped in part by the oncoming pressure from Javascript ES2015/ES6, developers had to learn new things and learn they did.&lt;/p&gt;
 
@@ -95,11 +325,11 @@ If you did everything correctly you should now be able to view your blog locally
 
 &lt;ul&gt;
 &lt;li&gt;After signing up for Microsoft Azure, search for &lt;strong&gt;storage account&lt;/strong&gt; if you haven&amp;rsquo;t set it up already and click &lt;strong&gt;Add&lt;/strong&gt;.
-&lt;p&gt;&lt;img alt=&#34;Search for Storage Account&#34; src=&#34;../img/hugo-blog-on-azure/storage_account.png&#34; style=&#34;width: 650px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img alt=&#34;Search for Storage Account&#34; src=&#34;../img/hugo-blog-on-azure/storage_account.png&#34; style=&#34;width: 650px; display: block; padding: {{ .Params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;Fill out the configuration with your desired names, and with these settings.
-&lt;p&gt;&lt;img alt=&#34;Storage Account Configuration&#34; src=&#34;../img/hugo-blog-on-azure/create_storage_acc_1.png&#34;  style=&#34;width: 650px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img alt=&#34;Storage Account Configuration&#34; src=&#34;../img/hugo-blog-on-azure/create_storage_acc_1.png&#34;  style=&#34;width: 650px; display: block; padding: {{ .Params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;After creating the storage account, open it and navigate to &lt;strong&gt;Static Website&lt;/strong&gt;* under Settings. &lt;strong&gt;Primary endpoint&lt;/strong&gt; is how you will access your published blog (for now). Make sure to add &lt;strong&gt;index.html&lt;/strong&gt; to your &lt;strong&gt;index document name&lt;/strong&gt; field, to establish your website&amp;rsquo;s entry point.
-&lt;p&gt;&lt;img alt=&#34;Setup static website&#34; src=&#34;../img/hugo-blog-on-azure/create_storage_acc_2.png&#34; style=&#34;width:500px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img alt=&#34;Setup static website&#34; src=&#34;../img/hugo-blog-on-azure/create_storage_acc_2.png&#34; style=&#34;width:500px; display: block; padding: {{ .Params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;publish-to-azure-using-vs-code-azure-storage-extension&#34;&gt;Publish to Azure using VS Code + Azure Storage Extension&lt;/h3&gt;
@@ -109,15 +339,15 @@ If you did everything correctly you should now be able to view your blog locally
 &amp;gt; hugo&lt;/li&gt;
 &lt;li&gt;I use Visual Studio Code daily, as it is one of the cleanest IDEs for Front-end development. But if you do not yet use it, you can download it &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Once installed, click on Extensions (lowest icon on the left), search for Azure Storage, hit install and restart VS Code
-&lt;p&gt;&lt;img alt=&#34;VS Code Azure Storage Extension&#34; src=&#34;../img/hugo-blog-on-azure/storage_extension.png&#34; style=&#34;width: 500px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img alt=&#34;VS Code Azure Storage Extension&#34; src=&#34;../img/hugo-blog-on-azure/storage_extension.png&#34; style=&#34;width: 500px; display: block; padding: {{ .Params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;Now you have a cool new Azure icon below the extensions one. Click on it, select login and follow the instructions. Once you put in the code, you should be able to see your storage account through VS Code.&lt;/li&gt;
 &lt;li&gt;Open the folder &amp;hellip;hugo_blog/public in VS Code&lt;/li&gt;
 &lt;li&gt;In VS Code Explorer (top icon on the left), assumming your are at root level of your blog, right click and select &lt;strong&gt;Deploy to Static Website&lt;/strong&gt;.
-&lt;p&gt;&lt;img alt=&#34;Deploy to Static Website&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy.png&#34; style=&#34;width: 500px; display:block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Deploy to Static Website&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy.png&#34; style=&#34;width: 500px; display:block; padding: {{ .Params.imgpad }}&#34;/&gt;&lt;/p&gt;
 At this point you will be prompted to select your subscription and azure storage account
-&lt;p&gt;&lt;img alt=&#34;Select your storage account&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy1.png&#34; style=&#34;width: 500px; display: block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Select your storage account&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy1.png&#34; style=&#34;width: 500px; display: block; padding: {{ .Params.imgpad }}&#34;/&gt;&lt;/p&gt;
 You should get a success message in a few seconds
-&lt;p&gt;&lt;img alt=&#34;Successful deployment&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy2.png&#34; style=&#34;width: 500px; display:block; padding: {{ .params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img alt=&#34;Successful deployment&#34; src=&#34;../img/hugo-blog-on-azure/azure_storage_deploy2.png&#34; style=&#34;width: 500px; display:block; padding: {{ .Params.imgpad }}&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;You are good to go! Keep adding pages and deploying in the same way :)&lt;/p&gt;
