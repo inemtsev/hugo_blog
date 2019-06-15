@@ -4,11 +4,12 @@ title = "I Like DOS"
 theme = "kiss"
 copyright = "&copy; Ilya Nemtsev 2017"
 disqusShortname = "ilikedos"
-googleAnalytics = ""
+googleAnalytics = "UA-140872128-1"
 # Number of posts per page
 Paginate = 5
 enableRobotsTXT = true
 imgPad = 14
+pygmentsUseClasses = true
 
 [params.assets]
 customCSS = ["css/custom.css"]
@@ -41,7 +42,7 @@ github = "inemtsev"
 email = "ilya.nemtsev@outlook.com"
 linkedin = "ilyanemtsev"
 # gitlab = "ribice"
-instagram = ""
+# instagram = ""
 
 [params.social.config]
 platforms = ["twitter","github","email","linkedin","gitlab"]
