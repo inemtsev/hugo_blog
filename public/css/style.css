@@ -155,11 +155,11 @@ td,
 td img {
   vertical-align: top;
 }
-pre,
+/* pre,
 pre code {
   background-color: #f5f7fa;
   color: #42464c;
-}
+} */
 *,
 :after,
 :before {
@@ -5546,7 +5546,7 @@ a.panel-block:hover {
   background-color: #f5f7fa;
   padding: 40px 20px 80px;
 }
-code,
+/* code, */
 html {
   background-color: #fff;
 }
