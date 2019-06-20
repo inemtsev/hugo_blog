@@ -1,22 +1,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>I Like DOS</title>
-    <link>https://www.ilikedos.com/</link>
-    <description>Recent content on I Like DOS</description>
+    <title>Events Looped</title>
+    <link>https://www.eventslooped.com/</link>
+    <description>Recent content on Events Looped</description>
     <generator>Hugo - gohugo.io</generator>
     <language>en</language>
-    <contact>ribice@gmail.com</contact>
+    <contact>ilya.nemtsev@outlook.com</contact>
     <copyright>&copy; Ilya Nemtsev 2017</copyright>
     
-        <atom:link href="https://www.ilikedos.com/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.eventslooped.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Make Multiple Api Calls At The Same Time With GoRoutines</title>
-      <link>https://www.ilikedos.com/posts/golang-make-multiple-api-calls/</link>
+      <link>https://www.eventslooped.com/posts/golang-make-multiple-api-calls/</link>
       <pubDate>Mon, 03 Jun 2019 21:16:17 +0700</pubDate>
-      <author>Emir Ribic</author>
-      <guid>https://www.ilikedos.com/posts/golang-make-multiple-api-calls/</guid>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/golang-make-multiple-api-calls/</guid>
       <description></description>
       
       <content>&lt;p&gt;Golang is efficient, very efficient. Much of this efficiency is attributed to its unique abstractions when dealing with concurrency. Java for example, maps its threads to OS threads, while Go uses its own goroutines scheduler to further abstract its lightweight goroutines from OS threads. In short, Golang is very frugal with how it uses OS threads; if a goroutine becomes blocked, Go&amp;rsquo;s scheduler will switch in another goroutine in its place to keep the thread busy as much as possible. Since each CPU core handles a limited number of threads (and spawning new threads is expensive), keeping these threads fed with work is a great thing indeed.&lt;/p&gt;
@@ -121,10 +121,10 @@ We are able to send the resulting value(s) to our channel using the &lt;strong&g
     
     <item>
       <title>Becoming a Developer in 2019</title>
-      <link>https://www.ilikedos.com/posts/becoming-a-developer-in-2019/</link>
+      <link>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</link>
       <pubDate>Sun, 12 May 2019 14:41:36 +0700</pubDate>
-      <author>Emir Ribic</author>
-      <guid>https://www.ilikedos.com/posts/becoming-a-developer-in-2019/</guid>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</guid>
       <description></description>
       
       <content>
@@ -330,10 +330,10 @@ We are able to send the resulting value(s) to our channel using the &lt;strong&g
     
     <item>
       <title>About Me</title>
-      <link>https://www.ilikedos.com/about-me/</link>
+      <link>https://www.eventslooped.com/about-me/</link>
       <pubDate>Sun, 05 May 2019 17:43:12 +0700</pubDate>
-      <author>Emir Ribic</author>
-      <guid>https://www.ilikedos.com/about-me/</guid>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/about-me/</guid>
       <description></description>
       
       <content>&lt;p&gt;My name is Ilya, and I am a Full Stack Software Engineer working in Bangkok, Thailand. I grew up in Canada, and I completed my Undergraduate studies in Applied Mathematics. I am a completely self-taught programmer and I am still hungry for more. Hopefully you find something interesting in my blog posts.&lt;/p&gt;
@@ -347,10 +347,10 @@ We are able to send the resulting value(s) to our channel using the &lt;strong&g
     
     <item>
       <title>Typescript and its future</title>
-      <link>https://www.ilikedos.com/posts/typescript-future/</link>
+      <link>https://www.eventslooped.com/posts/typescript-future/</link>
       <pubDate>Sat, 27 Apr 2019 17:21:11 +0700</pubDate>
-      <author>Emir Ribic</author>
-      <guid>https://www.ilikedos.com/posts/typescript-future/</guid>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/typescript-future/</guid>
       <description></description>
       
       <content>
@@ -389,10 +389,10 @@ We are able to send the resulting value(s) to our channel using the &lt;strong&g
     
     <item>
       <title>Hugo Blog on Azure</title>
-      <link>https://www.ilikedos.com/posts/hugo-blog-on-azure/</link>
+      <link>https://www.eventslooped.com/posts/hugo-blog-on-azure/</link>
       <pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate>
-      <author>Emir Ribic</author>
-      <guid>https://www.ilikedos.com/posts/hugo-blog-on-azure/</guid>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/hugo-blog-on-azure/</guid>
       <description></description>
       
       <content>

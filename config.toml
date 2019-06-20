@@ -1,6 +1,6 @@
-baseurl = "https://www.ilikedos.com"
+baseurl = "https://www.eventslooped.com"
 languageCode = "en"
-title = "I Like DOS"
+title = "Events Looped"
 theme = "kiss"
 copyright = "&copy; Ilya Nemtsev 2017"
 disqusShortname = "ilikedos"
@@ -17,8 +17,8 @@ customCSS = ["css/custom.css"]
 [params.rss]
 
 includeContent = true # Includes whole content in rss
-authorName = "Emir Ribic" # Site author's full name
-authorEmail = "ribice@gmail.com"
+authorName = "Ilya Nemtsev" # Site author's full name
+authorEmail = "ilya.nemtsev@outlook.com"
 
 [params.info]
 adsense = "" # Adsense ID (ID only, without ca-pub-)
