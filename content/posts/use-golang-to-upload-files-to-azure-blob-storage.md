@@ -8,9 +8,9 @@ If you are enjoying Go and its community as much as myself but have been using t
 
 ### You will need:
 The first thing you need to do is make sure you set up your **blob storage account** in Azure Portal and create a **blob container**. In this example I created a blob container called *blog-photos*. Note your **blob account name** and **blob container name** because you will need these. 
-
-<p>Your Azure Blob Service endpoint will have the structure: <b>https://<<yourblobaccountname>>.blob.core.windows.net/</b>.</p>
-
+  
+<div>Your Azure Blob Service endpoint will usually have the structure: </div>**https://&lt;yourblobaccountname&gt;.blob.core.windows.net/**
+<p>  </p>
 Your **Azure Access Key** can be found under Blob Storage Account > Access Keys. Grab the first Key and that will be sufficient. 
 
 ### Das Code:
@@ -50,20 +50,22 @@ func UploadBytesToBlob(b []byte) (string, error) {
 		return "", errC
 	}
 
-	blockBlobUrl := azblob.NewBlockBlobURL(*u, azblob.NewPipeline(credential, azblob.PipelineOptions{}))    // Another Azure Specific object, which combines our generated URL and credentials
+        // Another Azure Specific object, which combines our generated URL and credentials
+	blockBlobUrl := azblob.NewBlockBlobURL(*u, azblob.NewPipeline(credential, azblob.PipelineOptions{}))    
 
 	ctx := context.Background() // We create an empty context (https://golang.org/pkg/context/#Background)
 
-    // Provide any needed options to UploadToBlockBlobOptions (https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#UploadToBlockBlobOptions)
+        // Provide any needed options to UploadToBlockBlobOptions (https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#UploadToBlockBlobOptions)
 	o := azblob.UploadToBlockBlobOptions{
 		BlobHTTPHeaders: azblob.BlobHTTPHeaders{
 			ContentType: "image/jpg",   //  Add any needed headers here
 		},
 	}
 
-	_, errU := azblob.UploadBufferToBlockBlob(ctx, b, blockBlobUrl, o)  // Combine all the pieces and perform the upload using UploadBufferToBlockBlob (https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#UploadBufferToBlockBlob)
+        // Combine all the pieces and perform the upload using UploadBufferToBlockBlob (https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#UploadBufferToBlockBlob)
+	_, errU := azblob.UploadBufferToBlockBlob(ctx, b, blockBlobUrl, o)  
 	return blockBlobUrl.String(), errU
 }
 {{< / highlight >}}
 
-You can see a fully working example in [Github](). 
+You can see a fully working example in [Github](https://github.com/inemtsev/go_blob_uploader/blob/master/main.go). 

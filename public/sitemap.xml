@@ -4,8 +4,19 @@
   
   <url>
     <loc>https://www.eventslooped.com/</loc>
-    <lastmod>2019-06-03T21:16:17+07:00</lastmod>
+    <lastmod>2019-08-04T17:33:01+07:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.eventslooped.com/posts/</loc>
+    <lastmod>2019-08-04T17:33:01+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</loc>
+    <lastmod>2019-08-04T17:33:01+07:00</lastmod>
   </url>
   
   <url>
@@ -14,29 +25,13 @@
   </url>
   
   <url>
-    <loc>https://www.eventslooped.com/posts/</loc>
-    <lastmod>2019-06-03T21:16:17+07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</loc>
     <lastmod>2019-05-12T14:41:36+07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.eventslooped.com/photos/</loc>
-    <lastmod>2019-05-05T17:43:26+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.eventslooped.com/about-me/</loc>
     <lastmod>2019-05-05T17:43:12+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.eventslooped.com/posts/weekly-photos-from-bangkok/</loc>
-    <lastmod>2019-05-05T17:12:23+07:00</lastmod>
   </url>
   
   <url>

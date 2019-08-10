@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; Ilya Nemtsev 2017</copyright>
-    <lastBuildDate>Mon, 03 Jun 2019 21:16:17 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 04 Aug 2019 17:33:01 +0700</lastBuildDate>
     
 	<atom:link href="https://www.eventslooped.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Use Golang to Upload Files to Azure Blob Storage</title>
+      <link>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</link>
+      <pubDate>Sun, 04 Aug 2019 17:33:01 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</guid>
+      <description>If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.
+You will need: The first thing you need to do is make sure you set up your blob storage account in Azure Portal and create a blob container.</description>
+    </item>
     
     <item>
       <title>Make Multiple Api Calls At The Same Time With GoRoutines</title>
@@ -28,19 +38,6 @@
       
       <guid>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</guid>
       <description>There has never been a better time to become a web developer than now. The United States Bureau of Labour Statistics predicts an increase of job postings by 15% between 2016-2026, in comparison to 7% average across all occupations. According to ZipRecruiter the current average salary of a Web Developer in United states is $74,080 with top 1% earning $123,000 to $133,000. Among the general specializations of web developers (front-end, back-end and full-stack); full-stack developers on avereage are paid the highest, which is logical since they have to stay up-to date on both back-end and fron-end technologies.</description>
-    </item>
-    
-    <item>
-      <title>Weekly Photos From Bangkok</title>
-      <link>https://www.eventslooped.com/posts/weekly-photos-from-bangkok/</link>
-      <pubDate>Sun, 05 May 2019 17:12:23 +0700</pubDate>
-      
-      <guid>https://www.eventslooped.com/posts/weekly-photos-from-bangkok/</guid>
-      <description>View this post on Instagram        Bangkok sidestreets at night. #bangkok
-A post shared by Ilya Nemtsev (@ilyanemtsev) on Feb 10, 2019 at 10:57am PST
- 
-   View this post on Instagram        Skybar on top of apartment in Thailand, nice view!
-A post shared by Ilya Nemtsev (@ilyanemtsev) on May 1, 2019 at 6:32am PDT</description>
     </item>
     
     <item>

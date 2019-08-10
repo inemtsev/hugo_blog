@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Use Golang to Upload Files to Azure Blob Storage | Events Looped</title>
+
+
+
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="Events Looped" />
+
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://www.eventslooped.com">
+          <h1 class="title is-4">Events Looped</h1>
+        </a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="email" href='mailto:ilya.nemtsev@outlook.com'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="linkedin" href='https://linkedin.com/in/ilyanemtsev'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+      <div class="nav-left"><a class="nav-item" href="/about-me">
+          <h2 class="title is-5">About me</h2>
+        </a><a class="nav-item" href="/index.html">
+          <h2 class="title is-5">Blog</h2>
+        </a></div>
+      
+
+      
+    </nav>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">August 4, 2019</h2>
+    <h1 class="title">Use Golang to Upload Files to Azure Blob Storage</h1>
+    
+    <div class="content">
+      
+
+<p>If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.</p>
+
+<h3 id="you-will-need">You will need:</h3>
+
+<p>The first thing you need to do is make sure you set up your <strong>blob storage account</strong> in Azure Portal and create a <strong>blob container</strong>. In this example I created a blob container called <em>blog-photos</em>. Note your <strong>blob account name</strong> and <strong>blob container name</strong> because you will need these.</p>
+
+<p><div>Your Azure Blob Service endpoint will usually have the structure: </div><strong>https://&lt;yourblobaccountname&gt;.blob.core.windows.net/</strong>
+<p>  </p>
+Your <strong>Azure Access Key</strong> can be found under Blob Storage Account &gt; Access Keys. Grab the first Key and that will be sufficient.</p>
+
+<h3 id="das-code">Das Code:</h3>
+
+<p>First, let&rsquo;s create a method that gives us all the credentials we need for uploading files. In production you will want to use a more secure method of handling credentials, but for this example hard-coding will do.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">GetAccountInfo</span><span class="p">()</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">azrKey</span> <span class="o">:=</span> <span class="s">&#34;&lt;your_azure_access_key&gt;&#34;</span>
+	<span class="nx">azrBlobAccountName</span> <span class="o">:=</span> <span class="s">&#34;mytechblog&#34;</span>
+	<span class="nx">azrPrimaryBlobServiceEndpoint</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;https://%s.blob.core.windows.net/&#34;</span><span class="p">,</span> <span class="nx">azrBlobAccountName</span><span class="p">)</span>
+	<span class="nx">azrBlobContainer</span> <span class="o">:=</span> <span class="s">&#34;blog-photos&#34;</span>
+
+	<span class="k">return</span> <span class="nx">azrKey</span><span class="p">,</span> <span class="nx">azrBlobAccountName</span><span class="p">,</span> <span class="nx">azrPrimaryBlobServiceEndpoint</span><span class="p">,</span> <span class="nx">azrBlobContainer</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Next, let&rsquo;s come up with a file name structure for our blobs. Since my sample app will upload all jpeg images in a folder, this small method will do the trick for me; a combination of date and  UUID. (The code below uses the package <a href="github.com/gofrs/uuid">github.com/gofrs/uuid</a>, you will need to install it to use uuid.NewV4())</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">GetBlobName</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+	<span class="nx">uuid</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">NewV4</span><span class="p">()</span>
+
+	<span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s-%v.jpg&#34;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;20060102&#34;</span><span class="p">),</span> <span class="nx">uuid</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Finally, let&rsquo;s build the Uploader. This will require Azure Blob SDK: <a href="github.com/Azure/azure-storage-blob-go/azblob">github.com/Azure/azure-storage-blob-go/azblob</a>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// The below method assumes you already have the byte array ready to go
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">UploadBytesToBlob</span><span class="p">(</span><span class="nx">b</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">azrKey</span><span class="p">,</span> <span class="nx">accountName</span><span class="p">,</span> <span class="nx">endPoint</span><span class="p">,</span> <span class="nx">container</span> <span class="o">:=</span> <span class="nf">GetAccountInfo</span><span class="p">()</span>    <span class="c1">// This is our account info method
+</span><span class="c1"></span>	<span class="nx">u</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprint</span><span class="p">(</span><span class="nx">endPoint</span><span class="p">,</span> <span class="nx">container</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nf">GetBlobName</span><span class="p">()))</span>  <span class="c1">// This uses our Blob Name Generator to create individual blob urls
+</span><span class="c1"></span>	<span class="nx">credential</span><span class="p">,</span> <span class="nx">errC</span> <span class="o">:=</span> <span class="nx">azblob</span><span class="p">.</span><span class="nf">NewSharedKeyCredential</span><span class="p">(</span><span class="nx">accountName</span><span class="p">,</span> <span class="nx">azrKey</span><span class="p">)</span>  <span class="c1">// Finally we create the credentials object required by the uploader
+</span><span class="c1"></span>	<span class="k">if</span> <span class="nx">errC</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">errC</span>
+	<span class="p">}</span>
+
+        <span class="c1">// Another Azure Specific object, which combines our generated URL and credentials
+</span><span class="c1"></span>	<span class="nx">blockBlobUrl</span> <span class="o">:=</span> <span class="nx">azblob</span><span class="p">.</span><span class="nf">NewBlockBlobURL</span><span class="p">(</span><span class="o">*</span><span class="nx">u</span><span class="p">,</span> <span class="nx">azblob</span><span class="p">.</span><span class="nf">NewPipeline</span><span class="p">(</span><span class="nx">credential</span><span class="p">,</span> <span class="nx">azblob</span><span class="p">.</span><span class="nx">PipelineOptions</span><span class="p">{}))</span>    
+
+	<span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span> <span class="c1">// We create an empty context (https://golang.org/pkg/context/#Background)
+</span><span class="c1"></span>
+        <span class="c1">// Provide any needed options to UploadToBlockBlobOptions (https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#UploadToBlockBlobOptions)
+</span><span class="c1"></span>	<span class="nx">o</span> <span class="o">:=</span> <span class="nx">azblob</span><span class="p">.</span><span class="nx">UploadToBlockBlobOptions</span><span class="p">{</span>
+		<span class="nx">BlobHTTPHeaders</span><span class="p">:</span> <span class="nx">azblob</span><span class="p">.</span><span class="nx">BlobHTTPHeaders</span><span class="p">{</span>
+			<span class="nx">ContentType</span><span class="p">:</span> <span class="s">&#34;image/jpg&#34;</span><span class="p">,</span>   <span class="c1">//  Add any needed headers here
+</span><span class="c1"></span>		<span class="p">},</span>
+	<span class="p">}</span>
+
+        <span class="c1">// Combine all the pieces and perform the upload using UploadBufferToBlockBlob (https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#UploadBufferToBlockBlob)
+</span><span class="c1"></span>	<span class="nx">_</span><span class="p">,</span> <span class="nx">errU</span> <span class="o">:=</span> <span class="nx">azblob</span><span class="p">.</span><span class="nf">UploadBufferToBlockBlob</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">blockBlobUrl</span><span class="p">,</span> <span class="nx">o</span><span class="p">)</span>  
+	<span class="k">return</span> <span class="nx">blockBlobUrl</span><span class="p">.</span><span class="nf">String</span><span class="p">(),</span> <span class="nx">errU</span>
+<span class="p">}</span></code></pre></div>
+
+<p>You can see a fully working example in <a href="https://github.com/inemtsev/go_blob_uploader/blob/master/main.go">Github</a>.</p>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'ilikedos';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; Ilya Nemtsev 2017</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
+    
+  </div>
+</section>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140872128-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+</body>
+</html>
+
