@@ -10,7 +10,8 @@
 
 <link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="Events Looped" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/tiny-slider.css">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
@@ -37,7 +38,7 @@
     
   </svg></i>
             </span>
-          </a><a class="level-item" aria-label="email" href='mailto:ilya.nemtsev@outlook.com'
+          </a><a class="level-item" aria-label="email" href='mailto:eventslooped@gmail.com'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -197,6 +198,29 @@ if (!doNotTrack) {
 
 
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/min/tiny-slider.js"></script>
+<script type="module">
+  var slider = tns({
+    container: '.my-slider',
+    mode: 'carousel',
+    items: 1,
+    gutter: 5,
+    slideBy: 'page',
+    autoplay: true,
+    autoplayButton: false,
+    speed: 500,
+    navPosition: 'top',
+    controlsPosition: 'bottom',
+    "autoplayText": [
+      "▶",
+      "❚❚"
+    ],
+    controls: true,
+    arrowKeys: true,
+    mouseDrag: true
+  });
+  </script>
 </body>
 </html>
 
