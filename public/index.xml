@@ -12,6 +12,101 @@
     
     
     <item>
+      <title>KrakenD: Writing Plugins using Golang</title>
+      <link>https://www.eventslooped.com/posts/krakend-writing-plugins/</link>
+      <pubDate>Sat, 19 Oct 2019 18:59:02 +0700</pubDate>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/krakend-writing-plugins/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.krakend.io&#34;&gt;KrakenD&lt;/a&gt; has caught my attention as a Gateway solution because of its claim at incredible performance and extensibility. It is Open Source and can be tailored to your needs or can be extended in a convenient way with its support for &lt;a href=&#34;https://golang.org/pkg/plugin/&#34;&gt;Golang Plugins&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;plugin-what&#34;&gt;Plugin, what?&lt;/h3&gt;
+
+&lt;p&gt;Go plugins are a fairly new addition to Golang (support starting with Go 1.8), but they provide a very innovative way to add functionality to a Go application. Go plugins are soft-linked, meaning that they are picked up by the main appication at runtime. Since plugins need to be part of the &lt;strong&gt;main&lt;/strong&gt; package, their main() function is not run; they are initialized once and cannot be closed. Once small caveat of plugins at the time of writing, is that they cannot be compiled on a Windows OS; Linux and MacOS work just fine. For the following examples I will use Linux to show how to setup KrakenD and add a plugin.&lt;/p&gt;
+
+&lt;h3 id=&#34;benefits-of-using-go-plugins-with-krakend&#34;&gt;Benefits of using Go Plugins with KrakenD&lt;/h3&gt;
+
+&lt;p&gt;KrakenD has a small but very active and growing community; features are constantly being added and extended. If we wanted to add our own functionality to the pipeline and extend KrakenD, we could certainly do that. But, if a new version of KrakenD was to be released we would have to manually merge these changes into our own version of KrakenD. Wouldn&amp;rsquo;t it be easier if we could simply drop a plugin file next to KrakenD binary and receive benefits upon app restart? This is the perfect case for Golang plugins.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-can-you-get-started&#34;&gt;How can you get started&lt;/h3&gt;
+
+&lt;p&gt;I will not dive into how to modify the &lt;a href=&#34;https://www.krakend.io&#34;&gt;KrakenD&lt;/a&gt; core, it is open source after all and sky is the limit. Instead, I will clone/download the binary source from &lt;a href=&#34;https://github.com/devopsfaith/krakend-ce&#34;&gt;KrakenD-CE Github&lt;/a&gt;. What is KrakenD-CE and how does it differ from KrakenD? KrakenD-CE is a Community Edition of KrakenD, it includes many additional middlewares for added functionality that creators thought were useful. KrakenD on its own is more barebones. &lt;strong&gt;You can think of KrakenD-CE as KrakenD + Extra Stuff.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Assuming you have Go Binary installed and KrakenD folder located in your PATH environment location, compile in command-line via command:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;make build&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If you have not installed Go Binaries, get them here: &lt;a href=&#34;https://golang.org/doc/install&#34;&gt;https://golang.org/doc/install&lt;/a&gt;
+If you receive an error &amp;ldquo;make command not found&amp;rdquo; install build essentials using one of the following commands, depending on your distro.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;sudo yum install build-essential
+sudo apt-get install build-essential&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;configuring-a-basic-setup&#34;&gt;Configuring a basic setup&lt;/h3&gt;
+
+&lt;p&gt;Once you have KrakenD built, let&amp;rsquo;s take a look at the settings. These are contained in &lt;strong&gt;krakend.json&lt;/strong&gt;. Most of the functionality you will need from a Gateway is configurable from this file. I suggest using the online &lt;a href=&#34;https://www.krakend.io/docs/configuration/overview/&#34;&gt;KrakenDesigner&lt;/a&gt; to generate your own configuration file. I created a basic configuration like this. Here I simply take the GitHub username as a parameter and call api.github.com as my downstream service to obtain a user&amp;rsquo;s profile in json format.&lt;/p&gt;
+
+&lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/cc0ca70682d198abf00c0b1a8f246d57.js?file=krakend.json&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;You can test your configuration via the following command with debugging:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;./krakend run -c krakend.json &amp;ndash;debug&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;creating-the-plugin&#34;&gt;Creating the plugin&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s create a sample plugin that makes a call to Github API gets another user&amp;rsquo;s data and attaches the response as a header to the downstream service.&lt;/p&gt;
+
+&lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/cc0ca70682d198abf00c0b1a8f246d57.js?file=headerModPlugin.go&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Some things to notice here:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;func main() is not necessary here because it will be ignored, but my IDE was complaining so it&amp;rsquo;s there for decoration :)&lt;/li&gt;
+&lt;li&gt;attachuserid is the parameter we will pass in to the configuration in our krakend.json, we receive it here and assign to &lt;strong&gt;attachUserID&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let&amp;rsquo;s configure our plugin. Add the following lines to the root of your configuration:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;plugin&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;pattern&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.so&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;folder&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;./&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;s2&#34;&gt;&amp;#34;extra_config&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;github_com/devopsfaith/krakend/transport/http/server/handler&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;headerModPlugin&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;attachuserid&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;rsc&amp;#34;&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lastly, KrakenD by default removes all headers from the request for performance and security reasons. This behavior can be turned off, but we will simply add an exception for our plugin&amp;rsquo;s header to our config by addin these lines under the &lt;strong&gt;endpoint&lt;/strong&gt; part of our configuration:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;headers_to_pass&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+  &lt;span class=&#34;s2&#34;&gt;&amp;#34;X-Friend-User&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Your final configuration should look something &lt;a href=&#34;https://gist.githubusercontent.com/inemtsev/cc0ca70682d198abf00c0b1a8f246d57/raw/cbe53ee769c7a70fb135efb93ddfebe93dbd3eea/krakend_with_plugin.json&#34;&gt;like this.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice the &lt;strong&gt;name&lt;/strong&gt; parameter that needs to match the one in our plugin and also notice the &lt;strong&gt;attachuserid&lt;/strong&gt; parameter that we defined inside our plugin. I am passing in the username of &lt;strong&gt;Russ Cox&lt;/strong&gt;, one of the big names behind Golang.&lt;/p&gt;
+
+&lt;p&gt;If your configuration is correct, when you run KrakenD in debug mode you will see the message: injecting plugin headerModPlugin. :)&lt;/p&gt;
+
+&lt;p&gt;Your header will now be passed down to your downstream service(s)!&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>June/July 2019 in Bangkok Photos</title>
       <link>https://www.eventslooped.com/posts/july-2019-photos/</link>
       <pubDate>Mon, 12 Aug 2019 23:27:19 +0700</pubDate>
@@ -21,91 +116,91 @@
       
       <content>&lt;div class=&#34;my-slider&#34;&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-eb9ff5fa-441f-4ddd-8668-2ba2fb25e9a5.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-eb9ff5fa-441f-4ddd-8668-2ba2fb25e9a5.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-eb9ff5fa-441f-4ddd-8668-2ba2fb25e9a5.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;Sunny day on top of &lt;a href=&#34;https://goo.gl/maps/YYhQMQjTUpQBqfpcA&#34; target=&#34;_blank&#34;&gt;Cielo Sky Bar&lt;/a&gt;&lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ae17cef3-6a6b-401b-9bc3-2b37d882d545.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ae17cef3-6a6b-401b-9bc3-2b37d882d545.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ae17cef3-6a6b-401b-9bc3-2b37d882d545.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;Crazy traffic on Sukhumvit near &lt;a href=&#34;https://goo.gl/maps/BgCZp193SvHbAjpE7&#34; target=&#34;_blank&#34;&gt;Central World Shopping Center&lt;/a&gt;&lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-9a5f4e4f-89b7-4221-91c8-f314d522f1f3.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-9a5f4e4f-89b7-4221-91c8-f314d522f1f3.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-9a5f4e4f-89b7-4221-91c8-f314d522f1f3.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;I loved the beautiful decorations at &lt;a href=&#34;https://goo.gl/maps/sLMv11EzJoXntAf36&#34; target=&#34;_blank&#34;&gt;Icon Siam Shopping Center.&lt;/a&gt; People traffic here is very intense on the weekends though.&lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ce8a643e-4cf4-41c7-9243-e068812c9523.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ce8a643e-4cf4-41c7-9243-e068812c9523.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ce8a643e-4cf4-41c7-9243-e068812c9523.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;There is a small floating market inside the &lt;a href=&#34;https://goo.gl/maps/sLMv11EzJoXntAf36&#34; target=&#34;_blank&#34;&gt;Icon Siam Shopping Center&lt;/a&gt;. How cool is that!&lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-1841e5cb-f869-4944-9b0d-52e64e282f8e.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-1841e5cb-f869-4944-9b0d-52e64e282f8e.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-1841e5cb-f869-4944-9b0d-52e64e282f8e.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;Icon Siam has plenty of venues that sell &lt;a href=&#34;https://en.wikipedia.org/wiki/Mango_sticky_rice&#34; target=&#34;_blank&#34;&gt;Mango sticky rice.&lt;/a&gt; If you are visiting Thailand, this is a must-try dessert. &lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-29e62b63-32e4-4d49-bc56-27913a9272b0.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-29e62b63-32e4-4d49-bc56-27913a9272b0.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-29e62b63-32e4-4d49-bc56-27913a9272b0.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;If your bank account is too large you can do some serious shopping at Icon Siam. This shopping center is very beautiful, it&#39;s worth visiting at least once. &lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;Rainy day on &lt;a href=&#34;https://goo.gl/maps/Yz5k7shuer2N8KSC7&#34; target=&#34;_blank&#34;&gt;Khao San Road&lt;/a&gt;. Lots of quirky and unique shops here, although many tourist traps as well. &lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f5db7083-da6e-44d3-bd20-9b4f666f7a89.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f5db7083-da6e-44d3-bd20-9b4f666f7a89.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f5db7083-da6e-44d3-bd20-9b4f666f7a89.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;I love the vibe of Khao San Road, it may be overrun by scammers in some spots, but I can&#39;t deny the uniqueness of this place. &lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
    &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-63797432-348a-48eb-9ded-7e99e9b61eb2.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-63797432-348a-48eb-9ded-7e99e9b61eb2.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-63797432-348a-48eb-9ded-7e99e9b61eb2.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;&lt;a href=&#34;https://goo.gl/maps/RvGQrNs3bHaa8ycn6&#34; target=&#34;_blank&#34;&gt;Chinatown in Bangkok&lt;/a&gt; is vast, colorful and lively.&lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
    &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f3095ebb-fb9e-43d8-a192-0dd2b3813f5e.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f3095ebb-fb9e-43d8-a192-0dd2b3813f5e.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f3095ebb-fb9e-43d8-a192-0dd2b3813f5e.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;River-view from one of my favourite restaurants, &lt;a href=&#34;https://goo.gl/maps/meAreefEdbREHGLs9&#34; target=&#34;_blank&#34;&gt;Viva Aviv The River&lt;/a&gt;&lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-c223043b-87d4-4837-a120-547b6e7c28c0.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-c223043b-87d4-4837-a120-547b6e7c28c0.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-c223043b-87d4-4837-a120-547b6e7c28c0.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;Beautiful sunset view of the city&lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-96834bda-025a-4e41-bc74-9ff31251b833.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-96834bda-025a-4e41-bc74-9ff31251b833.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-96834bda-025a-4e41-bc74-9ff31251b833.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;&lt;a href=&#34;https://goo.gl/maps/YVCSww2AXx8tDPWi6&#34; target=&#34;_blank&#34;&gt;Ratchada Rot Fai Train Night Market&lt;/a&gt; is absolutely amazing. The variety of food at amazing prices is mind-boggling! &lt;/div&gt;
     &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
   &lt;/div&gt;
     &lt;div&gt;
-    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/fit/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-716f2793-b44a-4000-9347-d364c2d97e66.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-716f2793-b44a-4000-9347-d364c2d97e66.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-716f2793-b44a-4000-9347-d364c2d97e66.jpg&#34;/&gt;
     &lt;/a&gt;
     &lt;div&gt;My workstation setup in Bangkok so far. This is where the magic happens. &lt;/div&gt;

@@ -18,10 +18,13 @@ KrakenD has a small but very active and growing community; features are constant
 I will not dive into how to modify the [KrakenD](https://www.krakend.io) core, it is open source after all and sky is the limit. Instead, I will clone/download the binary source from [KrakenD-CE Github](https://github.com/devopsfaith/krakend-ce). What is KrakenD-CE and how does it differ from KrakenD? KrakenD-CE is a Community Edition of KrakenD, it includes many additional middlewares for added functionality that creators thought were useful. KrakenD on its own is more barebones. **You can think of KrakenD-CE as KrakenD + Extra Stuff.** 
 
 Assuming you have Go Binary installed and KrakenD folder located in your PATH environment location, compile in command-line via command:
+
 > make build
 
 If you have not installed Go Binaries, get them here: [https://golang.org/doc/install](https://golang.org/doc/install)
+
 If you receive an error "make command not found" install build essentials using one of the following commands, depending on your distro.
+
 > sudo yum install build-essential
 > sudo apt-get install build-essential
 
@@ -31,6 +34,7 @@ Once you have KrakenD built, let's take a look at the settings. These are contai
 {{< gist inemtsev cc0ca70682d198abf00c0b1a8f246d57 "krakend.json" >}}
 
 You can test your configuration via the following command with debugging:
+
 > ./krakend run -c krakend.json --debug
 
 ### Creating the plugin
@@ -39,13 +43,14 @@ Let's create a sample plugin that makes a call to Github API gets another user's
 
 {{< gist inemtsev cc0ca70682d198abf00c0b1a8f246d57 "headerModPlugin.go" >}}
 
-Some things to notice here.
- - func main() is not necessary here because it will be ignored, but my IDE was complaining so it's there for decoration :)
- - attachuserid is the parameter we will pass in to the configuration in our krakend.json
+Some things to notice here:
 
-Lastly, let's configure our plugin. Add the following lines to the root of your configuration: 
+- func main() is not necessary here because it will be ignored, but my IDE was complaining so it's there for decoration :)
+- attachuserid is the parameter we will pass in to the configuration in our krakend.json, we receive it here and assign to **attachUserID**
 
-{{ < highlight json >}}
+Let's configure our plugin. Add the following lines to the root of your configuration: 
+
+{{< highlight json>}}
  "plugin": {
     "pattern": ".so",
     "folder": "./"
@@ -56,11 +61,22 @@ Lastly, let's configure our plugin. Add the following lines to the root of your 
       "attachuserid": "rsc"
    }
   }
-{{ < / highlight >}}
+{{< / highlight>}}
 
-Your final configuration should look something [like this.](https://gist.githubusercontent.com/inemtsev/cc0ca70682d198abf00c0b1a8f246d57/raw/b246c503d76bcb38d1c88a7d20ef0073f442bb8a/krakend_with_plugin.json)
+Lastly, KrakenD by default removes all headers from the request for performance and security reasons. This behavior can be turned off, but we will simply add an exception for our plugin's header to our config by addin these lines under the **endpoint** part of our configuration:
+
+{{< highlight json>}}
+
+"headers_to_pass": [
+  "X-Friend-User"
+],
+
+{{< / highlight>}}
+
+Your final configuration should look something [like this.](https://gist.githubusercontent.com/inemtsev/cc0ca70682d198abf00c0b1a8f246d57/raw/cbe53ee769c7a70fb135efb93ddfebe93dbd3eea/krakend_with_plugin.json)
 
 Notice the **name** parameter that needs to match the one in our plugin and also notice the **attachuserid** parameter that we defined inside our plugin. I am passing in the username of **Russ Cox**, one of the big names behind Golang. 
 
 If your configuration is correct, when you run KrakenD in debug mode you will see the message: injecting plugin headerModPlugin. :)
 
+Your header will now be passed down to your downstream service(s)!
