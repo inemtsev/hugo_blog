@@ -1,7 +1,7 @@
 ---
 title: "Golang Microservices Part 1 - gRPC Communication"
 date: 2019-11-29T14:55:29+07:00
-draft: true
+draft: false
 ---
 
 ### Summary - Setting up gRPC communication
@@ -14,23 +14,24 @@ Let's create a microservice that will provide information on various basketball 
 
 {{< gist inemtsev da51690a81854591e3899e56a95fa3de "basketball.proto" >}}
 
-Now we are ready to generate code from our proto file. For this we will need the Protobuf compiler (which is written in C++). You can download the compiler for your OS from [this Github page](https://github.com/protocolbuffers/protobuf/releases). Since I am using a Windows machine at the moment, I download the **protoc-3.11.0-win64.zip** for example. Within the download archive you will find a **/bin folder** containing the protoc binary. Take this binary and place it nearby your protoc file or vise-versa for easy access (I placed it in C:\Users\myusername\go\src\protoc_bin). Lastly, we will need the protoc-gen-go plugin for our compiler. Run the following command to obtain it: 
+Now we are ready to generate code from our proto file. For this we will need the Protobuf compiler (which is written in C++). You can download the compiler for your OS from [this Github page](https://github.com/protocolbuffers/protobuf/releases). Since I am using a Windows machine at the moment, I download the **protoc-3.11.0-win64.zip** for example. Within the download archive you will find a **/bin folder** containing the protoc binary. Take this binary and place it nearby your protoc file or vise-versa for easy access (I placed it in `C:\Users\myusername\go\src\protoc_bin`). 
+
+Lastly, we will need the protoc-gen-go plugin for our compiler. Run the following command to obtain it: 
 
 > go get -u github.com/golang/protobuf/protoc-gen-go
 
-Now, we are ready to compile. In command line, browse to your protoc binary (in my case C:\Users\myusername\go\src\protoc_bin) and run the following commands, where ..\basic-gRPC-proto\ is the path to my folder containing the proto file and **basketball.proto** is the name of that proto file: 
+Now, we are ready to compile. In command line, browse to your protoc binary (in my case `C:\Users\myusername\go\src\protoc_bin`) and run the following commands, where `..\basic-gRPC-proto\` is the path to my folder containing the proto file and **basketball.proto** is the name of that proto file: 
 
-> protoc basketball.proto --go_out=plugins=grpc:. --proto_path=..\basic-gRPC-proto\
-> ls
+`protoc basketball.proto --go_out=plugins=grpc:. --proto_path=..\basic-gRPC-proto\`
 
 You can see that **basketball.pb.go** has been generated! Yay! 
 
-========== PUT HAPPY GIF IN HERE =================
+<iframe src="https://giphy.com/embed/axu6dFuca4HKM" width="480" height="228" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/axu6dFuca4HKM">via GIPHY</a></p>
 
 ### Implementing our newly generated Go code (Server)
 Let's take a deep breath, because the hardest part is already done :)
 
-To make use of our new .go package I copied the resulting file to **...\go\src\basic-gRPC-proto** for convenience. Then back at src folder, create a folder for your server, I called it **basic-gRPC-server**. Now, lets create our main.go and run this command to get google's gRPC library:
+To make use of our new .go package I copied the resulting file to `...\go\src\basic-gRPC-proto` for convenience. Then back at src folder, create a folder for your server, I called it **basic-gRPC-server**. Now, lets create our main.go and run this command to get google's gRPC library:
 
 > go get google.golang.org/grpc
 
@@ -44,7 +45,7 @@ The server code consists of two parts:
 
 2) Starting the server on some IP
 
-First part looks like this. This method is very similar to the definition we defined in the proto file with a few extras. Take a look at the **generated go file** and find your GetBasketballPlayer method, this will show you the signature you will need to have, to satisfy the server: 
+First part looks like this. This method is very similar to the definition we defined in the proto file with a few extras. Take a look at the **generated go file** and find your GetBasketballPlayer method, this will show you the signature you will need to have, to satisfy the server definition: 
 
 {{< highlight go>}}
     type server struct{}

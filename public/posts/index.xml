@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; Ilya Nemtsev 2017</copyright>
-    <lastBuildDate>Sat, 19 Oct 2019 18:59:02 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 29 Nov 2019 14:55:29 +0700</lastBuildDate>
     
 	<atom:link href="https://www.eventslooped.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang Microservices Part 1 - gRPC Communication</title>
+      <link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link>
+      <pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</guid>
+      <description>Summary - Setting up gRPC communication gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient HTTP/2 network protocol as well Google&amp;rsquo;s Protocol Buffers (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the .proto file for nearly every programming language available.</description>
+    </item>
     
     <item>
       <title>KrakenD: Writing Plugins using Golang</title>

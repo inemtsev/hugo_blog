@@ -12,6 +12,160 @@
     
     
     <item>
+      <title>Golang Microservices Part 1 - gRPC Communication</title>
+      <link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link>
+      <pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;summary-setting-up-grpc-communication&#34;&gt;Summary - Setting up gRPC communication&lt;/h3&gt;
+
+&lt;p&gt;gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient &lt;a href=&#34;https://en.wikipedia.org/wiki/HTTP/2&#34;&gt;HTTP/2 network protocol&lt;/a&gt; as well Google&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Protocol_Buffers&#34;&gt;Protocol Buffers&lt;/a&gt; (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the &lt;strong&gt;.proto&lt;/strong&gt; file for nearly every programming language available.&lt;/p&gt;
+
+&lt;h3 id=&#34;protobuf&#34;&gt;ProtoBuf&lt;/h3&gt;
+
+&lt;p&gt;Before setting up our server and client, we need to define the message/contract structure and service definitions using Protocol Buffers in a &lt;strong&gt;.proto&lt;/strong&gt; file. If you need a guide on the protocol buffer language, &lt;a href=&#34;https://developers.google.com/protocol-buffers/docs/proto3&#34;&gt;you can read about it here&lt;/a&gt;; although the language is quite simplistic and you may be able to get away with just looking at these examples for now.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s create a microservice that will provide information on various basketball players over gRPC. Note: Below guide assumes Go runtime is already installed correctly.&lt;/p&gt;
+
+&lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=basketball.proto&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we are ready to generate code from our proto file. For this we will need the Protobuf compiler (which is written in C++). You can download the compiler for your OS from &lt;a href=&#34;https://github.com/protocolbuffers/protobuf/releases&#34;&gt;this Github page&lt;/a&gt;. Since I am using a Windows machine at the moment, I download the &lt;strong&gt;protoc-3.11.0-win64.zip&lt;/strong&gt; for example. Within the download archive you will find a &lt;strong&gt;/bin folder&lt;/strong&gt; containing the protoc binary. Take this binary and place it nearby your protoc file or vise-versa for easy access (I placed it in &lt;code&gt;C:\Users\myusername\go\src\protoc_bin&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Lastly, we will need the protoc-gen-go plugin for our compiler. Run the following command to obtain it:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;go get -u github.com/golang/protobuf/protoc-gen-go&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now, we are ready to compile. In command line, browse to your protoc binary (in my case &lt;code&gt;C:\Users\myusername\go\src\protoc_bin&lt;/code&gt;) and run the following commands, where &lt;code&gt;..\basic-gRPC-proto\&lt;/code&gt; is the path to my folder containing the proto file and &lt;strong&gt;basketball.proto&lt;/strong&gt; is the name of that proto file:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;protoc basketball.proto --go_out=plugins=grpc:. --proto_path=..\basic-gRPC-proto\&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see that &lt;strong&gt;basketball.pb.go&lt;/strong&gt; has been generated! Yay!&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://giphy.com/embed/axu6dFuca4HKM&#34; width=&#34;480&#34; height=&#34;228&#34; frameBorder=&#34;0&#34; class=&#34;giphy-embed&#34; allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href=&#34;https://giphy.com/gifs/axu6dFuca4HKM&#34;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;implementing-our-newly-generated-go-code-server&#34;&gt;Implementing our newly generated Go code (Server)&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take a deep breath, because the hardest part is already done :)&lt;/p&gt;
+
+&lt;p&gt;To make use of our new .go package I copied the resulting file to &lt;code&gt;...\go\src\basic-gRPC-proto&lt;/code&gt; for convenience. Then back at src folder, create a folder for your server, I called it &lt;strong&gt;basic-gRPC-server&lt;/strong&gt;. Now, lets create our main.go and run this command to get google&amp;rsquo;s gRPC library:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;go get google.golang.org/grpc&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I am using an in-memory cache to store our sample data, just for fun. This library can be installed via the following command:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;go get github.com/patrickmn/go-cache&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The server code consists of two parts:&lt;/p&gt;
+
+&lt;p&gt;1) Attaching required methods to our server (as defined in our proto file)&lt;/p&gt;
+
+&lt;p&gt;2) Starting the server on some IP&lt;/p&gt;
+
+&lt;p&gt;First part looks like this. This method is very similar to the definition we defined in the proto file with a few extras. Take a look at the &lt;strong&gt;generated go file&lt;/strong&gt; and find your GetBasketballPlayer method, this will show you the signature you will need to have, to satisfy the server definition:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;    &lt;span class=&#34;kd&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;struct&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+    
+    &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;cache&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Cache&lt;/span&gt;
+    
+    &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;GetBasketballPlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ctx&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;basketBallPlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PlayerRequest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;basketBallPlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PlayerResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    	&lt;span class=&#34;nx&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;GetId&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+    
+    	&lt;span class=&#34;nx&#34;&gt;playerVal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;found&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;found&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    		&lt;span class=&#34;nx&#34;&gt;player&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;playerVal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;basketBallPlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Player&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;basketBallPlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PlayerResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    			&lt;span class=&#34;nx&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;player&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    		&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;
+    	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    
+    	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Errorf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;could not find player with id: %v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, for the main() course. Our main function simply creates a sample value in our cache and starts the server.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+	&lt;span class=&#34;nx&#34;&gt;fmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Starting gRPC micro-service...&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cache&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Minute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;70&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Minute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;basketBallPlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Player&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;Id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;              &lt;span class=&#34;s&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;FirstName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;       &lt;span class=&#34;s&#34;&gt;&amp;#34;James&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;LastName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;LeBron&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;Age&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;             &lt;span class=&#34;mi&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;PhotoUrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612747/2019/260x190/2544.png&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;PointsPerGame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;   &lt;span class=&#34;mi&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;AssistsPerGame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;mi&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;ReboundsPerGame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cache&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;DefaultExpiration&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+	&lt;span class=&#34;nx&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;net&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Listen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;tcp&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;:50051&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Fatalf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Failed to start listener %v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+	&lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;grpc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;NewServer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+	&lt;span class=&#34;nx&#34;&gt;basketBallPlayer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;RegisterPlayerServiceServer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{})&lt;/span&gt;
+
+	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Serve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+		&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Fatalf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;failed to serve %v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Take note of this line. If you provide the wrong signature for your proto service method above, compiler will complain here:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;basketBallPlayer.RegisterPlayerServiceServer(s, &amp;amp;server{})&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Putting these two together, your gRPC server will look like this:&lt;/p&gt;
+
+&lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=server-main.go&#34;&gt;&lt;/script&gt;
+
+&lt;h3 id=&#34;implementing-our-newly-generated-go-code-client&#34;&gt;Implementing our newly generated Go code (Client)&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take another deep breath, the last part is even easier. We will build a basic Web API that can be called externally and returns JSON, in the background our API will call the above microservice via gRPC. Let&amp;rsquo;s get started.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First, let&amp;rsquo;s setup a basic API with Gin web framework.&lt;/strong&gt;
+Download the &lt;a href=&#34;https://github.com/gin-gonic/gin&#34;&gt;Gin HTTP framework&lt;/a&gt; package:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;go get github.com/gin-gonic/gin&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I created a folder for my API called &lt;strong&gt;basic-gRPC-client&lt;/strong&gt; with a main.go file. Then added the following code:&lt;/p&gt;
+
+&lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=client-main.go&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;I love how easily you can setup a simple web server in Go. The main function is mostly router configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;sAddress&lt;/strong&gt; here refers to the address of your gRPC server/microservice. Depending on your network configuration, you may need to use your internal IPs for this. &lt;strong&gt;50051&lt;/strong&gt; is the port commonly used for gRPC.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;grpc.WithInsecure()&lt;/strong&gt; is used in this example because we are not securing our connection transport via SSL.&lt;/p&gt;
+
+&lt;h3 id=&#34;let-s-go-no-pun-intended&#34;&gt;Let&amp;rsquo;s Go! No pun intended ;)&lt;/h3&gt;
+
+&lt;p&gt;After pulling this code into two VMs on Google Cloud Platform. I ran both services and everything checks out.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../img/golang-microservices-gRPC-communication/200-result.PNG&#34; alt=&#34;gin results&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../img/golang-microservices-gRPC-communication/postman-checks-out.PNG&#34; alt=&#34;postman&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope this helped you setup gRPC connectivity between your microservices :)&lt;/p&gt;
+
+&lt;p&gt;In Part 2 of this post, let&amp;rsquo;s add Postgre SQL connectivity.&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>KrakenD: Writing Plugins using Golang</title>
       <link>https://www.eventslooped.com/posts/krakend-writing-plugins/</link>
       <pubDate>Sat, 19 Oct 2019 18:59:02 +0700</pubDate>
@@ -43,8 +197,9 @@
 &lt;p&gt;make build&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;If you have not installed Go Binaries, get them here: &lt;a href=&#34;https://golang.org/doc/install&#34;&gt;https://golang.org/doc/install&lt;/a&gt;
-If you receive an error &amp;ldquo;make command not found&amp;rdquo; install build essentials using one of the following commands, depending on your distro.&lt;/p&gt;
+&lt;p&gt;If you have not installed Go Binaries, get them here: &lt;a href=&#34;https://golang.org/doc/install&#34;&gt;https://golang.org/doc/install&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you receive an error &amp;ldquo;make command not found&amp;rdquo; install build essentials using one of the following commands, depending on your distro.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;sudo yum install build-essential
