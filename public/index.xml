@@ -12,6 +12,127 @@
     
     
     <item>
+      <title>Sexy Programming Languages to Learn 2020</title>
+      <link>https://www.eventslooped.com/posts/sexy-programming-languages-to-learn-2020/</link>
+      <pubDate>Sun, 22 Dec 2019 13:55:36 +0700</pubDate>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/sexy-programming-languages-to-learn-2020/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;what-do-i-mean-by-sexy-programming-languages&#34;&gt;What do I mean by sexy programming languages?&lt;/h3&gt;
+
+&lt;p&gt;I refer to programming languages as &lt;strong&gt;sexy&lt;/strong&gt; if they are not yet mainstream, but have plenty of buzz around them. They usually have a small but very energetic community, but may be lacking mature libraries here and there due to their only recent stardom. This also provides opportunities for ambitious developers to contribute to open-source. Therefore my list will exclude any mature languages like: Java, Python, C#, PHP and JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why you may want to learn these?&lt;/strong&gt; Being an early adopted can be risky, because the chosen platform may fail to take off. But, if chosen well, it can propell your resume to new heights as well as open up new opportunities for teaching others and contributing to open source. Below I will go through technologies that I consider solid choices for learning going into 2020.&lt;/p&gt;
+
+&lt;h2 id=&#34;no-5-dart&#34;&gt;&lt;strong&gt;No.5 Dart&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Google-backed&lt;/strong&gt; programming language has been around since 2011, but its use has only skyrocketed in 2019 after the launch of &lt;strong&gt;Flutter&lt;/strong&gt; framework version 1.0. Flutter allows developers to develop cross-platform mobile applications with performance that is faster than React Native and approaching the speeds of platform-native apps. Dart has also been well received by the open source community, there are numerous interesting projects in Github that are using Dart, everything including web servers to desktop apps.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/multi-platform-mobile.jpg&#34; alt=&#34;cross-platform mobile development&#34;/&gt;
+&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@7shifts?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from 7shifts&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;7shifts&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;According to my research, the best resources for learning Dart are: &lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/&#34;&gt;Comprehensive Flutter and Dart Course on Udemy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://www.youtube.com/playlist?list=PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q&#34;&gt;Dart basics Youtube series&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3) &lt;a href=&#34;https://www.youtube.com/watch?v=Ej_Pcr4uC2Q&#34;&gt;2 hour Youtube crash course&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;no-4-swift&#34;&gt;&lt;strong&gt;No.4 Swift&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Apple-backed&lt;/strong&gt; programming language which enables developers to build applications for both macOS, iOS and watchOS devices, as well as Linux.
+Swift has made waves when it appeared in 2014, finally replacing the aging Objective-C. This language has been accepted well by the community and ranks very well in StackOverflow&amp;rsquo;s Most Loved Languages rankings. According to Google Trends, Swift has steadily risen in popularity, but its adoption has slowed a bit because development outside the Apple ecosystem has been quite limited. Nevertheless if you plan to do development for the Apple ecosystem, Swift is your #1 choice.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/apple-ecosystem.jpg&#34; alt=&#34;apple developer&#34;/&gt;
+&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@igorson?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Igor Son&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Igor Son&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The best resources I could find for learning Swift: &lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://www.udemy.com/course/the-comprehensive-guide-to-swift/&#34;&gt;Comprehensive Beginners Swift Course on Udemy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://codewithchris.com/learn-swift/&#34;&gt;Learning Swift with Chris (Youtube series)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3) &lt;a href=&#34;https://www.weheartswift.com/swift-programming-scratch-100-exercises/&#34;&gt;Online book for complete beginners&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;no-3-rust&#34;&gt;&lt;strong&gt;No.3 Rust&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Mozilla-backed&lt;/strong&gt; is a multi-paradigm, system programming language, which means that it is a language optimized for performance and better interaction with underlying hardware while sacrificing ease of use and multi-platform compatibility of its features. Mozilla announced Rust in 2010, but the first version was launched in 2015. Being a system-programming language, Rust requires a steeper learning curve. Developers that use Rust often refer to it as the more elegant or modern C++, and they share some commonalities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;They are both on top of the hill when it comes to speed&lt;/li&gt;
+&lt;li&gt;They both do not use a garbage collector&lt;/li&gt;
+&lt;li&gt;Their syntax is similar&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;However, Rust improves on C++ in several ways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Improved memory safety features&lt;/li&gt;
+&lt;li&gt;Excellent package management&lt;/li&gt;
+&lt;li&gt;Strict compiler that checks your code style&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Community around Rust is very enthusiastic and most developers that use it claim to love it. See for yourself, here are results from Stackoverflow&amp;rsquo;s survey of most loved programming languages:
+ &lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/SO-most-loved-languages.png&#34; alt=&#34;most loved programming languages&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Plenty of desktop applications are currently being written in Rust, including their own Mozilla Firefox. However, there is plenty of enthusiastic developers contributing to its web frameworks as well, and there are good reasons for it, take a look at benchmarks maintained by techempower.com:
+ &lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/techempower-benchmarks.PNG&#34; alt=&#34;fastest web frameworks&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Best resources I could find for picking up Rust: &lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://www.udemy.com/course/rust-programming-language-complete-tutorial/&#34;&gt;Comprehensive Rust Course on Udemy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://doc.rust-lang.org/book/title-page.html&#34;&gt;Free online book on Rust&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;no-2-kotlin&#34;&gt;&lt;strong&gt;No.2 Kotlin&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Jetbrains-backed&lt;/strong&gt; programming language is a fantastic choice for Java developers because it runs on the same JVM platform. Kotlin version 1.0 has been released in 2016 and has grown in popularity very quickly. According to my personal experience, Kotlin has been adopted well in the mobile-development community for Android and I can see its growth continue. In comparison to Java, Kotlin developers like a more concise syntax and modern language features like object immutability, extension methods and deconstructor methods. The list goes on. As of 2019 Google announced that Kotlin is its preferred language for Android development. Here is an introduction of Kotlin by Google at their Google I/O conference of 2017:&lt;/p&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/X1RVYt2QKQE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;The best resources I could find for learning Kotlin: &lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://www.udemy.com/course/the-complete-kotlin-developer-course&#34;&gt;Complete Android Kotlin Developer Course on Udemy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://play.kotlinlang.org/koans/overview&#34;&gt;Step by step guide to Kotlin syntax with hands on exercises&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3) &lt;a href=&#34;https://www.youtube.com/playlist?list=PLlxmoA0rQ-LwgK1JsnMsakYNACYGa1cjR&#34;&gt;Extensive Youtube playlist covering Kotlin&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;no-1-golang-go&#34;&gt;&lt;strong&gt;No.1 Golang (Go)&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Google-backed&lt;/strong&gt; programming language takes an ultra-modern approach to programming. Instead of adding new features to what is already popular, Go gets rid of many older concepts of programming languages. Lack of inheritance is one such example, which forces the developer to use composition instead. After removing everything the founders considered legacy, and adding modern approaches to managing concurrency and memory, a new, concise, clean programming language was born. Some may even call it sexy ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/gopher-dance.gif&#34; alt=&#34;Happy Gopher!&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Several big names in the industry make use of Go; Uber, Lift, Grab and Shopify are just some examples. Docker is built in Go as well. In terms of maturity Go is the most popular out of the 5 programming languages, approaching the levels of mainstream.&lt;/p&gt;
+
+&lt;p&gt;Go is generally loved by its developers (as seen the Rust chart above) and developers that know Go are quite well paid:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/SO-highest-paid-languages.PNG&#34; alt=&#34;Highest paid developers&#34;&gt;
+&lt;p&gt;The best resources I can find for learning Golang: &lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://www.udemy.com/course/learn-how-to-code/&#34;&gt;Todd McLeod&amp;rsquo;s Udemy Course (one of my fav courses)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/&#34;&gt;Building Web Application in Golang (An excellent comprehensive totorial)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3) &lt;a href=&#34;https://gobyexample.com/&#34;&gt;Go by Example (Dozens of basic examples for common tasks in Go)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Google Trends comparing these 5 programming languages:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/GT-trends.PNG&#34; alt=&#34;Trend of sexy programming langauges&#34;&gt;&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>Golang Microservices Part 1 - gRPC Communication</title>
       <link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link>
       <pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate>
