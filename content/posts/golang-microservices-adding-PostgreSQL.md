@@ -6,6 +6,8 @@ draft: false
 
 ### Summary - Setting up GORM
 
+[Continuing from the app we created in Part 1](/posts/golang-microservices-grpc-communication)
+
 PostgreSQL is one of the most popular database choices today because it is free and has most of the features that the big guns like Microsoft SQL Server and Oracle offer. To connect our microservice to PostgreSQL, we can simplify our life by using an ORM for GO called [GORM](https://gorm.io/)... GO-ORM get it? 
 
 <iframe src="https://giphy.com/embed/fGRLn3m6XvmHeLNOzn" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/HallmarkChannel-fGRLn3m6XvmHeLNOzn">via GIPHY</a></p>
