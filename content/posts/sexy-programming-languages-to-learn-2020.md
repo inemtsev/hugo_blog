@@ -13,7 +13,7 @@ I refer to programming languages as **sexy** if they are not yet mainstream, but
 
 **Google-backed** programming language has been around since 2011, but its use has only skyrocketed in 2019 after the launch of **Flutter** framework version 1.0. Flutter allows developers to develop cross-platform mobile applications with performance that is faster than React Native and approaching the speeds of platform-native apps. Dart has also been well received by the open source community, there are numerous interesting projects in Github that are using Dart, everything including web servers to desktop apps. 
 
-<img src="../img/sexy-programming-languages-to-learn-2020/multi-platform-mobile.jpg" alt="cross-platform mobile development"/>
+<img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/sexy-programming-languages-to-learn-2020/multi-platform-mobile.jpg" alt="cross-platform mobile development"/>
 <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@7shifts?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from 7shifts"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">7shifts</span></a>
 
 <p>According to my research, the best resources for learning Dart are: </p>
@@ -29,7 +29,7 @@ I refer to programming languages as **sexy** if they are not yet mainstream, but
 **Apple-backed** programming language which enables developers to build applications for both macOS, iOS and watchOS devices, as well as Linux.
 Swift has made waves when it appeared in 2014, finally replacing the aging Objective-C. This language has been accepted well by the community and ranks very well in StackOverflow's Most Loved Languages rankings. According to Google Trends, Swift has steadily risen in popularity, but its adoption has slowed a bit because development outside the Apple ecosystem has been quite limited. Nevertheless if you plan to do development for the Apple ecosystem, Swift is your #1 choice.
 
-<img src="../img/sexy-programming-languages-to-learn-2020/apple-ecosystem.jpg" alt="apple developer"/>
+<img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/sexy-programming-languages-to-learn-2020/apple-ecosystem.jpg" alt="apple developer"/>
 <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@igorson?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Igor Son"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Igor Son</span></a>
 
 <p>The best resources I could find for learning Swift: </p>
@@ -104,5 +104,5 @@ Google Trends comparing these 5 programming languages:
 
 <img src="../img/sexy-programming-languages-to-learn-2020/GT-trends.PNG" alt="Trend of sexy programming langauges">
 
-
+I hope this helps you decide how to spice up your resume or your side projects :)
 

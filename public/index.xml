@@ -31,7 +31,7 @@
 
 &lt;p&gt;&lt;strong&gt;Google-backed&lt;/strong&gt; programming language has been around since 2011, but its use has only skyrocketed in 2019 after the launch of &lt;strong&gt;Flutter&lt;/strong&gt; framework version 1.0. Flutter allows developers to develop cross-platform mobile applications with performance that is faster than React Native and approaching the speeds of platform-native apps. Dart has also been well received by the open source community, there are numerous interesting projects in Github that are using Dart, everything including web servers to desktop apps.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/multi-platform-mobile.jpg&#34; alt=&#34;cross-platform mobile development&#34;/&gt;
+&lt;p&gt;&lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/sexy-programming-languages-to-learn-2020/multi-platform-mobile.jpg&#34; alt=&#34;cross-platform mobile development&#34;/&gt;
 &lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@7shifts?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from 7shifts&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;7shifts&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;According to my research, the best resources for learning Dart are: &lt;/p&gt;
@@ -47,7 +47,7 @@
 &lt;p&gt;&lt;strong&gt;Apple-backed&lt;/strong&gt; programming language which enables developers to build applications for both macOS, iOS and watchOS devices, as well as Linux.
 Swift has made waves when it appeared in 2014, finally replacing the aging Objective-C. This language has been accepted well by the community and ranks very well in StackOverflow&amp;rsquo;s Most Loved Languages rankings. According to Google Trends, Swift has steadily risen in popularity, but its adoption has slowed a bit because development outside the Apple ecosystem has been quite limited. Nevertheless if you plan to do development for the Apple ecosystem, Swift is your #1 choice.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/apple-ecosystem.jpg&#34; alt=&#34;apple developer&#34;/&gt;
+&lt;p&gt;&lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/sexy-programming-languages-to-learn-2020/apple-ecosystem.jpg&#34; alt=&#34;apple developer&#34;/&gt;
 &lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@igorson?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Igor Son&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Igor Son&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The best resources I could find for learning Swift: &lt;/p&gt;
@@ -128,6 +128,8 @@ Swift has made waves when it appeared in 2014, finally replacing the aging Objec
 &lt;p&gt;Google Trends comparing these 5 programming languages:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;../img/sexy-programming-languages-to-learn-2020/GT-trends.PNG&#34; alt=&#34;Trend of sexy programming langauges&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope this helps you decide how to spice up your resume or your side projects :)&lt;/p&gt;
 </content>
       
     </item>

@@ -132,4 +132,4 @@ After pulling this code into two VMs on Google Cloud Platform. I ran both servic
 
 Hope this helped you setup gRPC connectivity between your microservices :)
 
-In Part 2 of this post, let's add Postgre SQL connectivity. 
+In Part 2 of this series, let's add Postgre SQL connectivity. 
