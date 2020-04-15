@@ -11,6 +11,7 @@
   <url>
     <loc>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</loc>
     <lastmod>2019-12-29T23:57:36+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -22,26 +23,31 @@
   <url>
     <loc>https://www.eventslooped.com/posts/sexy-programming-languages-to-learn-2020/</loc>
     <lastmod>2019-12-22T13:55:36+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</loc>
     <lastmod>2019-11-29T14:55:29+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.eventslooped.com/posts/krakend-writing-plugins/</loc>
     <lastmod>2019-10-19T18:59:02+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.eventslooped.com/posts/july-2019-photos/</loc>
     <lastmod>2019-08-12T23:27:19+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</loc>
     <lastmod>2019-08-04T17:33:01+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -52,11 +58,13 @@
   <url>
     <loc>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</loc>
     <lastmod>2019-05-12T14:41:36+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.eventslooped.com/about-me/</loc>
     <lastmod>2019-05-05T17:43:12+07:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -67,6 +75,7 @@
   <url>
     <loc>https://www.eventslooped.com/posts/hugo-blog-on-azure/</loc>
     <lastmod>2018-12-09T15:51:09-05:00</lastmod>
+    <priority>0.5</priority>
   </url>
   
   <url>

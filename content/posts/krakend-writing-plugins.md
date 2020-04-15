@@ -3,6 +3,8 @@ title: "KrakenD: Writing Plugins using Golang"
 date: 2019-10-19T18:59:02+07:00
 draft: false
 imgpad: 14
+sitemap: 
+    priority: 0.5
 ---
 
 ### Summary

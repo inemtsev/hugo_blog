@@ -2,6 +2,8 @@
 title: "Golang Microservices Part 1 - gRPC Communication"
 date: 2019-11-29T14:55:29+07:00
 draft: false
+sitemap: 
+    priority: 0.5
 ---
 
 ### Summary - Setting up gRPC communication

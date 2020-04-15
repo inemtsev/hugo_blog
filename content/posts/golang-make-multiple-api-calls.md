@@ -3,6 +3,7 @@ title: "Make Multiple Api Calls At The Same Time With GoRoutines"
 date: 2019-06-03T21:16:17+07:00
 draft: false
 imgPad: 14
+priority: 0.5
 ---
 
 Golang is efficient, very efficient. Much of this efficiency is attributed to its unique abstractions when dealing with concurrency. Java for example, maps its threads to OS threads, while Go uses its own goroutines scheduler to further abstract its lightweight goroutines from OS threads. In short, Golang is very frugal with how it uses OS threads; if a goroutine becomes blocked, Go's scheduler will switch in another goroutine in its place to keep the thread busy as much as possible. Since each CPU core handles a limited number of threads (and spawning new threads is expensive), keeping these threads fed with work is a great thing indeed. 

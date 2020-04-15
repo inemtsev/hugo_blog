@@ -2,6 +2,8 @@
 title: "Use Golang to Upload Files to Azure Blob Storage"
 date: 2019-08-04T17:33:01+07:00
 draft: false
+sitemap: 
+    priority: 0.5
 ---
 
 If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.

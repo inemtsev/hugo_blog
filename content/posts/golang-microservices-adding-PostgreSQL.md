@@ -2,6 +2,8 @@
 title: "Golang Microservices Part 2 - PostgreSQL with gorm"
 date: 2019-12-29T23:57:36+07:00
 draft: false
+sitemap: 
+    priority: 0.5
 ---
 
 ### Summary - Setting up GORM

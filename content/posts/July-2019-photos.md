@@ -4,8 +4,10 @@ date: 2019-08-12T23:27:19+07:00
 draft: false
 cloudImageUrlMedium: "https://aqzodowgen.cloudimg.io/fit/800x600/n/"
 cloudImageUrlLarge: "https://aqzodowgen.cloudimg.io/bound/1920x1080/n/"
-imageDevice: "Pixel 2 XL"
 summary: '<img src="{{< param cloudImageUrlMedium >}}https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg"/>'
+imageDevice: "Pixel 2 XL"
+sitemap: 
+    priority: 0.5
 ---
 
 <div class="my-slider">
