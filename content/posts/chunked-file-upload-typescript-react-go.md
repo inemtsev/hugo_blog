@@ -71,6 +71,8 @@ Now, that we have a class to represent the file to be uploaded. We can instantia
 
 {{< gist inemtsev a45daa46fbdcdd6f80a65eed693a0689 "uploadMediaComponent.tsx" >}}
 
+<p> </p>
+
 ### Our client-side code is now sending chunks, let's prepare the backend using Go and Gin
 
 <img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/sven-brandsma-chainsaw.jpg" alt="vroom vroom"/>
@@ -80,8 +82,8 @@ Starting with the typical Gin setup, we add one endpount **/photo**
 
 {{< gist inemtsev a45daa46fbdcdd6f80a65eed693a0689 "main0.go" >}}
 
-Then we handle the request:
 
+Then we handle the request:
 {{< highlight go >}}
 func uploadFile(c *gin.Context) {
 	var f *os.File
@@ -142,13 +144,12 @@ func isFileUploadCompleted(c *gin.Context) bool {
 The upload to the cloud here is GCP specific, but I will summarize it here if anybody needs it:
 
 1. Create a bucket under **Storage** in [Google Cloud Console](https://console.cloud.google.com). I used Uniform Access Control, but if you need finer access control you can choose the other option. 
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/>
+<p><img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/></p>
 
 2. Create a **service account** to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions [here](https://cloud.google.com/docs/authentication/production#linux-or-macos). 
 I provide my own simple instructions for Windows [here](https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png).
 
 3. Use code like this to upload your file.
-
 {{< highlight go >}}
 func uploadToGoogle(c *gin.Context, f *os.File) {
 	creds, isFound := os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALS")

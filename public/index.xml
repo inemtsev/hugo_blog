@@ -85,6 +85,8 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 
 &lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent.tsx&#34;&gt;&lt;/script&gt;
 
+&lt;p&gt; &lt;/p&gt;
+
 &lt;h3 id=&#34;our-client-side-code-is-now-sending-chunks-let-s-prepare-the-backend-using-go-and-gin&#34;&gt;Our client-side code is now sending chunks, let&amp;rsquo;s prepare the backend using Go and Gin&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/sven-brandsma-chainsaw.jpg&#34; alt=&#34;vroom vroom&#34;/&gt;
@@ -94,8 +96,7 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 
 &lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=main0.go&#34;&gt;&lt;/script&gt;
 
-&lt;p&gt;Then we handle the request:&lt;/p&gt;
-
+&lt;p&gt;Then we handle the request:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;uploadFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;gin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 	&lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;File&lt;/span&gt;
 	&lt;span class=&#34;nx&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;header&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;FormFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;file&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -121,7 +122,7 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 			&lt;span class=&#34;nb&#34;&gt;panic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Sprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Could not delete file %v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;header&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 		&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;The logic here is fairly straightforward:&lt;/p&gt;
 
@@ -155,14 +156,12 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Create a bucket under &lt;strong&gt;Storage&lt;/strong&gt; in &lt;a href=&#34;https://console.cloud.google.com&#34;&gt;Google Cloud Console&lt;/a&gt;. I used Uniform Access Control, but if you need finer access control you can choose the other option.
-&lt;img src=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png&#34; alt=&#34;GCP Storage&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png&#34; alt=&#34;GCP Storage&#34;/&gt;&lt;/p&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Create a &lt;strong&gt;service account&lt;/strong&gt; to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions &lt;a href=&#34;https://cloud.google.com/docs/authentication/production#linux-or-macos&#34;&gt;here&lt;/a&gt;.
 I provide my own simple instructions for Windows &lt;a href=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Use code like this to upload your file.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
+&lt;li&gt;&lt;p&gt;Use code like this to upload your file.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;uploadToGoogle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;gin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 	&lt;span class=&#34;nx&#34;&gt;creds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;isFound&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;LookupEnv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GOOGLE_APPLICATION_CREDENTIALS&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;isFound&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -193,7 +192,8 @@ I provide my own simple instructions for Windows &lt;a href=&#34;https://www.eve
 		&lt;span class=&#34;nx&#34;&gt;fmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%v bytes written to Cloud&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;bw&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 		&lt;span class=&#34;nx&#34;&gt;fmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;A few things to mention here. &lt;strong&gt;bucketName&lt;/strong&gt; is the name of the bucket you created in step 1. If you forget to close your writer, the upload will still run successfully, but the file will not show up in Google Storage.
 &lt;strong&gt;f.Seek(0, io.SeekStart)&lt;/strong&gt; is needed to rewind the reader to the beginning, because we just finished writing to the end of the file.&lt;/p&gt;

@@ -150,6 +150,8 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 
 <script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent.tsx"></script>
 
+<p> </p>
+
 <h3 id="our-client-side-code-is-now-sending-chunks-let-s-prepare-the-backend-using-go-and-gin">Our client-side code is now sending chunks, let&rsquo;s prepare the backend using Go and Gin</h3>
 
 <p><img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/sven-brandsma-chainsaw.jpg" alt="vroom vroom"/>
@@ -159,8 +161,7 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 
 <script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=main0.go"></script>
 
-<p>Then we handle the request:</p>
-
+<p>Then we handle the request:
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">uploadFile</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
 	<span class="kd">var</span> <span class="nx">f</span> <span class="o">*</span><span class="nx">os</span><span class="p">.</span><span class="nx">File</span>
 	<span class="nx">file</span><span class="p">,</span> <span class="nx">header</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nf">FormFile</span><span class="p">(</span><span class="s">&#34;file&#34;</span><span class="p">)</span>
@@ -186,7 +187,7 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 			<span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;Could not delete file %v&#34;</span><span class="p">,</span> <span class="nx">header</span><span class="p">.</span><span class="nx">Filename</span><span class="p">))</span>
 		<span class="p">}</span>
 	<span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></div></p>
 
 <p>The logic here is fairly straightforward:</p>
 
@@ -220,14 +221,12 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 
 <ol>
 <li><p>Create a bucket under <strong>Storage</strong> in <a href="https://console.cloud.google.com">Google Cloud Console</a>. I used Uniform Access Control, but if you need finer access control you can choose the other option.
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/></p></li>
+<p><img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/></p></p></li>
 
 <li><p>Create a <strong>service account</strong> to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions <a href="https://cloud.google.com/docs/authentication/production#linux-or-macos">here</a>.
 I provide my own simple instructions for Windows <a href="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png">here</a>.</p></li>
 
-<li><p>Use code like this to upload your file.</p></li>
-</ol>
-
+<li><p>Use code like this to upload your file.
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">uploadToGoogle</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">f</span> <span class="o">*</span><span class="nx">os</span><span class="p">.</span><span class="nx">File</span><span class="p">)</span> <span class="p">{</span>
 	<span class="nx">creds</span><span class="p">,</span> <span class="nx">isFound</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">LookupEnv</span><span class="p">(</span><span class="s">&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;</span><span class="p">)</span>
 	<span class="k">if</span> <span class="p">!</span><span class="nx">isFound</span> <span class="p">{</span>
@@ -258,7 +257,8 @@ I provide my own simple instructions for Windows <a href="https://www.eventsloop
 		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v bytes written to Cloud&#34;</span><span class="p">,</span> <span class="nx">bw</span><span class="p">)</span>
 		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span>
 	<span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></div></p></li>
+</ol>
 
 <p>A few things to mention here. <strong>bucketName</strong> is the name of the bucket you created in step 1. If you forget to close your writer, the upload will still run successfully, but the file will not show up in Google Storage.
 <strong>f.Seek(0, io.SeekStart)</strong> is needed to rewind the reader to the beginning, because we just finished writing to the end of the file.</p>
