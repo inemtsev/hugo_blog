@@ -188,16 +188,16 @@ A few things to mention here. **bucketName** is the name of the bucket you creat
 
 ### Let's test!
 
-Submit the form with a few files.
+<p>Submit the form with a few files.</p>
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test1.png" alt="client-side test"/>
 
-Golang console output.
+<p>Golang console output.</p>
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png" alt="server-side test"/>
 
-Google Cloud Platform result.
+<p>Google Cloud Platform result.</p>
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test3.png" alt="GCP storage result"/>
 
-Great everything worked :)
+<p>Great everything worked :)</p>
 <img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/viktor-talashuk-cabin.jpg" alt="Look what we made!"/>
 <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@viktortalashuk?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Viktor Talashuk"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Viktor Talashuk</span></a>
 
