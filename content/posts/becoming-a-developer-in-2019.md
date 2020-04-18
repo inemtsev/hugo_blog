@@ -4,7 +4,7 @@ date: 2019-05-12T14:41:36+07:00
 draft: false
 imgpad: 14
 sitemap: 
-    priority: 0.5
+priority: 0.5
 ---
 
 There has never been a better time to become a web developer than now. The United States [Bureau of Labour Statistics](https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm#tab-1) predicts an increase of job postings by 15% between 2016-2026, in comparison to 7% average across all occupations. According to [ZipRecruiter](https://www.ziprecruiter.com/Salaries/Web-Developer-Salary) the current average salary of a Web Developer in United states is $74,080 with top 1% earning $123,000 to $133,000. Among the general specializations of web developers (front-end, back-end and full-stack); full-stack developers on avereage are paid the highest, which is logical since they have to stay up-to date on both back-end and fron-end technologies. 

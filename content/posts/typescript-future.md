@@ -3,7 +3,8 @@ title: "Typescript and its future"
 date: 2019-04-27T17:21:11+07:00
 draft: false
 imgpad: 14
-priority: 0.5
+sitemap:
+    priority: 0.5
 ---
 
 Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2...) with TypeScript support out of the box. By default. 
