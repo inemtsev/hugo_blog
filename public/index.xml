@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Chunked File Upload using Typescript, React, and Go</title>
+      <title>Chunked File Upload using TypeScript, React, and Go</title>
       <link>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</link>
       <pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate>
       <author>Ilya Nemtsev</author>
@@ -23,7 +23,7 @@
 
 &lt;h3 id=&#34;summary-why-you-may-want-to-chunk-files&#34;&gt;Summary - Why you may want to chunk files?&lt;/h3&gt;
 
-&lt;p&gt;The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the download as it progresses and if I cant finish the download now, I want to be able to pause, go to my favourite coffee shop and continue on there.&lt;/p&gt;
+&lt;p&gt;The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.&lt;/p&gt;
 
 &lt;h3 id=&#34;let-s-build-a-simple-app-using-no-additional-javascript-libraries&#34;&gt;Let&amp;rsquo;s build a simple app using no additional javascript libraries!&lt;/h3&gt;
 
@@ -54,7 +54,7 @@ What&amp;rsquo;s inside? &lt;strong&gt;chunkSize&lt;/strong&gt; is the size of e
             &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;remainingBytes&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;currentChunkFinalByte&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
             
             &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;currentChunkFinalByte&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-                &lt;span class=&#34;nx&#34;&gt;alert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Yay, download completed! Chao!&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+                &lt;span class=&#34;nx&#34;&gt;alert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Yay, upload completed! Chao!&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
                 &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
             &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;remainingBytes&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;FileToUpload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;chunkSize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
                 &lt;span class=&#34;c1&#34;&gt;// if the remaining chunk is smaller than the chunk size we defined
@@ -81,7 +81,7 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 
 &lt;h3 id=&#34;let-s-use-what-we-created-inside-our-component&#34;&gt;Let&amp;rsquo;s use what we created inside our component&lt;/h3&gt;
 
-&lt;p&gt;Now, that we have a class to represent the file to be uploaded. We can instantiate this class as many times as needed inside the component. The resulting component looks like this.&lt;/p&gt;
+&lt;p&gt;Now, we have a class to represent the file to be uploaded. We can instantiate this class as many times as needed inside the component. The resulting component looks like this.&lt;/p&gt;
 
 &lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent.tsx&#34;&gt;&lt;/script&gt;
 
@@ -92,7 +92,7 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 &lt;p&gt;&lt;img src=&#34;https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/sven-brandsma-chainsaw.jpg&#34; alt=&#34;vroom vroom&#34;/&gt;
 &lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@seffen99?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Sven Brandsma&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Sven Brandsma&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Starting with the typical Gin setup, we add one endpount &lt;strong&gt;/photo&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Starting with the typical Gin setup, we add one endpoint &lt;strong&gt;/photo&lt;/strong&gt;&lt;/p&gt;
 
 &lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=main0.go&#34;&gt;&lt;/script&gt;
 
@@ -127,13 +127,13 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 &lt;p&gt;The logic here is fairly straightforward:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Open the file or create it if not there. &lt;strong&gt;os.O_APPEND&lt;/strong&gt; tells the OS that writes append to the file, so there is no need to offset to the end of the file. &lt;strong&gt;os.O_RDWR&lt;/strong&gt; opens the file for both reads and writes. &lt;strong&gt;os.ModeAppend&lt;/strong&gt; only allows writing via appending to the file.&lt;/li&gt;
+&lt;li&gt;Open the file or create if not there. &lt;strong&gt;os.O_APPEND&lt;/strong&gt; tells the OS that writes append to the file, so there is no need to offset to the end of the file. &lt;strong&gt;os.O_RDWR&lt;/strong&gt; opens the file for both reads and writes. &lt;strong&gt;os.ModeAppend&lt;/strong&gt; only allows writing via appending to the file.&lt;/li&gt;
 &lt;li&gt;Then, we write/append the chunk to the file.&lt;/li&gt;
 &lt;li&gt;We check if the file upload is completed. We do this by checking the range of bytes in the headers.&lt;/li&gt;
 &lt;li&gt;Finally, we upload the file to Google Cloud.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;To check that the file is finished downloading, we parse the &lt;strong&gt;Content-Range&lt;/strong&gt; header we sent from the browser.
+&lt;p&gt;To check that the file is finished uploading, we parse the &lt;strong&gt;Content-Range&lt;/strong&gt; header we sent from the browser.
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;isFileUploadCompleted&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;gin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 	&lt;span class=&#34;nx&#34;&gt;contentRangeHeader&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Request&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Header&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Content-Range&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 	&lt;span class=&#34;nx&#34;&gt;rangeAndSize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;strings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Split&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;contentRangeHeader&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -203,7 +203,7 @@ I provide my own simple instructions for Windows &lt;a href=&#34;https://www.eve
 &lt;p&gt;&lt;p&gt;Submit the form with a few files.&lt;/p&gt;
 &lt;img src=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test1.png&#34; alt=&#34;client-side test&#34;/&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;p&gt;Golang console output.&lt;/p&gt;
+&lt;p&gt;&lt;p&gt;Golang console output:&lt;/p&gt;
 &lt;img src=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png&#34; alt=&#34;server-side test&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;p&gt;Google Cloud Platform result.&lt;/p&gt;

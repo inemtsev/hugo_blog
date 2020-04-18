@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Chunked File Upload using Typescript, React, and Go | Events Looped</title>
+<title>Chunked File Upload using TypeScript, React, and Go | Events Looped</title>
 
 
 
@@ -81,14 +81,14 @@
       
     </div>
     <h2 class="subtitle is-6">April 15, 2020</h2>
-    <h1 class="title">Chunked File Upload using Typescript, React, and Go</h1>
+    <h1 class="title">Chunked File Upload using TypeScript, React, and Go</h1>
     
     <div class="content">
       
 
 <h3 id="summary-why-you-may-want-to-chunk-files">Summary - Why you may want to chunk files?</h3>
 
-<p>The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&hellip; This means, I want to know the status of the download as it progresses and if I cant finish the download now, I want to be able to pause, go to my favourite coffee shop and continue on there.</p>
+<p>The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&hellip; This means, I want to know the status of the upload as it progresses and if I can&rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.</p>
 
 <h3 id="let-s-build-a-simple-app-using-no-additional-javascript-libraries">Let&rsquo;s build a simple app using no additional javascript libraries!</h3>
 
@@ -119,7 +119,7 @@ What&rsquo;s inside? <strong>chunkSize</strong> is the size of each chunk you wi
             <span class="kr">const</span> <span class="nx">remainingBytes</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentChunkFinalByte</span><span class="p">;</span>
             
             <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentChunkFinalByte</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Yay, download completed! Chao!&#39;</span><span class="p">);</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Yay, upload completed! Chao!&#39;</span><span class="p">);</span>
                 <span class="k">return</span><span class="p">;</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">remainingBytes</span> <span class="o">&lt;</span> <span class="nx">FileToUpload</span><span class="p">.</span><span class="nx">chunkSize</span><span class="p">)</span> <span class="p">{</span>
                 <span class="c1">// if the remaining chunk is smaller than the chunk size we defined
@@ -146,7 +146,7 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 
 <h3 id="let-s-use-what-we-created-inside-our-component">Let&rsquo;s use what we created inside our component</h3>
 
-<p>Now, that we have a class to represent the file to be uploaded. We can instantiate this class as many times as needed inside the component. The resulting component looks like this.</p>
+<p>Now, we have a class to represent the file to be uploaded. We can instantiate this class as many times as needed inside the component. The resulting component looks like this.</p>
 
 <script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent.tsx"></script>
 
@@ -157,7 +157,7 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 <p><img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/sven-brandsma-chainsaw.jpg" alt="vroom vroom"/>
 <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@seffen99?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Sven Brandsma"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Sven Brandsma</span></a></p>
 
-<p>Starting with the typical Gin setup, we add one endpount <strong>/photo</strong></p>
+<p>Starting with the typical Gin setup, we add one endpoint <strong>/photo</strong></p>
 
 <script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=main0.go"></script>
 
@@ -192,13 +192,13 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 <p>The logic here is fairly straightforward:</p>
 
 <ol>
-<li>Open the file or create it if not there. <strong>os.O_APPEND</strong> tells the OS that writes append to the file, so there is no need to offset to the end of the file. <strong>os.O_RDWR</strong> opens the file for both reads and writes. <strong>os.ModeAppend</strong> only allows writing via appending to the file.</li>
+<li>Open the file or create if not there. <strong>os.O_APPEND</strong> tells the OS that writes append to the file, so there is no need to offset to the end of the file. <strong>os.O_RDWR</strong> opens the file for both reads and writes. <strong>os.ModeAppend</strong> only allows writing via appending to the file.</li>
 <li>Then, we write/append the chunk to the file.</li>
 <li>We check if the file upload is completed. We do this by checking the range of bytes in the headers.</li>
 <li>Finally, we upload the file to Google Cloud.</li>
 </ol>
 
-<p>To check that the file is finished downloading, we parse the <strong>Content-Range</strong> header we sent from the browser.
+<p>To check that the file is finished uploading, we parse the <strong>Content-Range</strong> header we sent from the browser.
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">isFileUploadCompleted</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
 	<span class="nx">contentRangeHeader</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;Content-Range&#34;</span><span class="p">)</span>
 	<span class="nx">rangeAndSize</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">contentRangeHeader</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
@@ -268,7 +268,7 @@ I provide my own simple instructions for Windows <a href="https://www.eventsloop
 <p><p>Submit the form with a few files.</p>
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test1.png" alt="client-side test"/></p>
 
-<p><p>Golang console output.</p>
+<p><p>Golang console output:</p>
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png" alt="server-side test"/></p>
 
 <p><p>Google Cloud Platform result.</p>
