@@ -145,7 +145,7 @@ The upload to the cloud here is GCP specific, but I will summarize it here if an
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/>
 
 2. Create a **service account** to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions [here](https://cloud.google.com/docs/authentication/production#linux-or-macos). 
-I provide my own simple instructions for Windows [here](https://www.eventslooped.com/posts/img/gcp-set-service-account-path.png).
+I provide my own simple instructions for Windows [here](https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png).
 
 3. Use code like this to upload your file.
 

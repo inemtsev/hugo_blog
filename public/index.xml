@@ -158,7 +158,7 @@ A few things to highlight here. &lt;strong&gt;Content-Range&lt;/strong&gt; needs
 &lt;img src=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png&#34; alt=&#34;GCP Storage&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Create a &lt;strong&gt;service account&lt;/strong&gt; to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions &lt;a href=&#34;https://cloud.google.com/docs/authentication/production#linux-or-macos&#34;&gt;here&lt;/a&gt;.
-I provide my own simple instructions for Windows &lt;a href=&#34;https://www.eventslooped.com/posts/img/gcp-set-service-account-path.png&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+I provide my own simple instructions for Windows &lt;a href=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Use code like this to upload your file.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -1255,18 +1255,6 @@ We are able to send the resulting value(s) to our channel using the &lt;strong&g
 
 &lt;p&gt;Lastly, make sure you can explain any technical terms you have mentioned on your resume. You won&amp;rsquo;t believe how many people I have interviewed that mentioned MVC for example, and when esked to explain what it is, couldn&amp;rsquo;t, at all. For a junior developer position, the interviewer is not looking for anything in depth, but if you cannot explain something you have mentioned four times in your resume, you are likely to have a very short interview.&lt;/p&gt;
 </content>
-      
-    </item>
-    
-    <item>
-      <title>Photos</title>
-      <link>https://www.eventslooped.com/photos/</link>
-      <pubDate>Sun, 05 May 2019 17:43:26 +0700</pubDate>
-      <author>Ilya Nemtsev</author>
-      <guid>https://www.eventslooped.com/photos/</guid>
-      <description></description>
-      
-      <content></content>
       
     </item>
     
