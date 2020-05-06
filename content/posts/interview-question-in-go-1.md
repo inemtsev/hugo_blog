@@ -1,7 +1,7 @@
 ---
 title: "Interview Question in Go #1"
 date: 2020-05-06T13:10:43+07:00
-draft: true
+draft: false
 ---
 ### Find all the prime numbers less than or equal to 'n'
 As a means of keeping my logic sharp and helping others prepare for **Go** interviews I decided to release a solved interview question every week or so. 

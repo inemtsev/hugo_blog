@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.55.3" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Eventslooped</title>
+<title>Interview Question in Go #1 | Events Looped</title>
 
 
 
@@ -78,84 +77,59 @@
 </section>
 <section class="section">
   <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">May 6, 2020</h2>
+    <h1 class="title">Interview Question in Go #1</h1>
     
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6">May 5, 2019</h2>
-      <h1 class="title"><a href="https://www.eventslooped.com/about-me/">About Me</a></h1>
-      <div class="content">
-        My name is Ilya, and I am a Full Stack Software Engineer working in Bangkok, Thailand. I grew up in Canada, and I completed my Undergraduate studies in Applied Mathematics. I am a completely self-taught programmer and I am still hungry for more. Hopefully you find something interesting in my blog posts.
- 
-        
-      </div>
-    </article>
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6">April 27, 2019</h2>
-      <h1 class="title"><a href="https://www.eventslooped.com/posts/typescript-future/">Typescript and its future</a></h1>
-      <div class="content">
-        Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&hellip;) with TypeScript support out of the box. By default.
-You can imagine this gave TypeScript a strong boost in popularity.
-        
-        <a class="button is-link" href="https://www.eventslooped.com/posts/typescript-future/" style="height:28px">
-          Read more
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6">December 9, 2018</h2>
-      <h1 class="title"><a href="https://www.eventslooped.com/posts/hugo-blog-on-azure/">Hugo Blog on Azure</a></h1>
-      <div class="content">
-        Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
-Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found Hugo. They have great documentation, modern CLI and great tooling, regardless of your OS preference.
-        
-        <a class="button is-link" href="https://www.eventslooped.com/posts/hugo-blog-on-azure/" style="height:28px">
-          Read more
-        </a>
-        
-      </div>
-    </article>
+    <div class="content">
+      
+
+<h3 id="find-all-the-prime-numbers-less-than-or-equal-to-n">Find all the prime numbers less than or equal to &lsquo;n&rsquo;</h3>
+
+<p>As a means of keeping my logic sharp and helping others prepare for <strong>Go</strong> interviews I decided to release a solved interview question every week or so.</p>
+
+<p>In this post, let&rsquo;s write a function in Go that generates us all the primes at or below a specific integer.</p>
+
+<p>To even attempt this question, we need to know the exact definition of a <strong>prime number</strong>. According to <a href="https://mathworld.wolfram.com/PrimeNumber.html">Wolfram</a>, <em>A prime number is a positive integer p&gt;1 that has no positive integer divisors other than 1 and p itself</em>. In short, a number that can only be divided by itself and 1 and is greater than 1.</p>
+
+<ol>
+<li><p><strong>Basic and dirty approach:</strong> We can make a loop that iterates <strong>i</strong> from <strong>2</strong> to <strong>n</strong> inclusively and inside this loop we iterate <strong>j</strong> from <strong>n</strong> down to <strong>2</strong> checking whether <strong>i</strong> can be devided by anything less than itself. This approach is easy to come up with, I just followed the basic definition of a prime. Unfortunately, while fast to code, this approach is quite slow to run. We are looking at complexity of O(n^2) here.</p></li>
+
+<li><p><strong>Very efficient approach:</strong> Staring at the above solution for a few minutes, we can see where the inefficiency lies. We seem to be checking divisibility of many unnecessary numbers. We can use the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">Fundamental Theorem of Arithmetic</a> to significantly increase the efficiency of our solution, which states: <em>every integer greater than 1 either is a prime number itself or can be represented as the product of prime numbers and that, moreover, this representation is unique</em>. Wait a second, if every non prime number has to be divisible by primes, we can apply this to our solution.</p></li>
+</ol>
+
+<p>We will still have an outer loop that iterates <strong>i</strong> from <strong>2</strong> to <strong>n</strong>. But, the <em>inner loop</em> does not need to divide by all numbers less than itself, we can simply divide by all the primes we have found so far and that would be enough. Let&rsquo;s code that in Go :)</p>
+
+<script type="application/javascript" src="//gist.github.com/inemtsev/0de328c22c71c72ef4fda3b4e2e47d9e.js?file=main.go"></script>
+
+<p><iframe src="https://giphy.com/embed/3o7qE8cQUUCsrRQ1ry" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/rockthisboat-rockthisboat-premiere-season2-3o7qE8cQUUCsrRQ1ry">via GIPHY</a></p></p>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
     
   </div>
 </section>
+
 <section class="section">
   <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          
-          <a class="button" href="/">
-            <span class="icon is-small is-marginless">
-              <svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-    
-    <polyline points="15 18 9 12 15 6"/>
-    
-  </svg>
-            </span>
-            Newer
-          </a>
-          
-        </div>
-      </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-        </div>
-      </div>
-    </nav>
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'ilikedos';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
 </section>
+
 
 <section class="section">
   <div class="container has-text-centered">

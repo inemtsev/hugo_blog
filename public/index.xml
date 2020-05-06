@@ -12,6 +12,39 @@
     
     
     <item>
+      <title>Interview Question in Go #1</title>
+      <link>https://www.eventslooped.com/posts/interview-question-in-go-1/</link>
+      <pubDate>Wed, 06 May 2020 13:10:43 +0700</pubDate>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/interview-question-in-go-1/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;find-all-the-prime-numbers-less-than-or-equal-to-n&#34;&gt;Find all the prime numbers less than or equal to &amp;lsquo;n&amp;rsquo;&lt;/h3&gt;
+
+&lt;p&gt;As a means of keeping my logic sharp and helping others prepare for &lt;strong&gt;Go&lt;/strong&gt; interviews I decided to release a solved interview question every week or so.&lt;/p&gt;
+
+&lt;p&gt;In this post, let&amp;rsquo;s write a function in Go that generates us all the primes at or below a specific integer.&lt;/p&gt;
+
+&lt;p&gt;To even attempt this question, we need to know the exact definition of a &lt;strong&gt;prime number&lt;/strong&gt;. According to &lt;a href=&#34;https://mathworld.wolfram.com/PrimeNumber.html&#34;&gt;Wolfram&lt;/a&gt;, &lt;em&gt;A prime number is a positive integer p&amp;gt;1 that has no positive integer divisors other than 1 and p itself&lt;/em&gt;. In short, a number that can only be divided by itself and 1 and is greater than 1.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Basic and dirty approach:&lt;/strong&gt; We can make a loop that iterates &lt;strong&gt;i&lt;/strong&gt; from &lt;strong&gt;2&lt;/strong&gt; to &lt;strong&gt;n&lt;/strong&gt; inclusively and inside this loop we iterate &lt;strong&gt;j&lt;/strong&gt; from &lt;strong&gt;n&lt;/strong&gt; down to &lt;strong&gt;2&lt;/strong&gt; checking whether &lt;strong&gt;i&lt;/strong&gt; can be devided by anything less than itself. This approach is easy to come up with, I just followed the basic definition of a prime. Unfortunately, while fast to code, this approach is quite slow to run. We are looking at complexity of O(n^2) here.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Very efficient approach:&lt;/strong&gt; Staring at the above solution for a few minutes, we can see where the inefficiency lies. We seem to be checking divisibility of many unnecessary numbers. We can use the &lt;a href=&#34;https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic&#34;&gt;Fundamental Theorem of Arithmetic&lt;/a&gt; to significantly increase the efficiency of our solution, which states: &lt;em&gt;every integer greater than 1 either is a prime number itself or can be represented as the product of prime numbers and that, moreover, this representation is unique&lt;/em&gt;. Wait a second, if every non prime number has to be divisible by primes, we can apply this to our solution.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We will still have an outer loop that iterates &lt;strong&gt;i&lt;/strong&gt; from &lt;strong&gt;2&lt;/strong&gt; to &lt;strong&gt;n&lt;/strong&gt;. But, the &lt;em&gt;inner loop&lt;/em&gt; does not need to divide by all numbers less than itself, we can simply divide by all the primes we have found so far and that would be enough. Let&amp;rsquo;s code that in Go :)&lt;/p&gt;
+
+&lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/0de328c22c71c72ef4fda3b4e2e47d9e.js?file=main.go&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://giphy.com/embed/3o7qE8cQUUCsrRQ1ry&#34; width=&#34;480&#34; height=&#34;480&#34; frameBorder=&#34;0&#34; class=&#34;giphy-embed&#34; allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href=&#34;https://giphy.com/gifs/rockthisboat-rockthisboat-premiere-season2-3o7qE8cQUUCsrRQ1ry&#34;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>Chunked File Upload using TypeScript, React, and Go</title>
       <link>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</link>
       <pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate>
