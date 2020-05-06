@@ -6,7 +6,7 @@ sitemap:
     priority: 0.5
 ---
 
-### Summary - Why you may want to chunk files?
+### Why you may want to chunk files?
 The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever... This means, I want to know the status of the upload as it progresses and if I can't finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.
 
 ### Let's build a simple app using no additional javascript libraries! 
@@ -195,7 +195,7 @@ A few things to mention here. **bucketName** is the name of the bucket you creat
 <p>Golang console output:</p>
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png" alt="server-side test"/>
 
-<p>Google Cloud Platform result.</p>
+<p>Google Cloud Platform result:</p>
 <img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test3.png" alt="GCP storage result"/>
 
 <p>Great everything worked :)</p>

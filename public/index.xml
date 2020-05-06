@@ -21,7 +21,7 @@
       
       <content>
 
-&lt;h3 id=&#34;summary-why-you-may-want-to-chunk-files&#34;&gt;Summary - Why you may want to chunk files?&lt;/h3&gt;
+&lt;h3 id=&#34;why-you-may-want-to-chunk-files&#34;&gt;Why you may want to chunk files?&lt;/h3&gt;
 
 &lt;p&gt;The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.&lt;/p&gt;
 
@@ -206,7 +206,7 @@ I provide my own simple instructions for Windows &lt;a href=&#34;https://www.eve
 &lt;p&gt;&lt;p&gt;Golang console output:&lt;/p&gt;
 &lt;img src=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png&#34; alt=&#34;server-side test&#34;/&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;p&gt;Google Cloud Platform result.&lt;/p&gt;
+&lt;p&gt;&lt;p&gt;Google Cloud Platform result:&lt;/p&gt;
 &lt;img src=&#34;https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test3.png&#34; alt=&#34;GCP storage result&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;p&gt;Great everything worked :)&lt;/p&gt;
@@ -231,7 +231,7 @@ I provide my own simple instructions for Windows &lt;a href=&#34;https://www.eve
       
       <content>
 
-&lt;h3 id=&#34;summary-setting-up-gorm&#34;&gt;Summary - Setting up GORM&lt;/h3&gt;
+&lt;h3 id=&#34;setting-up-gorm&#34;&gt;Setting up GORM&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.eventslooped.com/posts/golang-microservices-grpc-communication&#34;&gt;Continuing from the app we created in Part 1&lt;/a&gt;&lt;/p&gt;
 

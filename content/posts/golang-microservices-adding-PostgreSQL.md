@@ -6,7 +6,7 @@ sitemap:
     priority: 0.5
 ---
 
-### Summary - Setting up GORM
+### Setting up GORM
 
 [Continuing from the app we created in Part 1](/posts/golang-microservices-grpc-communication)
 

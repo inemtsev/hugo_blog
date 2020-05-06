@@ -18,7 +18,8 @@
       <pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate>
       
       <guid>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</guid>
-      <description>Summary - Why you may want to chunk files? The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.</description>
+      <description>Why you may want to chunk files? The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.
+Let&amp;rsquo;s build a simple app using no additional javascript libraries!</description>
     </item>
     
     <item>
@@ -27,9 +28,10 @@
       <pubDate>Sun, 29 Dec 2019 23:57:36 +0700</pubDate>
       
       <guid>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</guid>
-      <description>Summary - Setting up GORM Continuing from the app we created in Part 1
+      <description>Setting up GORM Continuing from the app we created in Part 1
 PostgreSQL is one of the most popular database choices today because it is free and has most of the features that the big guns like Microsoft SQL Server and Oracle offer. To connect our microservice to PostgreSQL, we can simplify our life by using an ORM for GO called GORM&amp;hellip; GO-ORM get it?
-via GIPHY</description>
+via GIPHY
+Let&#39;s upgrade the gRPC microservice we created in Part 1 to use an actual database instead of just cache.</description>
     </item>
     
     <item>
