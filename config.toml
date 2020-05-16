@@ -1,8 +1,8 @@
 baseurl = "https://www.eventslooped.com"
 languageCode = "en"
-title = "Events Looped"
+title = "EventsLooped"
 theme = "kiss"
-copyright = "&copy; Ilya Nemtsev 2017"
+copyright = "&copy; Ilya Nemtsev 2019"
 disqusShortname = "ilikedos"
 googleAnalytics = "UA-140872128-1"
 # Number of posts per page
