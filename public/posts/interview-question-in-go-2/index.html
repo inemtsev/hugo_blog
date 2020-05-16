@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Posts | Events Looped</title>
+<title>Go Interview Question #2 - Write a function to check if a string is a palindrome | Events Looped</title>
 
 
 
@@ -77,87 +77,48 @@
 </section>
 <section class="section">
   <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">May 16, 2020</h2>
+    <h1 class="title">Go Interview Question #2 - Write a function to check if a string is a palindrome</h1>
     
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6">May 12, 2019</h2>
-      <h1 class="title"><a href="https://www.eventslooped.com/posts/becoming-a-developer-in-2019/">Becoming a Developer in 2019</a></h1>
-      <div class="content">
-        There has never been a better time to become a web developer than now. The United States Bureau of Labour Statistics predicts an increase of job postings by 15% between 2016-2026, in comparison to 7% average across all occupations. According to ZipRecruiter the current average salary of a Web Developer in United states is $74,080 with top 1% earning $123,000 to $133,000. Among the general specializations of web developers (front-end, back-end and full-stack); full-stack developers on avereage are paid the highest, which is logical since they have to stay up-to date on both back-end and fron-end technologies.
-        
-        <a class="button is-link" href="https://www.eventslooped.com/posts/becoming-a-developer-in-2019/" style="height:28px">
-          Read more
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6">April 27, 2019</h2>
-      <h1 class="title"><a href="https://www.eventslooped.com/posts/typescript-future/">Typescript and its future</a></h1>
-      <div class="content">
-        Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&hellip;) with TypeScript support out of the box. By default.
-You can imagine this gave TypeScript a strong boost in popularity.
-        
-        <a class="button is-link" href="https://www.eventslooped.com/posts/typescript-future/" style="height:28px">
-          Read more
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6">December 9, 2018</h2>
-      <h1 class="title"><a href="https://www.eventslooped.com/posts/hugo-blog-on-azure/">Hugo Blog on Azure</a></h1>
-      <div class="content">
-        Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
-Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found Hugo. They have great documentation, modern CLI and great tooling, regardless of your OS preference.
-        
-        <a class="button is-link" href="https://www.eventslooped.com/posts/hugo-blog-on-azure/" style="height:28px">
-          Read more
-        </a>
-        
-      </div>
-    </article>
+    <div class="content">
+      <p>This question is very common on interviews, and while fairly straightforward, plenty developers mess it up on the interview.</p>
+
+<p>What is a <strong>palindrome</strong>? <a href="https://www.merriam-webster.com/dictionary/palindrome">Webster dictionary</a> defines it as a word, sentence or number that reads the same forwards and backwards. Some examples are: dad, 1881, abba.</p>
+
+<p>There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one. This way we can quit comparison as soon as we find a non-matching character.</p>
+
+<p>Let&rsquo;s convert this to Go code :)
+<script type="application/javascript" src="//gist.github.com/inemtsev/c0910f101437ddfceaddf58bf4e116ea.js?file=main.go"></script></p>
+
+<p><iframe src="https://giphy.com/embed/3o6MbmRKD8vNq7eSvC" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-10-the-simpsons-10x22-3o6MbmRKD8vNq7eSvC">via GIPHY</a></p></p>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
     
   </div>
 </section>
+
 <section class="section">
   <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          
-          <a class="button" href="/posts/">
-            <span class="icon is-small is-marginless">
-              <svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-    
-    <polyline points="15 18 9 12 15 6"/>
-    
-  </svg>
-            </span>
-            Newer
-          </a>
-          
-        </div>
-      </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-        </div>
-      </div>
-    </nav>
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'ilikedos';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
 </section>
+
 
 <section class="section">
   <div class="container has-text-centered">
@@ -208,5 +169,4 @@ if (!doNotTrack) {
   </script>
 </body>
 </html>
-
 

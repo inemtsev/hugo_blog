@@ -12,18 +12,36 @@
     
     
     <item>
-      <title>Interview Question in Go #1</title>
+      <title>Go Interview Question #2 - Write a function to check if a string is a palindrome</title>
+      <link>https://www.eventslooped.com/posts/interview-question-in-go-2/</link>
+      <pubDate>Sat, 16 May 2020 15:52:15 +0700</pubDate>
+      <author>Ilya Nemtsev</author>
+      <guid>https://www.eventslooped.com/posts/interview-question-in-go-2/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;This question is very common on interviews, and while fairly straightforward, plenty developers mess it up on the interview.&lt;/p&gt;
+
+&lt;p&gt;What is a &lt;strong&gt;palindrome&lt;/strong&gt;? &lt;a href=&#34;https://www.merriam-webster.com/dictionary/palindrome&#34;&gt;Webster dictionary&lt;/a&gt; defines it as a word, sentence or number that reads the same forwards and backwards. Some examples are: dad, 1881, abba.&lt;/p&gt;
+
+&lt;p&gt;There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one. This way we can quit comparison as soon as we find a non-matching character.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s convert this to Go code :)
+&lt;script type=&#34;application/javascript&#34; src=&#34;//gist.github.com/inemtsev/c0910f101437ddfceaddf58bf4e116ea.js?file=main.go&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://giphy.com/embed/3o6MbmRKD8vNq7eSvC&#34; width=&#34;480&#34; height=&#34;366&#34; frameBorder=&#34;0&#34; class=&#34;giphy-embed&#34; allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href=&#34;https://giphy.com/gifs/season-10-the-simpsons-10x22-3o6MbmRKD8vNq7eSvC&#34;&gt;via GIPHY&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
+      <title>Go Interview Question #1 - Find all the prime numbers less than or equal to &#39;n&#39;</title>
       <link>https://www.eventslooped.com/posts/interview-question-in-go-1/</link>
       <pubDate>Wed, 06 May 2020 13:10:43 +0700</pubDate>
       <author>Ilya Nemtsev</author>
       <guid>https://www.eventslooped.com/posts/interview-question-in-go-1/</guid>
       <description></description>
       
-      <content>
-
-&lt;h3 id=&#34;find-all-the-prime-numbers-less-than-or-equal-to-n&#34;&gt;Find all the prime numbers less than or equal to &amp;lsquo;n&amp;rsquo;&lt;/h3&gt;
-
-&lt;p&gt;As a means of keeping my logic sharp and helping others prepare for &lt;strong&gt;Go&lt;/strong&gt; interviews I decided to release a solved interview question every week or so.&lt;/p&gt;
+      <content>&lt;p&gt;As a means of keeping my logic sharp and helping others prepare for &lt;strong&gt;Go&lt;/strong&gt; interviews I decided to release a solved interview question every week or so.&lt;/p&gt;
 
 &lt;p&gt;In this post, let&amp;rsquo;s write a function in Go that generates us all the primes at or below a specific integer.&lt;/p&gt;
 
