@@ -4,32 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Typescript and its future | Events Looped</title>
+<title>Typescript and its future | EventsLooped</title>
 
 
 
-<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="Events Looped" />
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/tiny-slider.css">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://www.eventslooped.com/posts/typescript-future/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://www.eventslooped.com">
-          <h1 class="title is-4">Events Looped</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
+          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
         </a>
       </div>
       <div class="nav-right">
-        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -74,6 +74,7 @@
     </nav>
 
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -84,35 +85,26 @@
     <h1 class="title">Typescript and its future</h1>
     
     <div class="content">
-      
-
-<p>Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&hellip;) with TypeScript support out of the box. By default.</p>
-
-<p>You can imagine this gave TypeScript a strong boost in popularity.
+      <p>Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&hellip;) with TypeScript support out of the box. By default.</p>
+<p>You can imagine this gave TypeScript a strong boost in popularity.</p>
 <p>
     <img alt="Typescript, 5 year trend" src="../img/typescript-future/typescript-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}">
     <div>Source: Google Trends for TypeScript</div>
-</p></p>
-
-<p>Angular received some initial backlash from the drastic changes that were introduced, not just due to Typescript, but also from drastic changes in syntax. The initial disappointment of AngularJS fans overshadowed the drastic improvements in performance and new features like Dependency Injection and Lazy Loading of components.
+</p>
+<p>Angular received some initial backlash from the drastic changes that were introduced, not just due to Typescript, but also from drastic changes in syntax. The initial disappointment of AngularJS fans overshadowed the drastic improvements in performance and new features like Dependency Injection and Lazy Loading of components.</p>
 <p>
     <img alt="Angular, 5 year trend" src="../img/typescript-future/angular-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}">
     <div>Source: Google Trends for Angular</div>
-</p></p>
-
+</p>
 <p>And yet, Angular survived and is doing quite well. This was helped in part by the oncoming pressure from Javascript ES2015/ES6, developers had to learn new things and learn they did.</p>
-
 <h3 id="making-the-hard-choice">Making the hard choice</h3>
-
 <p>So, which should you choose? Like with every other question in technology, it depends.</p>
-
 <ol>
 <li><strong>Browser support</strong>: TypeScript is not supported by any browser out there, thus a transpiler has to be used to transpile the code into JavaScript ES5. Seems like an extra step right? Well, it looks like ES6 suffers from the same problem. As of writing, the marketshare of browsers that support ES6 well is not great enough to use ES6 in production, thus you guessed it, a transpiler still has to be used. Therefore the browser support point is moot.</li>
 <li><strong>To Type or not to Type</strong>: That is the question? This point will probably make up most of your decision making. This is where I think TypeScript truly shines. Typed code while slightly more verbose, results in code that is far less error prone. Having strict types allows the compiler to notify the developer of any type mismatching and other type related problems during development, instead of during testing. In addition, web development IDEs like <a href="https://www.jetbrains.com/webstorm/">WebStorm</a> and <a href="https://code.visualstudio.com/">VS Code</a> among others, have excellent plugins and autocomplete capabilities that are far better than those for vanilla javascript.</li>
 <li><strong>Future of TypeScript</strong>: Another extremely important factor to consider, when choosing a technology is its future. Anyone with a few years of professional experience knows how painful it is to use a library or technology that is no longer supported and there are still bugs that need to be fixed. Thankfully, TypeScript is not one of those cases. Adoption of types is only increasing (so if you thought of not learning TypeScript because it will never take off, down a quality Lagger and go learn it). As of writing, the upcoming and increasingly popular VueJS is already supporting TypeScript via its CLI, but is promising to significantly improve TypeScript integration with Class Based components and TSX support upon the next major release 3.x. Angular and React already have excellent support for TypeScript, so why pass on it?</li>
 <li><strong>Why you may not want TypeScript</strong>: You think this will convert your back-end developers into front-end developers, or better yet full-stack! It won&rsquo;t. Understanding Javascript concepts and its nuances is still very important.</li>
 </ol>
-
 <p>If you still aren&rsquo;t sold on adding TypeScript to your arsenal, consider the opinions of many via <a href="https://insights.stackoverflow.com/survey/2018#most-loved-dreaded-and-wanted">2018 StackOverflow Annual Survey</a> where TypeScript was rated #4 most loved programming language.</p>
 
       
@@ -124,16 +116,22 @@
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <aside><div id="disqus_thread"></div></aside>
+  
     <script type="text/javascript">
       var disqus_shortname = 'ilikedos';
-      (function() {
+      function disqus() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+      }
+  
+      disqus();
+  
+
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
@@ -142,7 +140,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; Ilya Nemtsev 2017</p>
+    <p>&copy; Ilya Nemtsev 2019</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
@@ -164,29 +162,6 @@ if (!doNotTrack) {
 
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/min/tiny-slider.js"></script>
-<script type="module">
-  var slider = tns({
-    container: '.my-slider',
-    mode: 'carousel',
-    items: 1,
-    gutter: 5,
-    slideBy: 'page',
-    autoplay: true,
-    autoplayButton: false,
-    speed: 500,
-    navPosition: 'top',
-    controlsPosition: 'bottom',
-    "autoplayText": [
-      "▶",
-      "❚❚"
-    ],
-    controls: true,
-    arrowKeys: true,
-    mouseDrag: true
-  });
-  </script>
 </body>
 </html>
 

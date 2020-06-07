@@ -53,3 +53,6 @@ platforms = ["twitter","github","email","linkedin"]
 tag ="tags"
 
 publishDir = "docs"
+
+[markup.goldmark.renderer]
+unsafe= true

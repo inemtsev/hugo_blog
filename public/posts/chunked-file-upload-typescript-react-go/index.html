@@ -4,32 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Chunked File Upload using TypeScript, React, and Go | Events Looped</title>
+<title>Chunked File Upload using TypeScript, React, and Go | EventsLooped</title>
 
 
 
-<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="Events Looped" />
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/tiny-slider.css">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://www.eventslooped.com">
-          <h1 class="title is-4">Events Looped</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
+          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
         </a>
       </div>
       <div class="nav-right">
-        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -74,6 +74,7 @@
     </nav>
 
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -84,31 +85,21 @@
     <h1 class="title">Chunked File Upload using TypeScript, React, and Go</h1>
     
     <div class="content">
-      
-
-<h3 id="why-you-may-want-to-chunk-files">Why you may want to chunk files?</h3>
-
+      <h3 id="why-you-may-want-to-chunk-files">Why you may want to chunk files?</h3>
 <p>The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&hellip; This means, I want to know the status of the upload as it progresses and if I can&rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.</p>
-
-<h3 id="let-s-build-a-simple-app-using-no-additional-javascript-libraries">Let&rsquo;s build a simple app using no additional javascript libraries!</h3>
-
-<p><img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/charisse-kenion-chunked-chocolate.jpg" alt="chunky chocolate, yum yum"/>
-<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@charissek?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Charisse Kenion"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Charisse Kenion</span></a></p>
-
+<h3 id="lets-build-a-simple-app-using-no-additional-javascript-libraries">Let&rsquo;s build a simple app using no additional javascript libraries!</h3>
+<img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/charisse-kenion-chunked-chocolate.jpg" alt="chunky chocolate, yum yum"/>
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@charissek?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Charisse Kenion"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Charisse Kenion</span></a>
 <p>To upload a file in chunks, we need to make our browser/client aware of the progress of the file upload. So, most of the logic for the chunking process will live on the client-side.
 Let&rsquo;s start with a simple React component that currently has no logic but has a form that allows us to select multiple files.</p>
-
-<script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent0.tsx"></script>
+<script type="application/javascript" src="https://gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent0.tsx"></script>
 
 <p>Let&rsquo;s create a class that will keep track of all the details about the file and its progress; we will also put all the methods we need inside.</p>
+<p><script type="application/javascript" src="https://gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=FileToUpload0.ts"></script>
 
-<p><script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=FileToUpload0.ts"></script>
 What&rsquo;s inside? <strong>chunkSize</strong> is the size of each chunk you wish to send to the server. <strong>uploadUrl</strong> is the path to your server-side endpoint (more on that later). <strong>file</strong> simply refers to the file you have selected to upload. Getting to where all the magic happens, <strong>currentChunkStartByte</strong> is where we keep track of where the starting point of the current chunk is located. <strong>currentChunkFinalByte</strong> is where we keep track of the location of the final byte of the current chunk.</p>
-
 <p>Inside the constructor we instantiate the browser built-in <strong>XmlHttpRequest</strong> class and set the Mime Type to <strong>application/octet-stream</strong>, which simply refers to generic binary data. <strong>currentChunkFinalByte</strong> is set to either the chunkSize or the file size, whichever is smaller. This is to avoid chunking of small files.</p>
-
 <p>Let&rsquo;s add the method that will do all the uploading.</p>
-
 <p><div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="nx">uploadFile() {</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="nx">FileToUpload</span><span class="p">.</span><span class="nx">uploadUrl</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 
@@ -138,28 +129,22 @@ What&rsquo;s inside? <strong>chunkSize</strong> is the size of each chunk you wi
         <span class="kr">const</span> <span class="nx">formData</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
         <span class="nx">formData</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="nx">chunk</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> 
         <span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">formData</span><span class="p">);</span>    <span class="c1">// send it now!
-</span><span class="c1"></span>    <span class="p">}</span></code></pre></div>
+</span><span class="c1"></span>    <span class="p">}</span>
+</code></pre></div>
 A few things to highlight here. <strong>Content-Range</strong> needs to be set, we will use this on the server to determine when to stop adding to the file. <strong>this.request.onload</strong> is a callback which is called whenever a transaction by XmlHttpRequest is completed. <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestEventTarget/onload">More on XmlHttpRequest.onload here</a>.</p>
-
 <p>Putting these together, your <strong>FileToUpload.ts</strong> will look like this.
-<script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=FileToUpload.ts"></script></p>
-
-<h3 id="let-s-use-what-we-created-inside-our-component">Let&rsquo;s use what we created inside our component</h3>
-
+<script type="application/javascript" src="https://gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=FileToUpload.ts"></script>
+</p>
+<h3 id="lets-use-what-we-created-inside-our-component">Let&rsquo;s use what we created inside our component</h3>
 <p>Now, we have a class to represent the file to be uploaded. We can instantiate this class as many times as needed inside the component. The resulting component looks like this.</p>
-
-<script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent.tsx"></script>
+<script type="application/javascript" src="https://gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=uploadMediaComponent.tsx"></script>
 
 <p> </p>
-
-<h3 id="our-client-side-code-is-now-sending-chunks-let-s-prepare-the-backend-using-go-and-gin">Our client-side code is now sending chunks, let&rsquo;s prepare the backend using Go and Gin</h3>
-
-<p><img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/sven-brandsma-chainsaw.jpg" alt="vroom vroom"/>
-<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@seffen99?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Sven Brandsma"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Sven Brandsma</span></a></p>
-
+<h3 id="our-client-side-code-is-now-sending-chunks-lets-prepare-the-backend-using-go-and-gin">Our client-side code is now sending chunks, let&rsquo;s prepare the backend using Go and Gin</h3>
+<img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/sven-brandsma-chainsaw.jpg" alt="vroom vroom"/>
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@seffen99?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Sven Brandsma"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Sven Brandsma</span></a>
 <p>Starting with the typical Gin setup, we add one endpoint <strong>/photo</strong></p>
-
-<script type="application/javascript" src="//gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=main0.go"></script>
+<script type="application/javascript" src="https://gist.github.com/inemtsev/a45daa46fbdcdd6f80a65eed693a0689.js?file=main0.go"></script>
 
 <p>Then we handle the request:
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">uploadFile</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
@@ -188,16 +173,13 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 		<span class="p">}</span>
 	<span class="p">}</span>
 <span class="p">}</span></code></pre></div></p>
-
 <p>The logic here is fairly straightforward:</p>
-
 <ol>
 <li>Open the file or create if not there. <strong>os.O_APPEND</strong> tells the OS that writes append to the file, so there is no need to offset to the end of the file. <strong>os.O_RDWR</strong> opens the file for both reads and writes. <strong>os.ModeAppend</strong> only allows writing via appending to the file.</li>
 <li>Then, we write/append the chunk to the file.</li>
 <li>We check if the file upload is completed. We do this by checking the range of bytes in the headers.</li>
 <li>Finally, we upload the file to Google Cloud.</li>
 </ol>
-
 <p>To check that the file is finished uploading, we parse the <strong>Content-Range</strong> header we sent from the browser.
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">isFileUploadCompleted</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
 	<span class="nx">contentRangeHeader</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;Content-Range&#34;</span><span class="p">)</span>
@@ -216,17 +198,18 @@ A few things to highlight here. <strong>Content-Range</strong> needs to be set, 
 
 	<span class="k">return</span> <span class="nx">fileSize</span> <span class="o">==</span> <span class="nx">rangeMax</span>
 <span class="p">}</span></code></pre></div></p>
-
 <p>The upload to the cloud here is GCP specific, but I will summarize it here if anybody needs it:</p>
-
 <ol>
-<li><p>Create a bucket under <strong>Storage</strong> in <a href="https://console.cloud.google.com">Google Cloud Console</a>. I used Uniform Access Control, but if you need finer access control you can choose the other option.
-<p><img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/></p></p></li>
-
-<li><p>Create a <strong>service account</strong> to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions <a href="https://cloud.google.com/docs/authentication/production#linux-or-macos">here</a>.
-I provide my own simple instructions for Windows <a href="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png">here</a>.</p></li>
-
-<li><p>Use code like this to upload your file.
+<li>Create a bucket under <strong>Storage</strong> in <a href="https://console.cloud.google.com">Google Cloud Console</a>. I used Uniform Access Control, but if you need finer access control you can choose the other option.</li>
+</ol>
+<p><img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/></p>
+<ol start="2">
+<li>
+<p>Create a <strong>service account</strong> to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions <a href="https://cloud.google.com/docs/authentication/production#linux-or-macos">here</a>.
+I provide my own simple instructions for Windows <a href="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png">here</a>.</p>
+</li>
+<li>
+<p>Use code like this to upload your file.
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">uploadToGoogle</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">f</span> <span class="o">*</span><span class="nx">os</span><span class="p">.</span><span class="nx">File</span><span class="p">)</span> <span class="p">{</span>
 	<span class="nx">creds</span><span class="p">,</span> <span class="nx">isFound</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">LookupEnv</span><span class="p">(</span><span class="s">&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;</span><span class="p">)</span>
 	<span class="k">if</span> <span class="p">!</span><span class="nx">isFound</span> <span class="p">{</span>
@@ -257,31 +240,24 @@ I provide my own simple instructions for Windows <a href="https://www.eventsloop
 		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v bytes written to Cloud&#34;</span><span class="p">,</span> <span class="nx">bw</span><span class="p">)</span>
 		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span>
 	<span class="p">}</span>
-<span class="p">}</span></code></pre></div></p></li>
+<span class="p">}</span></code></pre></div></p>
+</li>
 </ol>
-
 <p>A few things to mention here. <strong>bucketName</strong> is the name of the bucket you created in step 1. If you forget to close your writer, the upload will still run successfully, but the file will not show up in Google Storage.
 <strong>f.Seek(0, io.SeekStart)</strong> is needed to rewind the reader to the beginning, because we just finished writing to the end of the file.</p>
-
-<h3 id="let-s-test">Let&rsquo;s test!</h3>
-
-<p><p>Submit the form with a few files.</p>
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test1.png" alt="client-side test"/></p>
-
-<p><p>Golang console output:</p>
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png" alt="server-side test"/></p>
-
-<p><p>Google Cloud Platform result:</p>
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test3.png" alt="GCP storage result"/></p>
-
-<p><p>Great everything worked :)</p>
+<h3 id="lets-test">Let&rsquo;s test!</h3>
+<p>Submit the form with a few files.</p>
+<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test1.png" alt="client-side test"/>
+<p>Golang console output:</p>
+<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png" alt="server-side test"/>
+<p>Google Cloud Platform result:</p>
+<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test3.png" alt="GCP storage result"/>
+<p>Great everything worked :)</p>
 <img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/viktor-talashuk-cabin.jpg" alt="Look what we made!"/>
-<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@viktortalashuk?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Viktor Talashuk"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Viktor Talashuk</span></a></p>
-
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@viktortalashuk?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Viktor Talashuk"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Viktor Talashuk</span></a>
 <h3 id="summary">Summary</h3>
-
-<p><p>I think this solution worked out quite well, but there are some things to consider. When using this solution in production, there is a small chance of filename collision; I recommend adding a unique Guid to the name or a userID in multi-tenancy solutions. </p>
-<p> Initially I tried to build this app using a more efficient approach, <em>without saving the file to the filesystem</em> and appending each chunk to Google Cloud directly as it came in. Unfortunately, I ran into a GCP limitation here. At the time of writing, the maximum allowed update rate of any 1 file is 1 per second. Anything above this rate fails to upload. Therefore, I had to fall back to using the filesystem to put the chunks together.</p>
+<p>I think this solution worked out quite well, but there are some things to consider. When using this solution in production, there is a small chance of filename collision; I recommend adding a unique Guid to the name or a userID in multi-tenancy solutions. </p>
+<p> Initially I tried to build this app using a more efficient approach, *without saving the file to the filesystem* and appending each chunk to Google Cloud directly as it came in. Unfortunately, I ran into a GCP limitation here. At the time of writing, the maximum allowed update rate of any 1 file is 1 per second. Anything above this rate fails to upload. Therefore, I had to fall back to using the filesystem to put the chunks together. 
 
       
       <div class="related">
@@ -292,16 +268,22 @@ I provide my own simple instructions for Windows <a href="https://www.eventsloop
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <aside><div id="disqus_thread"></div></aside>
+  
     <script type="text/javascript">
       var disqus_shortname = 'ilikedos';
-      (function() {
+      function disqus() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+      }
+  
+      disqus();
+  
+
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
@@ -310,7 +292,7 @@ I provide my own simple instructions for Windows <a href="https://www.eventsloop
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; Ilya Nemtsev 2017</p>
+    <p>&copy; Ilya Nemtsev 2019</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
@@ -332,29 +314,6 @@ if (!doNotTrack) {
 
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/min/tiny-slider.js"></script>
-<script type="module">
-  var slider = tns({
-    container: '.my-slider',
-    mode: 'carousel',
-    items: 1,
-    gutter: 5,
-    slideBy: 'page',
-    autoplay: true,
-    autoplayButton: false,
-    speed: 500,
-    navPosition: 'top',
-    controlsPosition: 'bottom',
-    "autoplayText": [
-      "▶",
-      "❚❚"
-    ],
-    controls: true,
-    arrowKeys: true,
-    mouseDrag: true
-  });
-  </script>
 </body>
 </html>
 

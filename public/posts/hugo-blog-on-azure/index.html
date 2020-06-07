@@ -4,32 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Hugo Blog on Azure | Events Looped</title>
+<title>Hugo Blog on Azure | EventsLooped</title>
 
 
 
-<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="Events Looped" />
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/tiny-slider.css">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://www.eventslooped.com/posts/hugo-blog-on-azure/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://www.eventslooped.com">
-          <h1 class="title is-4">Events Looped</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
+          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
         </a>
       </div>
       <div class="nav-right">
-        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -74,6 +74,7 @@
     </nav>
 
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -84,69 +85,69 @@
     <h1 class="title">Hugo Blog on Azure</h1>
     
     <div class="content">
-      
-
-<h3 id="summary">Summary</h3>
-
+      <h3 id="summary">Summary</h3>
 <p>I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.</p>
-
 <p>Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found <a href="https://gohugo.io/">Hugo</a>. They have great documentation, modern CLI and great tooling, regardless of your OS preference.</p>
-
 <p>Since I already have a Microsoft Azure account, I decided to host my static files there. Here is how I set-up my blog, from Hugo installation on Windows to publishing to the cloud.</p>
-
 <h3 id="install-hugo-on-windows">Install Hugo on Windows</h3>
-
 <p>The easiest way to install Hugo is through a package manager called <a href="https://chocolatey.org/install">Chocolatey</a>.</p>
-
-<p>Once chocolatey is installed, run the following at command line/Powershell:
-&gt; choco install hugo -confirm</p>
-
+<p>Once chocolatey is installed, run the following at command line/Powershell:</p>
+<blockquote>
+<p>choco install hugo -confirm</p>
+</blockquote>
 <p>Voila! Installation is complete.</p>
-
 <h3 id="setup-a-basic-blog">Setup a basic blog</h3>
-
 <ul>
 <li>Create an easy to find folder for your blogs, let&rsquo;s say <em>C:/blogs</em></li>
-<li>Run the below command, this will create a blog in the folder hugo_blog
-&gt; hugo new site hugo_blog</li>
-<li>Now you need to get a theme for your blog, <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a> has some solid options. Each theme has a github page with instructions on how to install.<br /></li>
-<li>Once, your theme files are in your hugo_blog/themes/&hellip; and your <strong>config.toml</strong> has been updated, time to create your first post by going to your hugo_blog directory and running the command
-&gt; hugo new posts/my-first-cool-post.md
-Be sure to have the extension, otherwise you will have problems rendering that page. If you forgot go to <em>&hellip;hugo_blog\content\posts</em> and delete the generated file here and try again. Do not try to rename the file and adding the extension, as this will not work.</li>
-<li>You can now edit my-first-cool-post.md if you like. To test run your generated blog, go to your blog root <strong>hugo_blog</strong> and run the command
-&gt; hugo server -D
-If you did everything correctly you should now be able to view your blog locally by going to: <a href="http://localhost:1313/">http://localhost:1313/</a></li>
+<li>Run the below command, this will create a blog in the folder hugo_blog</li>
 </ul>
-
+<blockquote>
+<p>hugo new site hugo_blog</p>
+</blockquote>
+<ul>
+<li>Now you need to get a theme for your blog, <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a> has some solid options. Each theme has a github page with instructions on how to install.</li>
+<li>Once, your theme files are in your hugo_blog/themes/&hellip; and your <strong>config.toml</strong> has been updated, time to create your first post by going to your hugo_blog directory and running the command</li>
+</ul>
+<blockquote>
+<p>hugo new posts/my-first-cool-post.md
+Be sure to have the extension, otherwise you will have problems rendering that page. If you forgot go to <em>&hellip;hugo_blog\content\posts</em> and delete the generated file here and try again. Do not try to rename the file and adding the extension, as this will not work.</p>
+</blockquote>
+<ul>
+<li>You can now edit my-first-cool-post.md if you like. To test run your generated blog, go to your blog root <strong>hugo_blog</strong> and run the command</li>
+</ul>
+<blockquote>
+<p>hugo server -D
+If you did everything correctly you should now be able to view your blog locally by going to: <a href="http://localhost:1313/">http://localhost:1313/</a></p>
+</blockquote>
 <h3 id="setup-azure-storage">Setup Azure Storage</h3>
-
 <ul>
-<li>After signing up for Microsoft Azure, search for <strong>storage account</strong> if you haven&rsquo;t set it up already and click <strong>Add</strong>.
-<p><img alt="Search for Storage Account" src="../img/hugo-blog-on-azure/storage_account.png" style="width: 650px; display: block; padding: {{ .Params.imgpad }}"/></p></li>
-<li>Fill out the configuration with your desired names, and with these settings.
-<p><img alt="Storage Account Configuration" src="../img/hugo-blog-on-azure/create_storage_acc_1.png"  style="width: 650px; display: block; padding: {{ .Params.imgpad }}"/></p></li>
-<li>After creating the storage account, open it and navigate to <strong>Static Website</strong>* under Settings. <strong>Primary endpoint</strong> is how you will access your published blog (for now). Make sure to add <strong>index.html</strong> to your <strong>index document name</strong> field, to establish your website&rsquo;s entry point.
-<p><img alt="Setup static website" src="../img/hugo-blog-on-azure/create_storage_acc_2.png" style="width:500px; display: block; padding: {{ .Params.imgpad }}"/></p></li>
+<li>After signing up for Microsoft Azure, search for <strong>storage account</strong> if you haven&rsquo;t set it up already and click <strong>Add</strong>.</li>
 </ul>
-
-<h3 id="publish-to-azure-using-vs-code-azure-storage-extension">Publish to Azure using VS Code + Azure Storage Extension</h3>
-
+<p><img alt="Search for Storage Account" src="../img/hugo-blog-on-azure/storage_account.png" style="width: 650px; display: block; padding: {{ .Params.imgpad }}"/></p>
+- Fill out the configuration with your desired names, and with these settings.
+<p><img alt="Storage Account Configuration" src="../img/hugo-blog-on-azure/create_storage_acc_1.png"  style="width: 650px; display: block; padding: {{ .Params.imgpad }}"/></p> 
+- After creating the storage account, open it and navigate to **Static Website*** under Settings. **Primary endpoint** is how you will access your published blog (for now). Make sure to add **index.html** to your **index document name** field, to establish your website's entry point. 
+<p><img alt="Setup static website" src="../img/hugo-blog-on-azure/create_storage_acc_2.png" style="width:500px; display: block; padding: {{ .Params.imgpad }}"/></p>
+<h3 id="publish-to-azure-using-vs-code--azure-storage-extension">Publish to Azure using VS Code + Azure Storage Extension</h3>
 <ul>
-<li>To get a compiled, release version of your blog, run the simple command below. This will generate a static html version of your blog into the <strong>public</strong> folder at the root of your blog
-&gt; hugo</li>
+<li>To get a compiled, release version of your blog, run the simple command below. This will generate a static html version of your blog into the <strong>public</strong> folder at the root of your blog</li>
+</ul>
+<blockquote>
+<p>hugo</p>
+</blockquote>
+<ul>
 <li>I use Visual Studio Code daily, as it is one of the cleanest IDEs for Front-end development. But if you do not yet use it, you can download it <a href="https://code.visualstudio.com/">here</a>.</li>
-<li>Once installed, click on Extensions (lowest icon on the left), search for Azure Storage, hit install and restart VS Code
-<p><img alt="VS Code Azure Storage Extension" src="../img/hugo-blog-on-azure/storage_extension.png" style="width: 500px; display: block; padding: {{ .Params.imgpad }}"/></p></li>
-<li>Now you have a cool new Azure icon below the extensions one. Click on it, select login and follow the instructions. Once you put in the code, you should be able to see your storage account through VS Code.</li>
-<li>Open the folder &hellip;hugo_blog/public in VS Code</li>
-<li>In VS Code Explorer (top icon on the left), assumming your are at root level of your blog, right click and select <strong>Deploy to Static Website</strong>.
+<li>Once installed, click on Extensions (lowest icon on the left), search for Azure Storage, hit install and restart VS Code</li>
+</ul>
+<p><img alt="VS Code Azure Storage Extension" src="../img/hugo-blog-on-azure/storage_extension.png" style="width: 500px; display: block; padding: {{ .Params.imgpad }}"/></p>
+- Now you have a cool new Azure icon below the extensions one. Click on it, select login and follow the instructions. Once you put in the code, you should be able to see your storage account through VS Code. 
+- Open the folder ...hugo_blog/public in VS Code
+- In VS Code Explorer (top icon on the left), assumming your are at root level of your blog, right click and select **Deploy to Static Website**. 
 <p><img alt="Deploy to Static Website" src="../img/hugo-blog-on-azure/azure_storage_deploy.png" style="width: 500px; display:block; padding: {{ .Params.imgpad }}"/></p>
 At this point you will be prompted to select your subscription and azure storage account
 <p><img alt="Select your storage account" src="../img/hugo-blog-on-azure/azure_storage_deploy1.png" style="width: 500px; display: block; padding: {{ .Params.imgpad }}"/></p>
 You should get a success message in a few seconds
-<p><img alt="Successful deployment" src="../img/hugo-blog-on-azure/azure_storage_deploy2.png" style="width: 500px; display:block; padding: {{ .Params.imgpad }}"/></p></li>
-</ul>
-
+<p><img alt="Successful deployment" src="../img/hugo-blog-on-azure/azure_storage_deploy2.png" style="width: 500px; display:block; padding: {{ .Params.imgpad }}"/></p>
 <p>You are good to go! Keep adding pages and deploying in the same way :)</p>
 
       
@@ -158,16 +159,22 @@ You should get a success message in a few seconds
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <aside><div id="disqus_thread"></div></aside>
+  
     <script type="text/javascript">
       var disqus_shortname = 'ilikedos';
-      (function() {
+      function disqus() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+      }
+  
+      disqus();
+  
+
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
@@ -176,7 +183,7 @@ You should get a success message in a few seconds
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; Ilya Nemtsev 2017</p>
+    <p>&copy; Ilya Nemtsev 2019</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
@@ -198,29 +205,6 @@ if (!doNotTrack) {
 
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/min/tiny-slider.js"></script>
-<script type="module">
-  var slider = tns({
-    container: '.my-slider',
-    mode: 'carousel',
-    items: 1,
-    gutter: 5,
-    slideBy: 'page',
-    autoplay: true,
-    autoplayButton: false,
-    speed: 500,
-    navPosition: 'top',
-    controlsPosition: 'bottom',
-    "autoplayText": [
-      "▶",
-      "❚❚"
-    ],
-    controls: true,
-    arrowKeys: true,
-    mouseDrag: true
-  });
-  </script>
 </body>
 </html>
 

@@ -1,23 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/</loc>
+    <lastmod>2020-06-04T10:46:40+07:00</lastmod>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.eventslooped.com/</loc>
-    <lastmod>2020-05-16T15:52:15+07:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-06-04T10:46:40+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.eventslooped.com/posts/</loc>
+    <lastmod>2020-06-04T10:46:40+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.eventslooped.com/posts/interview-question-in-go-2/</loc>
     <lastmod>2020-05-16T15:52:15+07:00</lastmod>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.eventslooped.com/posts/</loc>
-    <lastmod>2020-05-16T15:52:15+07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -100,12 +104,10 @@
   
   <url>
     <loc>https://www.eventslooped.com/docs/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.eventslooped.com/tags/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

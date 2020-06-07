@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Go Interview Question #2 - Write a function to check if a string is a palindrome | EventsLooped</title>
+<title>Automate Open Tabs in Cmder | EventsLooped</title>
 
 
 
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="canonical" href="https://www.eventslooped.com/posts/interview-question-in-go-2/">
+<link rel="canonical" href="https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
@@ -81,17 +81,32 @@
     <div class="subtitle tags is-6 is-pulled-right">
       
     </div>
-    <h2 class="subtitle is-6">May 16, 2020</h2>
-    <h1 class="title">Go Interview Question #2 - Write a function to check if a string is a palindrome</h1>
+    <h2 class="subtitle is-6">June 4, 2020</h2>
+    <h1 class="title">Automate Open Tabs in Cmder</h1>
     
     <div class="content">
-      <p>This question is very common on interviews, and while fairly straightforward, plenty developers mess it up on the interview.</p>
-<p>What is a <strong>palindrome</strong>? <a href="https://www.merriam-webster.com/dictionary/palindrome">Webster dictionary</a> defines it as a word, sentence or number that reads the same forwards and backwards. Some examples are: dad, 1881, abba.</p>
-<p>There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one. This way we can quit comparison as soon as we find a non-matching character.</p>
-<p>Let&rsquo;s convert this to Go code :)
-<script type="application/javascript" src="https://gist.github.com/inemtsev/c0910f101437ddfceaddf58bf4e116ea.js?file=main.go"></script>
-</p>
-<iframe src="https://giphy.com/embed/3o6MbmRKD8vNq7eSvC" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-10-the-simpsons-10x22-3o6MbmRKD8vNq7eSvC">via GIPHY</a></p>
+      <p>I have been using Cmder for about a year now, it&rsquo;s an excellent console emulator for Windows based on ConEmu emulator, but with a few bells and whistles thrown in. I got it mainly for the tabs and split screen features (which ConEmu also supports), but Cmder looks cooler and has Git support out of the box. At work I like to have git for front-end open on the left side and git for back-end open on the right side; then I have another tab open for yarn commands.</p>
+<p><img alt="Cmder is awesome!" src="../img/automate-open-tabs-in-cmder/intro-pic.png"/></p>
+<p>Multiple tabs and split screens are great, but they are annoying to reopen every single time. Thanksfully, Cmder has a functionality called <strong>Tasks</strong> which allows the user to bind keyboard combinations to some actions.
+This functionality is hidden in settings, click on the <strong>half-life icon</strong> and then settings.</p>
+<p><img alt="Hidden settings" src="../img/automate-open-tabs-in-cmder/settings.png"/></p>
+<p>In settings, under <strong>Startup</strong> &gt; <strong>Tasks</strong>, you can already see some default tasks present. Let&rsquo;s add our own:</p>
+<ol>
+<li>Click &ldquo;+&rdquo; to add a task</li>
+<li>Select your new task and give it a better name</li>
+<li>Pick your hotkey combination; I am setting up my blogging environment in this example, so I gave it a Left Alt + Left Shift + W</li>
+<li>Now, we have to provide the parameters on what the task needs to do</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">-cur_console:d:<span class="s2">&#34;C:\hugo_blog\themes\kiss\layouts&#34;</span>:t:<span class="s2">&#34;Layout&#34;</span>:C:<span class="s2">&#34;C:\icons\important.ico&#34;</span>
+
+-cur_console:s1T50H:d:<span class="s2">&#34;C:\hugo_blog\content\posts\img&#34;</span>:t:<span class="s2">&#34;Images&#34;</span>:C:<span class="s2">&#34;C:\icons\photo.ico&#34;</span>
+
+-cur_console:d:<span class="s2">&#34;C:\hugo_blog&#34;</span> -cur_console:t:<span class="s2">&#34;Root&#34;</span>:C:<span class="s2">&#34;C:\icons\heart.ico&#34;</span> cmd /k <span class="s2">&#34;&#34;</span>%ConEmuDir%<span class="se">\.</span>.<span class="se">\i</span>nit.bat<span class="s2">&#34;&#34;</span></code></pre></div>
+<p>Let&rsquo;s break it down. To create a new tab/screen we need to use the <strong>-curr_console</strong> switch (<a href="https://conemu.github.io/en/NewConsole.html">reference here</a>); we can provide the directory to open using the <strong>:d</strong> sub-switch. If you wish, you can optionally provide a name for the tab using the <strong>:t</strong> sub-switch and even an icon using the <strong>C:</strong> sub-switch. (I found some cool icons on <a href="https://www.iconfinder.com/free_icons">IconFinder</a>)</p>
+<p>The split-screen sub-switch <strong>s:</strong> is a little more confusing. For my purposes I used <strong>s1T50H</strong>, which in English means: Split the <strong>1st</strong> screen by taking <strong>50%</strong>, stacking <strong>horizontally</strong>. To stack the screens vertically just change the <strong>H</strong> to a <strong>V</strong>. <a href="https://conemu.github.io/en/SplitScreen.html#From-your-shell-prompt">ComEmu has some docs on this</a>, it&rsquo;s a little dry to read, but may help further configure your environment.</p>
+<p>Lastly, the <strong>%ConEmuDir%..\init.bat</strong> script is needed to enable the built-in git support for my git-initialized directory.</p>
+<p>The result of our labour. Look at those cute icons! Ok, I&rsquo;m a geek.</p>
+<p><img src="../img/automate-open-tabs-in-cmder/cmder-result.gif"></p>
       
       <div class="related">
 </div>

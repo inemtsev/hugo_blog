@@ -4,32 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Make Multiple Api Calls At The Same Time With GoRoutines | Events Looped</title>
+<title>Make Multiple Api Calls At The Same Time With GoRoutines | EventsLooped</title>
 
 
 
-<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="Events Looped" />
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/tiny-slider.css">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://www.eventslooped.com/posts/golang-make-multiple-api-calls/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://www.eventslooped.com">
-          <h1 class="title is-4">Events Looped</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
+          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
         </a>
       </div>
       <div class="nav-right">
-        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -74,6 +74,7 @@
     </nav>
 
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -85,11 +86,8 @@
     
     <div class="content">
       <p>Golang is efficient, very efficient. Much of this efficiency is attributed to its unique abstractions when dealing with concurrency. Java for example, maps its threads to OS threads, while Go uses its own goroutines scheduler to further abstract its lightweight goroutines from OS threads. In short, Golang is very frugal with how it uses OS threads; if a goroutine becomes blocked, Go&rsquo;s scheduler will switch in another goroutine in its place to keep the thread busy as much as possible. Since each CPU core handles a limited number of threads (and spawning new threads is expensive), keeping these threads fed with work is a great thing indeed.</p>
-
 <p>So, how do we use Golang to make multiple http calls concurrently? If you have used C# or modern JavaScript you may have used <strong>async/await</strong> to make multiple api calls. Golang isn&rsquo;t quite as easy, but it is all in the name of efficiency. Go always has at least one goroutine running, which takes care of running main(). We can spawn new routines with the keyword <strong>go</strong> before the function call. If you worked with Java/C# asynchronous calls, then <em>goroutines</em> may remind you of the idea of <em>context</em>. Go Scheduler allows the developer to make thousands of these lightweight goroutines and manages the CPU time spent on each one for us. Everytime a function prefixed with <strong>go</strong> is executed, a new goroutine is created to run that function, the <strong>main</strong> goroutine continues on its way immidiately after spawning a new goroutine, until it hits a blocking operator (similar to an await in C# or Js).</p>
-
 <p>Let&rsquo;s start with a simple console app that make calls to a few GitHub profiles and checks whether the connection was successful or not. At first, there are no goroutines here and all the calls are made consecutively; booo not very efficient.</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
@@ -122,14 +120,10 @@
 		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Success reaching the website:&#34;</span><span class="p">,</span> <span class="nx">url</span><span class="p">)</span>
 	<span class="p">}</span>
 <span class="p">}</span></code></pre></div>
-
 <p>First, we need to add something called <strong>channel</strong>. Since Golang functions running in their own goroutines are just simple functions, we need a way through which inner goroutines can tell their result to the outer goroutine; this is done using channels. We initialize them simply by: <strong>c := make(chan string)</strong>
 We are able to send the resulting value(s) to our channel using the <strong>&lt;-</strong> arrow, and we assign the value from the channel using this arrow as well.</p>
-
 <p>Second, we need to add a tracker of sorts, to keep track of how many values we should be expecting to come out of this channel. This can be done using the type sync.WaitGroup.</p>
-
 <p>Implementing these two ideas, results in the following:</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
 	<span class="s">&#34;fmt&#34;</span>
 	<span class="s">&#34;net/http&#34;</span>
@@ -190,16 +184,22 @@ We are able to send the resulting value(s) to our channel using the <strong>&lt;
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <aside><div id="disqus_thread"></div></aside>
+  
     <script type="text/javascript">
       var disqus_shortname = 'ilikedos';
-      (function() {
+      function disqus() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+      }
+  
+      disqus();
+  
+
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
@@ -208,7 +208,7 @@ We are able to send the resulting value(s) to our channel using the <strong>&lt;
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; Ilya Nemtsev 2017</p>
+    <p>&copy; Ilya Nemtsev 2019</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
@@ -230,29 +230,6 @@ if (!doNotTrack) {
 
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/min/tiny-slider.js"></script>
-<script type="module">
-  var slider = tns({
-    container: '.my-slider',
-    mode: 'carousel',
-    items: 1,
-    gutter: 5,
-    slideBy: 'page',
-    autoplay: true,
-    autoplayButton: false,
-    speed: 500,
-    navPosition: 'top',
-    controlsPosition: 'bottom',
-    "autoplayText": [
-      "▶",
-      "❚❚"
-    ],
-    controls: true,
-    arrowKeys: true,
-    mouseDrag: true
-  });
-  </script>
 </body>
 </html>
 

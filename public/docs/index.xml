@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docs on Events Looped</title>
+    <title>Docs on EventsLooped</title>
     <link>https://www.eventslooped.com/docs/</link>
-    <description>Recent content in Docs on Events Looped</description>
+    <description>Recent content in Docs on EventsLooped</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; Ilya Nemtsev 2017</copyright>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
     
 	<atom:link href="https://www.eventslooped.com/docs/index.xml" rel="self" type="application/rss+xml" />
     

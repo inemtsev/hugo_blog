@@ -4,32 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Go Interview Question #1 - Find all the prime numbers less than or equal to &#39;n&#39; | Events Looped</title>
+<title>Go Interview Question #1 - Find all the prime numbers less than or equal to &#39;n&#39; | EventsLooped</title>
 
 
 
-<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="Events Looped" />
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/tiny-slider.css">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://www.eventslooped.com/posts/interview-question-in-go-1/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://www.eventslooped.com">
-          <h1 class="title is-4">Events Looped</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
+          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
         </a>
       </div>
       <div class="nav-right">
-        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -74,6 +74,7 @@
     </nav>
 
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -85,23 +86,20 @@
     
     <div class="content">
       <p>As a means of keeping my logic sharp and helping others prepare for <strong>Go</strong> interviews I decided to release a solved interview question every week or so.</p>
-
 <p>In this post, let&rsquo;s write a function in Go that generates us all the primes at or below a specific integer.</p>
-
 <p>To even attempt this question, we need to know the exact definition of a <strong>prime number</strong>. According to <a href="https://mathworld.wolfram.com/PrimeNumber.html">Wolfram</a>, <em>A prime number is a positive integer p&gt;1 that has no positive integer divisors other than 1 and p itself</em>. In short, a number that can only be divided by itself and 1 and is greater than 1.</p>
-
 <ol>
-<li><p><strong>Basic and dirty approach:</strong> We can make a loop that iterates <strong>i</strong> from <strong>2</strong> to <strong>n</strong> inclusively and inside this loop we iterate <strong>j</strong> from <strong>n</strong> down to <strong>2</strong> checking whether <strong>i</strong> can be devided by anything less than itself. This approach is easy to come up with, I just followed the basic definition of a prime. Unfortunately, while fast to code, this approach is quite slow to run. We are looking at complexity of O(n^2) here.</p></li>
-
-<li><p><strong>Very efficient approach:</strong> Staring at the above solution for a few minutes, we can see where the inefficiency lies. We seem to be checking divisibility of many unnecessary numbers. We can use the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">Fundamental Theorem of Arithmetic</a> to significantly increase the efficiency of our solution, which states: <em>every integer greater than 1 either is a prime number itself or can be represented as the product of prime numbers and that, moreover, this representation is unique</em>. Wait a second, if every non prime number has to be divisible by primes, we can apply this to our solution.</p></li>
+<li>
+<p><strong>Basic and dirty approach:</strong> We can make a loop that iterates <strong>i</strong> from <strong>2</strong> to <strong>n</strong> inclusively and inside this loop we iterate <strong>j</strong> from <strong>n</strong> down to <strong>2</strong> checking whether <strong>i</strong> can be devided by anything less than itself. This approach is easy to come up with, I just followed the basic definition of a prime. Unfortunately, while fast to code, this approach is quite slow to run. We are looking at complexity of O(n^2) here.</p>
+</li>
+<li>
+<p><strong>Very efficient approach:</strong> Staring at the above solution for a few minutes, we can see where the inefficiency lies. We seem to be checking divisibility of many unnecessary numbers. We can use the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">Fundamental Theorem of Arithmetic</a> to significantly increase the efficiency of our solution, which states: <em>every integer greater than 1 either is a prime number itself or can be represented as the product of prime numbers and that, moreover, this representation is unique</em>. Wait a second, if every non prime number has to be divisible by primes, we can apply this to our solution.</p>
+</li>
 </ol>
-
 <p>We will still have an outer loop that iterates <strong>i</strong> from <strong>2</strong> to <strong>n</strong>. But, the <em>inner loop</em> does not need to divide by all numbers less than itself, we can simply divide by all the primes we have found so far and that would be enough. Let&rsquo;s code that in Go :)</p>
+<script type="application/javascript" src="https://gist.github.com/inemtsev/0de328c22c71c72ef4fda3b4e2e47d9e.js?file=main.go"></script>
 
-<script type="application/javascript" src="//gist.github.com/inemtsev/0de328c22c71c72ef4fda3b4e2e47d9e.js?file=main.go"></script>
-
-<p><iframe src="https://giphy.com/embed/3o7qE8cQUUCsrRQ1ry" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/rockthisboat-rockthisboat-premiere-season2-3o7qE8cQUUCsrRQ1ry">via GIPHY</a></p></p>
-
+<iframe src="https://giphy.com/embed/3o7qE8cQUUCsrRQ1ry" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/rockthisboat-rockthisboat-premiere-season2-3o7qE8cQUUCsrRQ1ry">via GIPHY</a></p>
       
       <div class="related">
 </div>
@@ -111,16 +109,22 @@
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <aside><div id="disqus_thread"></div></aside>
+  
     <script type="text/javascript">
       var disqus_shortname = 'ilikedos';
-      (function() {
+      function disqus() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+      }
+  
+      disqus();
+  
+
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
@@ -129,7 +133,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; Ilya Nemtsev 2017</p>
+    <p>&copy; Ilya Nemtsev 2019</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
@@ -151,29 +155,6 @@ if (!doNotTrack) {
 
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.1/min/tiny-slider.js"></script>
-<script type="module">
-  var slider = tns({
-    container: '.my-slider',
-    mode: 'carousel',
-    items: 1,
-    gutter: 5,
-    slideBy: 'page',
-    autoplay: true,
-    autoplayButton: false,
-    speed: 500,
-    navPosition: 'top',
-    controlsPosition: 'bottom',
-    "autoplayText": [
-      "▶",
-      "❚❚"
-    ],
-    controls: true,
-    arrowKeys: true,
-    mouseDrag: true
-  });
-  </script>
 </body>
 </html>
 
