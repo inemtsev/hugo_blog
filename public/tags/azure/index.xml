@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>azure on EventsLooped</title>
+    <link>https://www.eventslooped.com/tags/azure/</link>
+    <description>Recent content in azure on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Sun, 04 Aug 2019 17:33:01 +0700</lastBuildDate>
+    
+	<atom:link href="https://www.eventslooped.com/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Use Golang to Upload Files to Azure Blob Storage</title>
+      <link>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</link>
+      <pubDate>Sun, 04 Aug 2019 17:33:01 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</guid>
+      <description>If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.
+You will need: The first thing you need to do is make sure you set up your blob storage account in Azure Portal and create a blob container.</description>
+    </item>
+    
+    <item>
+      <title>Hugo Blog on Azure</title>
+      <link>https://www.eventslooped.com/posts/hugo-blog-on-azure/</link>
+      <pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/hugo-blog-on-azure/</guid>
+      <description>Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
+Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found Hugo. They have great documentation, modern CLI and great tooling, regardless of your OS preference.
+Since I already have a Microsoft Azure account, I decided to host my static files there.</description>
+    </item>
+    
+  </channel>
+</rss>

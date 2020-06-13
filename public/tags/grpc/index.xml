@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gRPC on EventsLooped</title>
+    <link>https://www.eventslooped.com/tags/grpc/</link>
+    <description>Recent content in gRPC on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Fri, 29 Nov 2019 14:55:29 +0700</lastBuildDate>
+    
+	<atom:link href="https://www.eventslooped.com/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang Microservices Part 1 - gRPC Communication</title>
+      <link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link>
+      <pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</guid>
+      <description>Summary - Setting up gRPC communication gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient HTTP/2 network protocol as well Google&amp;rsquo;s Protocol Buffers (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the .proto file for nearly every programming language available.</description>
+    </item>
+    
+  </channel>
+</rss>

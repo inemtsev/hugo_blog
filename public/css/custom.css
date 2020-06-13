@@ -1,0 +1,138 @@
+article > h2 {
+	margin-top: 20px
+}
+
+/* Background */ .chroma { background-color: #ffffff }
+/* Error */ .chroma .err {  }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; width: auto; overflow: auto; display: block; }
+/* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: #ffffcc }
+/* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* Keyword */ .chroma .k { color: #0000ff }
+/* KeywordConstant */ .chroma .kc { color: #0000ff }
+/* KeywordDeclaration */ .chroma .kd { color: #0000ff }
+/* KeywordNamespace */ .chroma .kn { color: #0000ff }
+/* KeywordPseudo */ .chroma .kp { color: #0000ff }
+/* KeywordReserved */ .chroma .kr { color: #0000ff }
+/* KeywordType */ .chroma .kt { color: #2b91af }
+/* NameClass */ .chroma .nc { color: #2b91af }
+/* LiteralString */ .chroma .s { color: #a31515 }
+/* LiteralStringAffix */ .chroma .sa { color: #a31515 }
+/* LiteralStringBacktick */ .chroma .sb { color: #a31515 }
+/* LiteralStringChar */ .chroma .sc { color: #a31515 }
+/* LiteralStringDelimiter */ .chroma .dl { color: #a31515 }
+/* LiteralStringDoc */ .chroma .sd { color: #a31515 }
+/* LiteralStringDouble */ .chroma .s2 { color: #a31515 }
+/* LiteralStringEscape */ .chroma .se { color: #a31515 }
+/* LiteralStringHeredoc */ .chroma .sh { color: #a31515 }
+/* LiteralStringInterpol */ .chroma .si { color: #a31515 }
+/* LiteralStringOther */ .chroma .sx { color: #a31515 }
+/* LiteralStringRegex */ .chroma .sr { color: #a31515 }
+/* LiteralStringSingle */ .chroma .s1 { color: #a31515 }
+/* LiteralStringSymbol */ .chroma .ss { color: #a31515 }
+/* OperatorWord */ .chroma .ow { color: #0000ff }
+/* Comment */ .chroma .c { color: #008000 }
+/* CommentHashbang */ .chroma .ch { color: #008000 }
+/* CommentMultiline */ .chroma .cm { color: #008000 }
+/* CommentSingle */ .chroma .c1 { color: #008000 }
+/* CommentSpecial */ .chroma .cs { color: #008000 }
+/* CommentPreproc */ .chroma .cp { color: #0000ff }
+/* CommentPreprocFile */ .chroma .cpf { color: #0000ff }
+/* GenericEmph */ .chroma .ge { font-style: italic }
+/* GenericHeading */ .chroma .gh { font-weight: bold }
+/* GenericPrompt */ .chroma .gp { font-weight: bold }
+/* GenericStrong */ .chroma .gs { font-weight: bold }
+/* GenericSubheading */ .chroma .gu { font-weight: bold }
+
+/* tiny slider */
+.thumbnails { 
+	margin: 20px 0;
+	text-align: center;
+  }
+  .thumbnails li {
+	display: inline-block;
+	cursor: pointer;
+	border: 5px solid #fff;
+  }
+  .thumbnails .tns-nav-active {
+	background: none;
+	border-color: #000;
+  }
+  .thumbnails li { width: 50px; }
+  .thumbnails img { vertical-align: bottom; height: auto; max-height: 50px; }
+  .controls { text-align: center; }
+  .controls li {
+	display: block;
+	position: absolute;
+	top: 50%;
+	height: 60px;
+	line-height: 60px;
+	margin-top: -30px;
+	padding: 0 15px;
+	cursor: pointer;
+	transition: background 0.3s;
+  }
+  .controls li img { display: inline-block; vertical-align: middle; }
+  .controls .prev { left: 0; }
+  .controls .next { right: 0; }
+  .controls li:hover { background: #f2f2f2; }
+  
+  .tns-controls { text-align: center; margin-bottom: 10px; }
+  .tns-controls [aria-controls] {
+	font-size: 15px;
+	margin: 0 5px;
+	padding: 0 1em;
+	height: 2.5em;
+	color: #000;
+	background: #66CCFF;
+	border-radius: 3px;
+	border: 0;
+  }
+  .lt-ie9 .tns-controls > [aria-controls] {
+	line-height: 2.5em;
+  }
+  [data-action] {
+	display: block;
+	margin: 10px auto;
+	font-size: 17px;
+	min-width: 3em;
+	text-align: center;
+	background: transparent;
+	border: 0;
+  }
+  .tns-controls [disabled] { 
+	color: #999999;
+	background: #B3B3B3; 
+	cursor: not-allowed !important;
+  }
+  .tns-nav {
+	text-align: center;
+	margin: 10px 0;
+  }
+  .tns-nav > [aria-controls] {
+	width: 9px;
+	height: 9px;
+	padding: 0;
+	margin: 0 5px;
+	border-radius: 50%;
+	background: #ddd;
+	border: 0;
+  }
+  .tns-nav > .tns-nav-active { background: #999; }
+  .playbutton-wrapper { text-align: center; }
+  .playbutton-wrapper button { height: 34px; padding: 0 10px; font-size: 14px; background: #fff; border-radius: 3px; border: 1px solid  #ccc; cursor: pointer; }
+  .wrapper { padding: 0 5em; }
+  .suite-container .title, 
+  .suite-container .subtitle, 
+  .suite-container li { padding: 5px 10px; }
+  .suite-container li {
+	font-size: 12px;
+	line-height: 1.4;
+	background: #f5f5f5;
+  }
+
+  .content .my-slider a {
+	  text-decoration: none;
+	  border-bottom: 0;
+  }

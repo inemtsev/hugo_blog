@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TypeScript on EventsLooped</title>
+    <link>https://www.eventslooped.com/tags/typescript/</link>
+    <description>Recent content in TypeScript on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Wed, 15 Apr 2020 19:30:11 +0700</lastBuildDate>
+    
+	<atom:link href="https://www.eventslooped.com/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chunked File Upload using TypeScript, React, and Go</title>
+      <link>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</link>
+      <pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</guid>
+      <description>Why you may want to chunk files? The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.
+Let&amp;rsquo;s build a simple app using no additional javascript libraries!</description>
+    </item>
+    
+    <item>
+      <title>Typescript and its future</title>
+      <link>https://www.eventslooped.com/posts/typescript-future/</link>
+      <pubDate>Sat, 27 Apr 2019 17:21:11 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/typescript-future/</guid>
+      <description>Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&amp;hellip;) with TypeScript support out of the box. By default.
+You can imagine this gave TypeScript a strong boost in popularity.</description>
+    </item>
+    
+  </channel>
+</rss>
