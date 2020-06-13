@@ -2,6 +2,7 @@
 title: "Use Golang to Upload Files to Azure Blob Storage"
 date: 2019-08-04T17:33:01+07:00
 draft: false
+tags: ["golang","azure", "blobs"]
 sitemap: 
     priority: 0.5
 ---

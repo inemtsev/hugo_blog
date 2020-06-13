@@ -2,6 +2,7 @@
 title: "Automate Open Tabs in Cmder"
 date: 2020-06-04T10:46:40+07:00
 draft: false
+tags: ["cmder","terminal","automation"]
 sitemap: 
     priority: 0.5
 ---

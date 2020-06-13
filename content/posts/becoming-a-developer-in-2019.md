@@ -3,6 +3,7 @@ title: "Becoming a Developer in 2019"
 date: 2019-05-12T14:41:36+07:00
 draft: false
 imgpad: 14
+tags: ["career"]
 sitemap: 
     priority: 0.5
 ---

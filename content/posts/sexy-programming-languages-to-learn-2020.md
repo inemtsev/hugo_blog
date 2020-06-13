@@ -2,6 +2,7 @@
 title: "Sexy Programming Languages to Learn 2020"
 date: 2019-12-22T13:55:36+07:00
 draft: false
+tags: ["programming languages", "2020"]
 sitemap: 
     priority: 0.5
 ---

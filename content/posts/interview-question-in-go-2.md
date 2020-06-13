@@ -2,6 +2,7 @@
 title: "Go Interview Question #2 - Write a function to check if a string is a palindrome"
 date: 2020-05-16T15:52:15+07:00
 draft: false
+tags: ["interview","golang","array"]
 sitemap: 
     priority: 0.5
 ---

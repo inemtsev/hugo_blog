@@ -3,6 +3,7 @@ title: "Make Multiple Api Calls At The Same Time With GoRoutines"
 date: 2019-06-03T21:16:17+07:00
 draft: false
 imgPad: 14
+tags: ["golang","api","concurrency"]
 sitemap:
     priority: 0.5
 ---

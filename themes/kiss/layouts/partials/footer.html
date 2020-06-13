@@ -1,0 +1,47 @@
+<section class="section">
+  <div class="container has-text-centered">
+    <p>{{ .Site.Copyright | safeHTML }}</p>
+    {{if .Site.Params.Info.poweredby}}
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
+    {{ end }}
+  </div>
+</section>
+{{ if .Site.GoogleAnalytics }}
+{{ template "_internal/google_analytics_async.html" . }}
+{{ end }}
+{{ if .Site.Params.matomoAnalytics }}
+{{- partial "analytics/matomo" . -}}
+{{ end }}
+{{ if .Site.Params.fathomAnalytics }}
+{{- partial "analytics/fathom" . -}}
+{{ end }}
+
+{{ $postTinySliderScriptEnabled := eq .Params.tinySlider true }}
+{{ $blogTinySliderScriptVal := .Scratch.Get "tinySlider" }}
+{{ $blogTinySliderScriptEnabled := eq $blogTinySliderScriptVal true }}
+{{ if or $postTinySliderScriptEnabled $blogTinySliderScriptEnabled }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<script type="module">
+  var slider = tns({
+    container: '.my-slider',
+    mode: 'carousel',
+    items: 1,
+    gutter: 5,
+    slideBy: 'page',
+    autoplay: true,
+    autoplayButton: false,
+    speed: 500,
+    navPosition: 'top',
+    controlsPosition: 'bottom',
+    "autoplayText": [
+      "▶",
+      "❚❚"
+    ],
+    controls: true,
+    arrowKeys: true,
+    mouseDrag: true
+  });
+</script>
+{{ end }}
+</body>
+</html>

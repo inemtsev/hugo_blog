@@ -2,6 +2,7 @@
 title: "Golang Microservices Part 1 - gRPC Communication"
 date: 2019-11-29T14:55:29+07:00
 draft: false
+tags: ["golang","gRPC", "microservices"]
 sitemap: 
     priority: 0.5
 ---

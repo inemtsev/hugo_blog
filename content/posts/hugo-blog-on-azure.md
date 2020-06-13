@@ -3,6 +3,7 @@ title: "Hugo Blog on Azure"
 date: 2018-12-09T15:51:09-05:00
 draft: false
 imgpad: 14
+tags: ["hugo","azure"]
 sitemap: 
     priority: 0.5
 ---

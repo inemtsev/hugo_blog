@@ -1,0 +1,3 @@
+---
+tinySlider: true
+---

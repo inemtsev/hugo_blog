@@ -2,6 +2,7 @@
 title: "Go Interview Question #1 - Find all the prime numbers less than or equal to 'n'"
 date: 2020-05-06T13:10:43+07:00
 draft: false
+tags: ["interview","golang","number theory"]
 sitemap: 
     priority: 0.5
 ---

@@ -2,6 +2,7 @@
 title: "Chunked File Upload using TypeScript, React, and Go"
 date: 2020-04-15T19:30:11+07:00
 draft: false
+tags: ["golang","TypeScript","file upload"]
 sitemap:
     priority: 0.5
 ---

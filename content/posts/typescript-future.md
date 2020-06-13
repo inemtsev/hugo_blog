@@ -3,6 +3,7 @@ title: "Typescript and its future"
 date: 2019-04-27T17:21:11+07:00
 draft: false
 imgpad: 14
+tags: ["TypeScript"]
 sitemap:
     priority: 0.5
 ---
