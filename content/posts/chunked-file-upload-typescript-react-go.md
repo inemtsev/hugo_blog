@@ -145,7 +145,7 @@ func isFileUploadCompleted(c *gin.Context) bool {
 The upload to the cloud here is GCP specific, but I will summarize it here if anybody needs it:
 
 1. Create a bucket under **Storage** in [Google Cloud Console](https://console.cloud.google.com). I used Uniform Access Control, but if you need finer access control you can choose the other option. 
-<p><img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage"/></p>
+<p><img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-storage.png" alt="GCP Storage" loading="lazy" /></p>
 
 2. Create a **service account** to allow access to your resource. This will allow you to generate a json file which stores your credentials. Put this file somewhere in your filesystem and create an environmental variable GOOGLE_APPLICATION_CREDENTIALS to point to this json file. Google provides some instructions [here](https://cloud.google.com/docs/authentication/production#linux-or-macos). 
 I provide my own simple instructions for Windows [here](https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/gcp-set-service-account-path.png).
@@ -191,13 +191,13 @@ A few things to mention here. **bucketName** is the name of the bucket you creat
 ### Let's test!
 
 <p>Submit the form with a few files.</p>
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test1.png" alt="client-side test"/>
+<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test1.png" alt="client-side test" loading="lazy" />
 
 <p>Golang console output:</p>
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png" alt="server-side test"/>
+<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test2.png" alt="server-side test" loading="lazy" />
 
 <p>Google Cloud Platform result:</p>
-<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test3.png" alt="GCP storage result"/>
+<img src="https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/upload-test3.png" alt="GCP storage result" loading="lazy" />
 
 <p>Great everything worked :)</p>
 <img src="https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/chunked-file-upload-typescript-react-go/viktor-talashuk-cabin.jpg" alt="Look what we made!"/>

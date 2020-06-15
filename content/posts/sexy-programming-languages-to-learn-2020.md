@@ -58,10 +58,10 @@ Swift has made waves when it appeared in 2014, finally replacing the aging Objec
  - Strict compiler that checks your code style
  
  Community around Rust is very enthusiastic and most developers that use it claim to love it. See for yourself, here are results from Stackoverflow's survey of most loved programming languages: 
- <img src="../img/sexy-programming-languages-to-learn-2020/SO-most-loved-languages.png" alt="most loved programming languages"/>
+ <img src="../img/sexy-programming-languages-to-learn-2020/SO-most-loved-languages.png" alt="most loved programming languages" loading="lazy" />
 
  Plenty of desktop applications are currently being written in Rust, including their own Mozilla Firefox. However, there is plenty of enthusiastic developers contributing to its web frameworks as well, and there are good reasons for it, take a look at benchmarks maintained by techempower.com: 
- <img src="../img/sexy-programming-languages-to-learn-2020/techempower-benchmarks.PNG" alt="fastest web frameworks"/>
+ <img src="../img/sexy-programming-languages-to-learn-2020/techempower-benchmarks.PNG" alt="fastest web frameworks" loading="lazy" />
 
 <p>Best resources I could find for picking up Rust: </p>
 
@@ -88,13 +88,13 @@ Swift has made waves when it appeared in 2014, finally replacing the aging Objec
 
 **Google-backed** programming language takes an ultra-modern approach to programming. Instead of adding new features to what is already popular, Go gets rid of many older concepts of programming languages. Lack of inheritance is one such example, which forces the developer to use composition instead. After removing everything the founders considered legacy, and adding modern approaches to managing concurrency and memory, a new, concise, clean programming language was born. Some may even call it sexy ;)
 
- <img src="../img/sexy-programming-languages-to-learn-2020/gopher-dance.gif" alt="Happy Gopher!"/>
+ <img src="../img/sexy-programming-languages-to-learn-2020/gopher-dance.gif" alt="Happy Gopher!" loading="lazy" />
 
 Several big names in the industry make use of Go; Uber, Lift, Grab and Shopify are just some examples. Docker is built in Go as well. In terms of maturity Go is the most popular out of the 5 programming languages, approaching the levels of mainstream. 
 
 Go is generally loved by its developers (as seen the Rust chart above) and developers that know Go are quite well paid:
 
-<img src="../img/sexy-programming-languages-to-learn-2020/SO-highest-paid-languages.PNG" alt="Highest paid developers">
+<img src="../img/sexy-programming-languages-to-learn-2020/SO-highest-paid-languages.PNG" alt="Highest paid developers" loading="lazy" />
 <p>The best resources I can find for learning Golang: </p>
 
 1) [Todd McLeod's Udemy Course (one of my fav courses)](https://www.udemy.com/course/learn-how-to-code/)
@@ -105,7 +105,7 @@ Go is generally loved by its developers (as seen the Rust chart above) and devel
 
 Google Trends comparing these 5 programming languages: 
 
-<img src="../img/sexy-programming-languages-to-learn-2020/GT-trends.PNG" alt="Trend of sexy programming langauges">
+<img src="../img/sexy-programming-languages-to-learn-2020/GT-trends.PNG" alt="Trend of sexy programming langauges" loading="lazy" />
 
 I hope this helps you decide how to spice up your resume or your side projects :)
 

@@ -15,7 +15,7 @@ There has never been a better time to become a web developer than now. The Unite
 A person that likes to problem solve, create things, pays attention to detail and does not get frustrated easily. Do I need to be good at math? It depends. Most jobs in web development do not require any math knowledge beyond 9th grade, however people who are bettter at math tend to pick up more advanced concepts like Big Data and Machine Learning more easily. This does not mean that if you didn't study hard sciences or computer science you cannot become a web developer; I know several talented web developers that had background in Music or the Arts for example. Do I need a degree? Not at all, but like with any training, it helps. Some big name companies may toss your resume if you don't have a degree, but most will overlook this deficiency if you have done interesting side projects or even better, if you have experience. 
 
 <p>
-    <img alt="Average wages by education" src="../img/becoming-a-web-developer-in-2019/general-wages-by-college-level-degrees.jpg"/>
+    <img alt="Average wages by education" src="../img/becoming-a-web-developer-in-2019/general-wages-by-college-level-degrees.jpg" loading="lazy" />
     <div>Source: Microsoft Visual Studio Magazine</div>
 </p>
 
@@ -23,14 +23,14 @@ My experience in the industry, taught me that education is not the greatest fact
 
 So, if you read the above and think you have what it takes, read on.
 <p>
-    <img alt="Chuck Norris approves" src="../img/becoming-a-web-developer-in-2019/chuck_norris_approves.gif"/>
+    <img alt="Chuck Norris approves" src="../img/becoming-a-web-developer-in-2019/chuck_norris_approves.gif" loading="lazy" />
 </p>
 
 ### Choosing what to learn
 
 Noobie developers spend a bit too much time on this, decision of choice has always been a time-waster. The important thing is to start learning and doing as soon as possible. As long as you choose one of the more popular tech stacks, you should have no trouble job-wise; plus once you know one you can always switch later. To become a full-stack developer you will need to learn at least one front-end framework and one back-end framework. Back-end frameworks run on the server, talk to the database and crunch data. Front-end frameworks generate the UI and run in the browser. What are the top tech stack as of 2019 you may ask?
 <p>
-    <img alt="The problem is choice" src="../img/becoming-a-web-developer-in-2019/problem-is-choice.jpg"/>
+    <img alt="The problem is choice" src="../img/becoming-a-web-developer-in-2019/problem-is-choice.jpg" loading="lazy" />
 </p>
 
 #### Top back-end frameworks (From most recommended to least)
@@ -43,7 +43,7 @@ Noobie developers spend a bit too much time on this, decision of choice has alwa
 **Python with Django framework:** Python has one of the fastest growing communities on the internet and is considered one of the hottest languages in the industry right now. Websites like [Instagram](https://www.instagram.com/), [Pinterest](https://www.pinterest.ca/) and [Disqus](https://disqus.com/) are great examples of websites running on Django. While not quite as mature as Java and C# based frameworks, Python community is very active and the open source community is very strong. 
 
 <p>
-    <img alt="Python's extraordinary growth" src="../img/becoming-a-web-developer-in-2019/language_projections.png">
+    <img alt="Python's extraordinary growth" src="../img/becoming-a-web-developer-in-2019/language_projections.png" loading="lazy" />
     <div>Source: https://stackoverflow.blog/2017/09/06/incredible-growth-python/
 </p>
 
@@ -55,7 +55,7 @@ Noobie developers spend a bit too much time on this, decision of choice has alwa
 
 **Ruby on Rails:** Ruby on Rails web framework which uses Ruby as its programming language, is a perfect example of a technology that imploded and fell behind. On the surface Ruby is a fantastic language, it is known for being very readable, easy to understand and easy to write. Unfortunately, there are some aspects of Ruby on Rails framework that reduced its adoption significantly. First, its very opinionated community has lost many of its significant open source contributors. Second, its mediocre performance is significantly behind any of the web frameworks listed above. It was for this reason Twitter, has moved away from Ruby on Rails to Java/Scala. Similarly, linkedIn also moved away from Ruby on Rails and on to Node.js. Unless, you already have an offer ready for a job using Ruby on Rails, I do not recommend starting with this framework in 2019. 
 <p>
-    <img alt="Ruby on Rails is dying" src="../img/becoming-a-web-developer-in-2019/ruby-on-rails-trends.jpg"/>
+    <img alt="Ruby on Rails is dying" src="../img/becoming-a-web-developer-in-2019/ruby-on-rails-trends.jpg" loading="lazy" />
     <div>Source: https://naturaily.com/blog/who-gives-f-about-rails</div>
 </p>
 
@@ -89,7 +89,7 @@ Jobs on Indeed (Hong Kong) | 282 | 184 | 80
 Jobs on LinkedIn (Hong Kong) | 57 | 119 | 30
 
 <p>
-    <img alt="Trends of major js frameworks" src="../img/becoming-a-web-developer-in-2019/js_framework_trend.PNG">
+    <img alt="Trends of major js frameworks" src="../img/becoming-a-web-developer-in-2019/js_framework_trend.PNG" loading="lazy" />
     <div> Source: Google Trends</div>
 </p>
 

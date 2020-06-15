@@ -1,26 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>blobs on EventsLooped</title>
-    <link>https://www.eventslooped.com/tags/blobs/</link>
-    <description>Recent content in blobs on EventsLooped</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
-    <lastBuildDate>Sun, 04 Aug 2019 17:33:01 +0700</lastBuildDate>
-    
-	<atom:link href="https://www.eventslooped.com/tags/blobs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Use Golang to Upload Files to Azure Blob Storage</title>
-      <link>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</link>
-      <pubDate>Sun, 04 Aug 2019 17:33:01 +0700</pubDate>
-      
-      <guid>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</guid>
-      <description>If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.
-You will need: The first thing you need to do is make sure you set up your blob storage account in Azure Portal and create a blob container.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>blobs on EventsLooped</title><link>https://www.eventslooped.com/tags/blobs/</link><description>Recent content in blobs on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Sun, 04 Aug 2019 17:33:01 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/blobs/index.xml" rel="self" type="application/rss+xml"/><item><title>Use Golang to Upload Files to Azure Blob Storage</title><link>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</link><pubDate>Sun, 04 Aug 2019 17:33:01 +0700</pubDate><guid>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</guid><description>If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.
+You will need: The first thing you need to do is make sure you set up your blob storage account in Azure Portal and create a blob container.</description></item></channel></rss>

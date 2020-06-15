@@ -130,8 +130,8 @@ I love how easily you can setup a simple web server in Go. The main function is 
 ### Let's Go! No pun intended ;)
 After pulling this code into two VMs on Google Cloud Platform. I ran both services and everything checks out. 
 
-<p><img src="../img/golang-microservices-gRPC-communication/200-result.PNG" alt="gin results"/></p>
-<p><img src="../img/golang-microservices-gRPC-communication/postman-checks-out.PNG" alt="postman"/></p>
+<p><img src="../img/golang-microservices-gRPC-communication/200-result.PNG" alt="gin results" loading="lazy" /></p>
+<p><img src="../img/golang-microservices-gRPC-communication/postman-checks-out.PNG" alt="postman" loading="lazy" /></p>
 
 Hope this helped you setup gRPC connectivity between your microservices :)
 

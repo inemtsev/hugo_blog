@@ -157,16 +157,16 @@ Putting all the pieces into our app from Part 1 we get:
 I added one row into the database for testing purposes: 
 
 Sending a request to our API for player with **Id** of **1**, gives us: 
-<p><img src="../img/golang-microservices-adding-PostgreSQL/result1.png" alt="cache only"/></p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/result1.png" alt="cache only" loading="lazy" /></p>
 
 Sending another request for a player with **Id** of **2** (this one is from our database):
-<p><img src="../img/golang-microservices-adding-PostgreSQL/result2.png" alt="cache and db only"/></p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/result2.png" alt="cache and db only" loading="lazy" /></p>
 
 Now, let's take a look at our Gin API. I made a third request for player with Id of 2 to see if we get the expected speed-up from cache. And we do indeed:
-<p><img src="../img/golang-microservices-adding-PostgreSQL/result3.png" alt="cache only"/></p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/result3.png" alt="cache only" loading="lazy" /></p>
 
 Voila! It works as expected!
-<p><img src="../img/golang-microservices-adding-PostgreSQL/JSON-result.png" alt="json result"/></p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/JSON-result.png" alt="json result" loading="lazy" /></p>
 
 <p>Go Warriors! :)</p>
 <iframe src="https://giphy.com/embed/fe6GhFBexWZeMgt5nV" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-emotion-stephen-curry-fe6GhFBexWZeMgt5nV">via GIPHY</a></p>

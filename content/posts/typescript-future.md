@@ -12,13 +12,13 @@ Before Angular team decided to turn the its community upside down with the relea
 
 You can imagine this gave TypeScript a strong boost in popularity. 
 <p>
-    <img alt="Typescript, 5 year trend" src="../img/typescript-future/typescript-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}">
+    <img alt="Typescript, 5 year trend" src="../img/typescript-future/typescript-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}" loading="lazy" />
     <div>Source: Google Trends for TypeScript</div>
 </p>
 
 Angular received some initial backlash from the drastic changes that were introduced, not just due to Typescript, but also from drastic changes in syntax. The initial disappointment of AngularJS fans overshadowed the drastic improvements in performance and new features like Dependency Injection and Lazy Loading of components. 
 <p>
-    <img alt="Angular, 5 year trend" src="../img/typescript-future/angular-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}">
+    <img alt="Angular, 5 year trend" src="../img/typescript-future/angular-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}" loading="lazy" />
     <div>Source: Google Trends for Angular</div>
 </p>
 

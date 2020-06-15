@@ -1,286 +1,46 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-<title>Golang Microservices Part 1 - gRPC Communication | EventsLooped</title>
-
-
-
-<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
-
-<link rel="stylesheet" href="/css/style.css" />
-
-
-
-
-<link rel='stylesheet' href='https://www.eventslooped.com/css/custom.css' /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="manifest" href="/site.webmanifest" />
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="canonical" href="https://www.eventslooped.com/posts/golang-microservices-grpc-communication/" />
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-</head>
-<body>
-<section class="section">
-  <div class="container">
-    <nav id="nav-main" class="nav">
-      <div id="nav-name" class="nav-left">
-        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
-          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
-        </a>
-      </div>
-      <div class="nav-right">
-        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
-            target='_blank' rel='noopener'>
-            <span class="icon">
-              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Golang Microservices Part 1 - gRPC Communication | EventsLooped</title><link href=https://www.eventslooped.com/index.xml rel=alternate type=application/rss+xml title=EventsLooped><link rel=stylesheet href=https://www.eventslooped.com/css/style.min.css><link rel=stylesheet href=https://www.eventslooped.com/css/custom.min.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical href=https://www.eventslooped.com/posts/golang-microservices-grpc-communication/><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"></head><body><section class=section><div class=container><nav id=nav-main class=nav><div id=nav-name class=nav-left><a id=nav-anchor class=nav-item href=https://www.eventslooped.com><h1 id=nav-heading class="title is-4">EventsLooped</h1></a></div><div class=nav-right><nav id=nav-items class="nav-item level is-mobile"><a class=level-item aria-label=github href=https://github.com/inemtsev target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></i></span></a><a class=level-item aria-label=email href=mailto:eventslooped@gmail.com target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></i></span></a><a class=level-item aria-label=linkedin href=https://linkedin.com/in/ilyanemtsev target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path stroke-width="1.8" d="m5.839218 4.101561c0 1.211972-.974141 2.194011-2.176459 2.194011S1.4863 5.313533 1.4863 4.101561c0-1.211094.974141-2.194011 2.176459-2.194011s2.176459.982917 2.176459 2.194011zm.017552 3.94922h-4.388022v14.04167H5.85677V8.050781zm7.005038.0H8.501869v14.04167h4.360816v-7.370999c0-4.098413 5.291077-4.433657 5.291077.0v7.370999h4.377491v-8.89101c0-6.915523-7.829986-6.66365-9.669445-3.259423V8.050781z"/></svg></i></span></a></nav></div></nav><nav class=nav><div class=nav-left><a class=nav-item href=/about-me><h2 class="title is-5">About me</h2></a><a class=nav-item href=/index.html><h2 class="title is-5">Blog</h2></a></div></nav></div></section><section class=section><div class=container><div class="subtitle tags is-6 is-pulled-right"><a class="subtitle is-6" href=/tags/golang/>#golang</a>
+| <a class="subtitle is-6" href=/tags/grpc/>#gRPC</a>
+| <a class="subtitle is-6" href=/tags/microservices/>#microservices</a></div><h2 class="subtitle is-6">November 29, 2019</h2><h1 class=title>Golang Microservices Part 1 - gRPC Communication</h1><div class=content><h3 id=summary---setting-up-grpc-communication>Summary - Setting up gRPC communication</h3><p>gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient <a href=https://en.wikipedia.org/wiki/HTTP/2>HTTP/2 network protocol</a> as well Google&rsquo;s <a href=https://en.wikipedia.org/wiki/Protocol_Buffers>Protocol Buffers</a> (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the <strong>.proto</strong> file for nearly every programming language available.</p><h3 id=protobuf>ProtoBuf</h3><p>Before setting up our server and client, we need to define the message/contract structure and service definitions using Protocol Buffers in a <strong>.proto</strong> file. If you need a guide on the protocol buffer language, <a href=https://developers.google.com/protocol-buffers/docs/proto3>you can read about it here</a>; although the language is quite simplistic and you may be able to get away with just looking at these examples for now.</p><p>Let&rsquo;s create a microservice that will provide information on various basketball players over gRPC. Note: Below guide assumes Go runtime is already installed correctly.</p><script type=application/javascript src="https://gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=basketball.proto"></script><p>Now we are ready to generate code from our proto file. For this we will need the Protobuf compiler (which is written in C++). You can download the compiler for your OS from <a href=https://github.com/protocolbuffers/protobuf/releases>this Github page</a>. Since I am using a Windows machine at the moment, I download the <strong>protoc-3.11.0-win64.zip</strong> for example. Within the download archive you will find a <strong>/bin folder</strong> containing the protoc binary. Take this binary and place it nearby your protoc file or vise-versa for easy access (I placed it in <code>C:\Users\myusername\go\src\protoc_bin</code>).</p><p>Lastly, we will need the protoc-gen-go plugin for our compiler. Run the following command to obtain it:</p><blockquote><p>go get -u github.com/golang/protobuf/protoc-gen-go</p></blockquote><p>Now, we are ready to compile. In command line, browse to your protoc binary (in my case <code>C:\Users\myusername\go\src\protoc_bin</code>) and run the following commands, where <code>..\basic-gRPC-proto\</code> is the path to my folder containing the proto file and <strong>basketball.proto</strong> is the name of that proto file:</p><p><code>protoc basketball.proto --go_out=plugins=grpc:. --proto_path=..\basic-gRPC-proto\</code></p><p>You can see that <strong>basketball.pb.go</strong> has been generated! Yay!</p><iframe src=https://giphy.com/embed/axu6dFuca4HKM width=480 height=228 frameborder=0 class=giphy-embed allowfullscreen></iframe><p><a href=https://giphy.com/gifs/axu6dFuca4HKM>via GIPHY</a></p><h3 id=implementing-our-newly-generated-go-code-server>Implementing our newly generated Go code (Server)</h3><p>Let&rsquo;s take a deep breath, because the hardest part is already done :)</p><p>To make use of our new .go package I copied the resulting file to <code>...\go\src\basic-gRPC-proto</code> for convenience. Then back at src folder, create a folder for your server, I called it <strong>basic-gRPC-server</strong>. Now, lets create our main.go and run this command to get google&rsquo;s gRPC library:</p><blockquote><p>go get google.golang.org/grpc</p></blockquote><p>I am using an in-memory cache to store our sample data, just for fun. This library can be installed via the following command:</p><blockquote><p>go get github.com/patrickmn/go-cache</p></blockquote><p>The server code consists of two parts:</p><ol><li><p>Attaching required methods to our server (as defined in our proto file)</p></li><li><p>Starting the server on some IP</p></li></ol><p>First part looks like this. This method is very similar to the definition we defined in the proto file with a few extras. Take a look at the <strong>generated go file</strong> and find your GetBasketballPlayer method, this will show you the signature you will need to have, to satisfy the server definition:</p><div class=highlight><pre class=chroma><code class=language-go data-lang=go>    <span class=kd>type</span> <span class=nx>server</span> <span class=kd>struct</span><span class=p>{}</span>
     
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    <span class=kd>var</span> <span class=nx>c</span> <span class=o>*</span><span class=nx>cache</span><span class=p>.</span><span class=nx>Cache</span>
     
-  </svg></i>
-            </span>
-          </a><a class="level-item" aria-label="email" href='mailto:eventslooped@gmail.com'
-            target='_blank' rel='noopener'>
-            <span class="icon">
-              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    <span class=kd>func</span> <span class=p>(</span><span class=o>*</span><span class=nx>server</span><span class=p>)</span> <span class=nf>GetBasketballPlayer</span><span class=p>(</span><span class=nx>ctx</span> <span class=nx>context</span><span class=p>.</span><span class=nx>Context</span><span class=p>,</span> <span class=nx>r</span> <span class=o>*</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>PlayerRequest</span><span class=p>)</span>     <span class=p>(</span><span class=o>*</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>PlayerResponse</span><span class=p>,</span> <span class=kt>error</span><span class=p>)</span> <span class=p>{</span>
+    	<span class=nx>id</span> <span class=o>:=</span> <span class=nx>r</span><span class=p>.</span><span class=nf>GetId</span><span class=p>()</span>
     
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-    <polyline points="22,6 12,13 2,6"/>
+    	<span class=nx>playerVal</span><span class=p>,</span> <span class=nx>found</span> <span class=o>:=</span> <span class=nx>c</span><span class=p>.</span><span class=nf>Get</span><span class=p>(</span><span class=nx>id</span><span class=p>)</span>
+    	<span class=k>if</span> <span class=nx>found</span> <span class=p>{</span>
+    		<span class=nx>player</span> <span class=o>:=</span> <span class=nx>playerVal</span><span class=p>.(</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>Player</span><span class=p>)</span>
+    		<span class=k>return</span> <span class=o>&amp;</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>PlayerResponse</span><span class=p>{</span>
+    			<span class=nx>Result</span><span class=p>:</span> <span class=o>&amp;</span><span class=nx>player</span><span class=p>,</span>
+    		<span class=p>},</span> <span class=kc>nil</span>
+    	<span class=p>}</span>
     
-  </svg></i>
-            </span>
-          </a><a class="level-item" aria-label="linkedin" href='https://linkedin.com/in/ilyanemtsev'
-            target='_blank' rel='noopener'>
-            <span class="icon">
-              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-    
-    <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
-    
-  </svg></i>
-            </span>
-          </a></nav>
-      </div>
-    </nav>
+    	<span class=k>return</span> <span class=kc>nil</span><span class=p>,</span> <span class=nx>fmt</span><span class=p>.</span><span class=nf>Errorf</span><span class=p>(</span><span class=s>&#34;could not find player with id: %v&#34;</span><span class=p>,</span> <span class=nx>id</span><span class=p>)</span>
+    <span class=p>}</span></code></pre></div><p>Now, for the main() course. Our main function simply creates a sample value in our cache and starts the server.</p><div class=highlight><pre class=chroma><code class=language-go data-lang=go><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Starting gRPC micro-service...&#34;</span><span class=p>)</span>
+	<span class=nx>c</span> <span class=p>=</span> <span class=nx>cache</span><span class=p>.</span><span class=nf>New</span><span class=p>(</span><span class=mi>60</span><span class=o>*</span><span class=nx>time</span><span class=p>.</span><span class=nx>Minute</span><span class=p>,</span> <span class=mi>70</span><span class=o>*</span><span class=nx>time</span><span class=p>.</span><span class=nx>Minute</span><span class=p>)</span>
+	<span class=nx>c</span><span class=p>.</span><span class=nf>Set</span><span class=p>(</span><span class=s>&#34;1&#34;</span><span class=p>,</span> <span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>Player</span><span class=p>{</span>
+		<span class=nx>Id</span><span class=p>:</span>              <span class=s>&#34;1&#34;</span><span class=p>,</span>
+		<span class=nx>FirstName</span><span class=p>:</span>       <span class=s>&#34;James&#34;</span><span class=p>,</span>
+		<span class=nx>LastName</span><span class=p>:</span>        <span class=s>&#34;LeBron&#34;</span><span class=p>,</span>
+		<span class=nx>Age</span><span class=p>:</span>             <span class=mi>33</span><span class=p>,</span>
+		<span class=nx>PhotoUrl</span><span class=p>:</span>        <span class=s>&#34;https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612747/2019/260x190/2544.png&#34;</span><span class=p>,</span>
+		<span class=nx>PointsPerGame</span><span class=p>:</span>   <span class=mi>26</span><span class=p>,</span>
+		<span class=nx>AssistsPerGame</span><span class=p>:</span>  <span class=mi>11</span><span class=p>,</span>
+		<span class=nx>ReboundsPerGame</span><span class=p>:</span> <span class=mi>8</span><span class=p>,</span>
+	<span class=p>},</span> <span class=nx>cache</span><span class=p>.</span><span class=nx>DefaultExpiration</span><span class=p>)</span>
 
-    <nav class="nav">
-      
-      <div class="nav-left"><a class="nav-item" href="/about-me">
-          <h2 class="title is-5">About me</h2>
-        </a><a class="nav-item" href="/index.html">
-          <h2 class="title is-5">Blog</h2>
-        </a></div>
-      
+	<span class=nx>l</span><span class=p>,</span> <span class=nx>e</span> <span class=o>:=</span> <span class=nx>net</span><span class=p>.</span><span class=nf>Listen</span><span class=p>(</span><span class=s>&#34;tcp&#34;</span><span class=p>,</span> <span class=s>&#34;:50051&#34;</span><span class=p>)</span>
+	<span class=k>if</span> <span class=nx>e</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+		<span class=nx>log</span><span class=p>.</span><span class=nf>Fatalf</span><span class=p>(</span><span class=s>&#34;Failed to start listener %v&#34;</span><span class=p>,</span> <span class=nx>e</span><span class=p>)</span>
+	<span class=p>}</span>
 
-      
-    </nav>
+	<span class=nx>s</span> <span class=o>:=</span> <span class=nx>grpc</span><span class=p>.</span><span class=nf>NewServer</span><span class=p>()</span>
+	<span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nf>RegisterPlayerServiceServer</span><span class=p>(</span><span class=nx>s</span><span class=p>,</span> <span class=o>&amp;</span><span class=nx>server</span><span class=p>{})</span>
 
-  </div>
-  <script src="/js/navicon-shift.js"></script>
-</section>
-<section class="section">
-  <div class="container">
-    <div class="subtitle tags is-6 is-pulled-right">
-      
-      
-<a class="subtitle is-6" href="/tags/golang/">#golang</a>
-
-
-
-  
-  | <a class="subtitle is-6" href="/tags/grpc/">#gRPC</a>
-  
-  | <a class="subtitle is-6" href="/tags/microservices/">#microservices</a>
-  
-
-
-      
-    </div>
-    <h2 class="subtitle is-6">November 29, 2019</h2>
-    <h1 class="title">Golang Microservices Part 1 - gRPC Communication</h1>
-    
-    <div class="content">
-      <h3 id="summary---setting-up-grpc-communication">Summary - Setting up gRPC communication</h3>
-<p>gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient <a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2 network protocol</a> as well Google&rsquo;s <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a> (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the <strong>.proto</strong> file for nearly every programming language available.</p>
-<h3 id="protobuf">ProtoBuf</h3>
-<p>Before setting up our server and client, we need to define the message/contract structure and service definitions using Protocol Buffers in a <strong>.proto</strong> file. If you need a guide on the protocol buffer language, <a href="https://developers.google.com/protocol-buffers/docs/proto3">you can read about it here</a>; although the language is quite simplistic and you may be able to get away with just looking at these examples for now.</p>
-<p>Let&rsquo;s create a microservice that will provide information on various basketball players over gRPC. Note: Below guide assumes Go runtime is already installed correctly.</p>
-<script type="application/javascript" src="https://gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=basketball.proto"></script>
-
-<p>Now we are ready to generate code from our proto file. For this we will need the Protobuf compiler (which is written in C++). You can download the compiler for your OS from <a href="https://github.com/protocolbuffers/protobuf/releases">this Github page</a>. Since I am using a Windows machine at the moment, I download the <strong>protoc-3.11.0-win64.zip</strong> for example. Within the download archive you will find a <strong>/bin folder</strong> containing the protoc binary. Take this binary and place it nearby your protoc file or vise-versa for easy access (I placed it in <code>C:\Users\myusername\go\src\protoc_bin</code>).</p>
-<p>Lastly, we will need the protoc-gen-go plugin for our compiler. Run the following command to obtain it:</p>
-<blockquote>
-<p>go get -u github.com/golang/protobuf/protoc-gen-go</p>
-</blockquote>
-<p>Now, we are ready to compile. In command line, browse to your protoc binary (in my case <code>C:\Users\myusername\go\src\protoc_bin</code>) and run the following commands, where <code>..\basic-gRPC-proto\</code> is the path to my folder containing the proto file and <strong>basketball.proto</strong> is the name of that proto file:</p>
-<p><code>protoc basketball.proto --go_out=plugins=grpc:. --proto_path=..\basic-gRPC-proto\</code></p>
-<p>You can see that <strong>basketball.pb.go</strong> has been generated! Yay!</p>
-<iframe src="https://giphy.com/embed/axu6dFuca4HKM" width="480" height="228" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/axu6dFuca4HKM">via GIPHY</a></p>
-<h3 id="implementing-our-newly-generated-go-code-server">Implementing our newly generated Go code (Server)</h3>
-<p>Let&rsquo;s take a deep breath, because the hardest part is already done :)</p>
-<p>To make use of our new .go package I copied the resulting file to <code>...\go\src\basic-gRPC-proto</code> for convenience. Then back at src folder, create a folder for your server, I called it <strong>basic-gRPC-server</strong>. Now, lets create our main.go and run this command to get google&rsquo;s gRPC library:</p>
-<blockquote>
-<p>go get google.golang.org/grpc</p>
-</blockquote>
-<p>I am using an in-memory cache to store our sample data, just for fun. This library can be installed via the following command:</p>
-<blockquote>
-<p>go get github.com/patrickmn/go-cache</p>
-</blockquote>
-<p>The server code consists of two parts:</p>
-<ol>
-<li>
-<p>Attaching required methods to our server (as defined in our proto file)</p>
-</li>
-<li>
-<p>Starting the server on some IP</p>
-</li>
-</ol>
-<p>First part looks like this. This method is very similar to the definition we defined in the proto file with a few extras. Take a look at the <strong>generated go file</strong> and find your GetBasketballPlayer method, this will show you the signature you will need to have, to satisfy the server definition:</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go">    <span class="kd">type</span> <span class="nx">server</span> <span class="kd">struct</span><span class="p">{}</span>
-    
-    <span class="kd">var</span> <span class="nx">c</span> <span class="o">*</span><span class="nx">cache</span><span class="p">.</span><span class="nx">Cache</span>
-    
-    <span class="kd">func</span> <span class="p">(</span><span class="o">*</span><span class="nx">server</span><span class="p">)</span> <span class="nf">GetBasketballPlayer</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">PlayerRequest</span><span class="p">)</span>     <span class="p">(</span><span class="o">*</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">PlayerResponse</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    	<span class="nx">id</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">GetId</span><span class="p">()</span>
-    
-    	<span class="nx">playerVal</span><span class="p">,</span> <span class="nx">found</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
-    	<span class="k">if</span> <span class="nx">found</span> <span class="p">{</span>
-    		<span class="nx">player</span> <span class="o">:=</span> <span class="nx">playerVal</span><span class="p">.(</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">Player</span><span class="p">)</span>
-    		<span class="k">return</span> <span class="o">&amp;</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">PlayerResponse</span><span class="p">{</span>
-    			<span class="nx">Result</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">player</span><span class="p">,</span>
-    		<span class="p">},</span> <span class="kc">nil</span>
-    	<span class="p">}</span>
-    
-    	<span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;could not find player with id: %v&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
-    <span class="p">}</span></code></pre></div>
-<p>Now, for the main() course. Our main function simply creates a sample value in our cache and starts the server.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Starting gRPC micro-service...&#34;</span><span class="p">)</span>
-	<span class="nx">c</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span> <span class="mi">70</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
-	<span class="nx">c</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">,</span> <span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">Player</span><span class="p">{</span>
-		<span class="nx">Id</span><span class="p">:</span>              <span class="s">&#34;1&#34;</span><span class="p">,</span>
-		<span class="nx">FirstName</span><span class="p">:</span>       <span class="s">&#34;James&#34;</span><span class="p">,</span>
-		<span class="nx">LastName</span><span class="p">:</span>        <span class="s">&#34;LeBron&#34;</span><span class="p">,</span>
-		<span class="nx">Age</span><span class="p">:</span>             <span class="mi">33</span><span class="p">,</span>
-		<span class="nx">PhotoUrl</span><span class="p">:</span>        <span class="s">&#34;https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612747/2019/260x190/2544.png&#34;</span><span class="p">,</span>
-		<span class="nx">PointsPerGame</span><span class="p">:</span>   <span class="mi">26</span><span class="p">,</span>
-		<span class="nx">AssistsPerGame</span><span class="p">:</span>  <span class="mi">11</span><span class="p">,</span>
-		<span class="nx">ReboundsPerGame</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-	<span class="p">},</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">DefaultExpiration</span><span class="p">)</span>
-
-	<span class="nx">l</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="s">&#34;tcp&#34;</span><span class="p">,</span> <span class="s">&#34;:50051&#34;</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Failed to start listener %v&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nf">NewServer</span><span class="p">()</span>
-	<span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nf">RegisterPlayerServiceServer</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">server</span><span class="p">{})</span>
-
-	<span class="k">if</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Serve</span><span class="p">(</span><span class="nx">l</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;failed to serve %v&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
-	<span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-<p>Take note of this line. If you provide the wrong signature for your proto service method above, compiler will complain here:</p>
-<blockquote>
-<p>basketBallPlayer.RegisterPlayerServiceServer(s, &amp;server{})</p>
-</blockquote>
-<p>Putting these two together, your gRPC server will look like this:</p>
-<script type="application/javascript" src="https://gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=server-main.go"></script>
-
-<h3 id="implementing-our-newly-generated-go-code-client">Implementing our newly generated Go code (Client)</h3>
-<p>Let&rsquo;s take another deep breath, the last part is even easier. We will build a basic Web API that can be called externally and returns JSON, in the background our API will call the above microservice via gRPC. Let&rsquo;s get started.</p>
-<p><strong>First, let&rsquo;s setup a basic API with Gin web framework.</strong>
-Download the <a href="https://github.com/gin-gonic/gin">Gin HTTP framework</a> package:</p>
-<blockquote>
-<p>go get github.com/gin-gonic/gin</p>
-</blockquote>
-<p>I created a folder for my API called <strong>basic-gRPC-client</strong> with a main.go file. Then added the following code:</p>
-<script type="application/javascript" src="https://gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=client-main.go"></script>
-
-<p>I love how easily you can setup a simple web server in Go. The main function is mostly router configuration.</p>
-<p><strong>sAddress</strong> here refers to the address of your gRPC server/microservice. Depending on your network configuration, you may need to use your internal IPs for this. <strong>50051</strong> is the port commonly used for gRPC.</p>
-<p><strong>grpc.WithInsecure()</strong> is used in this example because we are not securing our connection transport via SSL.</p>
-<h3 id="lets-go-no-pun-intended-">Let&rsquo;s Go! No pun intended ;)</h3>
-<p>After pulling this code into two VMs on Google Cloud Platform. I ran both services and everything checks out.</p>
-<p><img src="../img/golang-microservices-gRPC-communication/200-result.PNG" alt="gin results"/></p>
-<p><img src="../img/golang-microservices-gRPC-communication/postman-checks-out.PNG" alt="postman"/></p>
-<p>Hope this helped you setup gRPC connectivity between your microservices :)</p>
-<p>In Part 2 of this series, let&rsquo;s add Postgre SQL connectivity.</p>
-
-      
-      <div class="related">
-
-<h3>Similar articles:</h3>
-<ul>
-	
-	<li><a href="/posts/krakend-writing-plugins/">KrakenD: Writing Plugins using Golang</a></li>
-	
-	<li><a href="/posts/use-golang-to-upload-files-to-azure-blob-storage/">Use Golang to Upload Files to Azure Blob Storage</a></li>
-	
-	<li><a href="/posts/golang-make-multiple-api-calls/">Make Multiple Api Calls At The Same Time With GoRoutines</a></li>
-	
-</ul>
-</div>
-      
-    </div>
-    
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container">
-    <aside><div id="disqus_thread"></div></aside>
-  
-    <script type="text/javascript">
-      var disqus_shortname = 'ilikedos';
-      function disqus() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-  
-      disqus();
-  
-
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; Ilya Nemtsev 2019</p>
-    
-      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
-    
-  </div>
-</section>
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-140872128-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-
-
-</body>
-</html>
-
+	<span class=k>if</span> <span class=nx>e</span> <span class=o>:=</span> <span class=nx>s</span><span class=p>.</span><span class=nf>Serve</span><span class=p>(</span><span class=nx>l</span><span class=p>);</span> <span class=nx>e</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+		<span class=nx>log</span><span class=p>.</span><span class=nf>Fatalf</span><span class=p>(</span><span class=s>&#34;failed to serve %v&#34;</span><span class=p>,</span> <span class=nx>e</span><span class=p>)</span>
+	<span class=p>}</span>
+<span class=p>}</span></code></pre></div><p>Take note of this line. If you provide the wrong signature for your proto service method above, compiler will complain here:</p><blockquote><p>basketBallPlayer.RegisterPlayerServiceServer(s, &server{})</p></blockquote><p>Putting these two together, your gRPC server will look like this:</p><script type=application/javascript src="https://gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=server-main.go"></script><h3 id=implementing-our-newly-generated-go-code-client>Implementing our newly generated Go code (Client)</h3><p>Let&rsquo;s take another deep breath, the last part is even easier. We will build a basic Web API that can be called externally and returns JSON, in the background our API will call the above microservice via gRPC. Let&rsquo;s get started.</p><p><strong>First, let&rsquo;s setup a basic API with Gin web framework.</strong>
+Download the <a href=https://github.com/gin-gonic/gin>Gin HTTP framework</a> package:</p><blockquote><p>go get github.com/gin-gonic/gin</p></blockquote><p>I created a folder for my API called <strong>basic-gRPC-client</strong> with a main.go file. Then added the following code:</p><script type=application/javascript src="https://gist.github.com/inemtsev/da51690a81854591e3899e56a95fa3de.js?file=client-main.go"></script><p>I love how easily you can setup a simple web server in Go. The main function is mostly router configuration.</p><p><strong>sAddress</strong> here refers to the address of your gRPC server/microservice. Depending on your network configuration, you may need to use your internal IPs for this. <strong>50051</strong> is the port commonly used for gRPC.</p><p><strong>grpc.WithInsecure()</strong> is used in this example because we are not securing our connection transport via SSL.</p><h3 id=lets-go-no-pun-intended->Let&rsquo;s Go! No pun intended ;)</h3><p>After pulling this code into two VMs on Google Cloud Platform. I ran both services and everything checks out.</p><p><img src=../img/golang-microservices-gRPC-communication/200-result.PNG alt="gin results" loading=lazy></p><p><img src=../img/golang-microservices-gRPC-communication/postman-checks-out.PNG alt=postman loading=lazy></p><p>Hope this helped you setup gRPC connectivity between your microservices :)</p><p>In Part 2 of this series, let&rsquo;s add Postgre SQL connectivity.</p><div class=related><h3>Similar articles:</h3><ul><li><a href=/posts/krakend-writing-plugins/>KrakenD: Writing Plugins using Golang</a></li><li><a href=/posts/use-golang-to-upload-files-to-azure-blob-storage/>Use Golang to Upload Files to Azure Blob Storage</a></li><li><a href=/posts/golang-make-multiple-api-calls/>Make Multiple Api Calls At The Same Time With GoRoutines</a></li></ul></div></div></div></section><section class=section><div class=container><aside><div id=disqus_thread></div></aside><script type=text/javascript>var disqus_shortname='ilikedos';function disqus(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='//'+disqus_shortname+'.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);}
+disqus();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript rel=nofollow>comments powered by Disqus.</a></noscript></div></section><section class=section><div class="container has-text-centered"><p>&copy; Ilya Nemtsev 2019</p><p>Powered by <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/ribice/kiss>Kiss</a>.</p></div></section><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-140872128-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>

@@ -1,27 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>hugo on EventsLooped</title>
-    <link>https://www.eventslooped.com/tags/hugo/</link>
-    <description>Recent content in hugo on EventsLooped</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
-    <lastBuildDate>Sun, 09 Dec 2018 15:51:09 -0500</lastBuildDate>
-    
-	<atom:link href="https://www.eventslooped.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Hugo Blog on Azure</title>
-      <link>https://www.eventslooped.com/posts/hugo-blog-on-azure/</link>
-      <pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate>
-      
-      <guid>https://www.eventslooped.com/posts/hugo-blog-on-azure/</guid>
-      <description>Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hugo on EventsLooped</title><link>https://www.eventslooped.com/tags/hugo/</link><description>Recent content in hugo on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Sun, 09 Dec 2018 15:51:09 -0500</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Blog on Azure</title><link>https://www.eventslooped.com/posts/hugo-blog-on-azure/</link><pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate><guid>https://www.eventslooped.com/posts/hugo-blog-on-azure/</guid><description>Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
 Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found Hugo. They have great documentation, modern CLI and great tooling, regardless of your OS preference.
-Since I already have a Microsoft Azure account, I decided to host my static files there.</description>
-    </item>
-    
-  </channel>
-</rss>
+Since I already have a Microsoft Azure account, I decided to host my static files there.</description></item></channel></rss>
