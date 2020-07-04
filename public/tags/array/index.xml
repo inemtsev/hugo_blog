@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>array on EventsLooped</title><link>https://www.eventslooped.com/tags/array/</link><description>Recent content in array on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Sat, 16 May 2020 15:52:15 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/array/index.xml" rel="self" type="application/rss+xml"/><item><title>Go Interview Question #2 - Write a function to check if a string is a palindrome</title><link>https://www.eventslooped.com/posts/interview-question-in-go-2/</link><pubDate>Sat, 16 May 2020 15:52:15 +0700</pubDate><guid>https://www.eventslooped.com/posts/interview-question-in-go-2/</guid><description>This question is very common on interviews, and while fairly straightforward, plenty developers mess it up on the interview.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>array on EventsLooped</title>
+    <link>https://www.eventslooped.com/tags/array/</link>
+    <description>Recent content in array on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Sat, 16 May 2020 15:52:15 +0700</lastBuildDate>
+    
+	<atom:link href="https://www.eventslooped.com/tags/array/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go Interview Question #2 - Write a function to check if a string is a palindrome</title>
+      <link>https://www.eventslooped.com/posts/interview-question-in-go-2/</link>
+      <pubDate>Sat, 16 May 2020 15:52:15 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/interview-question-in-go-2/</guid>
+      <description>This question is very common on interviews, and while fairly straightforward, plenty developers mess it up on the interview.
 What is a palindrome? Webster dictionary defines it as a word, sentence or number that reads the same forwards and backwards. Some examples are: dad, 1881, abba.
-There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one.</description></item></channel></rss>
+There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one.</description>
+    </item>
+    
+  </channel>
+</rss>

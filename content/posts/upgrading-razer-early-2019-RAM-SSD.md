@@ -1,10 +1,12 @@
 ---
-title: "Upgrading Razer (Early 2019) RAM SSD"
+title: "Upgrading Razer Blade 15 (Early 2019) RAM SSD"
 date: 2020-06-25T23:18:52+07:00
 draft: false
 varTitle: "upgrading-razer-early-2019-RAM-SSD"
 varResizer: "https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/"
 tags: ["Razer","hardware","performance"]
+sitemap: 
+    priority: 0.5
 ---
 
 ### Why?
