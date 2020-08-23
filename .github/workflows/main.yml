@@ -33,4 +33,9 @@ jobs:
       run: hugo --minify
       
     - name: Deploy
-      uses: peaceiris/actions-gh-page@v3
+      uses: tibor19/static-website-deploy@v1
+      with: 
+        enabled-static-website: 'true'
+        folder: 'public'
+        connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+      
