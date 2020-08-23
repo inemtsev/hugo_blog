@@ -6669,3 +6669,14 @@ div.subtitle.tags {
 .highlight pre {
   margin: 0;
 }
+
+.twitter-holder {
+  float: right;
+  margin-right: 32px;
+}
+
+@media only screen and (max-width: 1760px) {
+  .twitter-holder {
+    display: none;
+  }
+}

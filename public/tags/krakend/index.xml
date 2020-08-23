@@ -1,26 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>krakenD on EventsLooped</title>
-    <link>https://www.eventslooped.com/tags/krakend/</link>
-    <description>Recent content in krakenD on EventsLooped</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
-    <lastBuildDate>Sat, 19 Oct 2019 18:59:02 +0700</lastBuildDate>
-    
-	<atom:link href="https://www.eventslooped.com/tags/krakend/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>KrakenD: Writing Plugins using Golang</title>
-      <link>https://www.eventslooped.com/posts/krakend-writing-plugins/</link>
-      <pubDate>Sat, 19 Oct 2019 18:59:02 +0700</pubDate>
-      
-      <guid>https://www.eventslooped.com/posts/krakend-writing-plugins/</guid>
-      <description>Summary KrakenD has caught my attention as a Gateway solution because of its claim at incredible performance and extensibility. It is Open Source and can be tailored to your needs or can be extended in a convenient way with its support for Golang Plugins.
-Plugin, what? Go plugins are a fairly new addition to Golang (support starting with Go 1.8), but they provide a very innovative way to add functionality to a Go application.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>krakenD on EventsLooped</title><link>https://www.eventslooped.com/tags/krakend/</link><description>Recent content in krakenD on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Sat, 19 Oct 2019 18:59:02 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/krakend/index.xml" rel="self" type="application/rss+xml"/><item><title>KrakenD: Writing Plugins using Golang</title><link>https://www.eventslooped.com/posts/krakend-writing-plugins/</link><pubDate>Sat, 19 Oct 2019 18:59:02 +0700</pubDate><guid>https://www.eventslooped.com/posts/krakend-writing-plugins/</guid><description>Summary KrakenD has caught my attention as a Gateway solution because of its claim at incredible performance and extensibility. It is Open Source and can be tailored to your needs or can be extended in a convenient way with its support for Golang Plugins.
+Plugin, what? Go plugins are a fairly new addition to Golang (support starting with Go 1.8), but they provide a very innovative way to add functionality to a Go application.</description></item></channel></rss>

@@ -4,7 +4,7 @@ date: 2020-07-04T16:09:54+07:00
 draft: false
 tags: ["career"]
 varTitle: "self-taught-developer-websites"
-varResizer: "https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/"
+varResizer: "https://aqzodowgen.cloudimg.io/bound/800x600/n/https://www.eventslooped.com/posts/img/"
 sitemap: 
     priority: 0.5
 ---
@@ -26,3 +26,9 @@ There's no doubt about it, weekends had to be sacrificed for hard work, caffeine
 6. [**Programming Reddit**](https://www.reddit.com/r/programming/) - An excellent resource to ask anything about programming. For specific coding questions I would still recommend Stackoverflow, but for everything else there's Programming Reddit.
 
 There may be other interesting or inspirational blogs out there, so if you know any that I haven't mentioned, feel free to leave them in the comments below for others to see. I am always on the lookout for intresting blogs, so I frequent websites like [Feedspot](https://blog.feedspot.com/programming_blogs/) and [this quora thread](https://www.quora.com/What-are-the-best-programming-blogs)
+
+### Honorable mentions
+Here are a few resources that I did not use, but were recommended to me by other strong developers.
+
+1. [FreeCodeCamp](https://www.freecodecamp.org/)
+2. [Odin Project](https://www.theodinproject.com/)

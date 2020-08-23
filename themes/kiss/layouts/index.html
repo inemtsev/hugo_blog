@@ -2,6 +2,13 @@
 {{ partial "header" . }}
 {{ partial "nav" . }}
 <section class="section">
+  <div class="twitter-holder">
+    <a class="twitter-timeline"
+      data-height="800"
+      data-width="400"
+      href="https://twitter.com/EventsLooped?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
   <div class="container">
     {{- $pctx := . -}}
     {{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
