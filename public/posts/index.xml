@@ -1,109 +1,273 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on EventsLooped</title><link>https://www.eventslooped.com/posts/</link><description>Recent content in Posts on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Sun, 23 Aug 2020 12:13:00 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Go Interview Question #3 - Write a function that checks if brackets are balanced</title><link>https://www.eventslooped.com/posts/interview-question-in-go-3/</link><pubDate>Sun, 23 Aug 2020 12:13:00 +0700</pubDate><guid>https://www.eventslooped.com/posts/interview-question-in-go-3/</guid><description>Another very common interview question, is to check if brackets are balanced in a string. If you have never done any stack questions before, this can be tricky. But, once you see how a stack can be used, it becomes very straightforward.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on EventsLooped</title>
+    <link>https://www.eventslooped.com/posts/</link>
+    <description>Recent content in Posts on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Sun, 23 Aug 2020 12:13:00 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go Interview Question #3 - Write a function that checks if brackets are balanced</title>
+      <link>https://www.eventslooped.com/posts/interview-question-in-go-3/</link>
+      <pubDate>Sun, 23 Aug 2020 12:13:00 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/interview-question-in-go-3/</guid>
+      <description>Another very common interview question, is to check if brackets are balanced in a string. If you have never done any stack questions before, this can be tricky. But, once you see how a stack can be used, it becomes very straightforward.
 Let&amp;rsquo;s look at what balanced brackets look like: &amp;ldquo;(())()&amp;rdquo;, &amp;ldquo;((()))&amp;rdquo;, &amp;ldquo;()&amp;rdquo;&amp;hellip;
 Unbalanced brackets: &amp;ldquo;(((&amp;rdquo;, &amp;ldquo;())&amp;rdquo;, &amp;ldquo;(()&amp;rdquo;&amp;hellip;
-A stack is like a can of Pringles, the last chip that was put into it, is the first to come out.</description></item><item><title>I'm a self taught developer, which websites did I use to learn</title><link>https://www.eventslooped.com/posts/self-taught-developer-websites/</link><pubDate>Sat, 04 Jul 2020 16:09:54 +0700</pubDate><guid>https://www.eventslooped.com/posts/self-taught-developer-websites/</guid><description>Looking back, it would of probably been better if I got my Computer Science degree instead of Mathematics. At the very least, it would have made the first few years of my career a whole lot easier. That is one way of looking at it, but would I be a better developer if I had it easier? That is hard to say. But, all those experiences have made me who I am today, and I am happy with where I ended up.</description></item><item><title>Upgrading Razer Blade 15 (Early 2019) RAM SSD</title><link>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</link><pubDate>Thu, 25 Jun 2020 23:18:52 +0700</pubDate><guid>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</guid><description>Why? I decided to upgrade my laptop memory this year. While my coding work rarely pushes memory usage above 75%, I recently started doing a lot of Lightroom editing and occasionally video editing as well. I noticed that I was frequently using 15 of 16 GB of memory and I decided to bump it up to 32 gigs. I also heard that the next generation of SSD is coming out soon and will not be compatible with the interface this laptop is using so I decided to ugprade, the storage on the laptop was well to 1TB.</description></item><item><title>Automate Open Tabs in Cmder</title><link>https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/</link><pubDate>Thu, 04 Jun 2020 10:46:40 +0700</pubDate><guid>https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/</guid><description>I have been using Cmder for about a year now, it&amp;rsquo;s an excellent console emulator for Windows based on ConEmu emulator, but with a few bells and whistles thrown in. I got it mainly for the tabs and split screen features (which ConEmu also supports), but Cmder looks cooler and has Git support out of the box. At work I like to have git for front-end open on the left side and git for back-end open on the right side; then I have another tab open for yarn commands.</description></item><item><title>Go Interview Question #2 - Write a function to check if a string is a palindrome</title><link>https://www.eventslooped.com/posts/interview-question-in-go-2/</link><pubDate>Sat, 16 May 2020 15:52:15 +0700</pubDate><guid>https://www.eventslooped.com/posts/interview-question-in-go-2/</guid><description>This question is very common on interviews, and while fairly straightforward, plenty developers mess it up on the interview.
+A stack is like a can of Pringles, the last chip that was put into it, is the first to come out.</description>
+    </item>
+    
+    <item>
+      <title>I&#39;m a self taught developer, which websites did I use to learn</title>
+      <link>https://www.eventslooped.com/posts/self-taught-developer-websites/</link>
+      <pubDate>Sat, 04 Jul 2020 16:09:54 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/self-taught-developer-websites/</guid>
+      <description>Looking back, it would of probably been better if I got my Computer Science degree instead of Mathematics. At the very least, it would have made the first few years of my career a whole lot easier. That is one way of looking at it, but would I be a better developer if I had it easier? That is hard to say. But, all those experiences have made me who I am today, and I am happy with where I ended up.</description>
+    </item>
+    
+    <item>
+      <title>Upgrading Razer Blade 15 (Early 2019) RAM SSD</title>
+      <link>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</link>
+      <pubDate>Thu, 25 Jun 2020 23:18:52 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</guid>
+      <description>Why? I decided to upgrade my laptop memory this year. While my coding work rarely pushes memory usage above 75%, I recently started doing a lot of Lightroom editing and occasionally video editing as well. I noticed that I was frequently using 15 of 16 GB of memory and I decided to bump it up to 32 gigs. I also heard that the next generation of SSD is coming out soon and will not be compatible with the interface this laptop is using so I decided to ugprade, the storage on the laptop was well to 1TB.</description>
+    </item>
+    
+    <item>
+      <title>Automate Open Tabs in Cmder</title>
+      <link>https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/</link>
+      <pubDate>Thu, 04 Jun 2020 10:46:40 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/</guid>
+      <description>I have been using Cmder for about a year now, it&amp;rsquo;s an excellent console emulator for Windows based on ConEmu emulator, but with a few bells and whistles thrown in. I got it mainly for the tabs and split screen features (which ConEmu also supports), but Cmder looks cooler and has Git support out of the box. At work I like to have git for front-end open on the left side and git for back-end open on the right side; then I have another tab open for yarn commands.</description>
+    </item>
+    
+    <item>
+      <title>Go Interview Question #2 - Write a function to check if a string is a palindrome</title>
+      <link>https://www.eventslooped.com/posts/interview-question-in-go-2/</link>
+      <pubDate>Sat, 16 May 2020 15:52:15 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/interview-question-in-go-2/</guid>
+      <description>This question is very common on interviews, and while fairly straightforward, plenty developers mess it up on the interview.
 What is a palindrome? Webster dictionary defines it as a word, sentence or number that reads the same forwards and backwards. Some examples are: dad, 1881, abba.
-There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one.</description></item><item><title>Go Interview Question #1 - Find all the prime numbers less than or equal to 'n'</title><link>https://www.eventslooped.com/posts/interview-question-in-go-1/</link><pubDate>Wed, 06 May 2020 13:10:43 +0700</pubDate><guid>https://www.eventslooped.com/posts/interview-question-in-go-1/</guid><description>As a means of keeping my logic sharp and helping others prepare for Go interviews I decided to release a solved interview question every week or so.
+There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one.</description>
+    </item>
+    
+    <item>
+      <title>Go Interview Question #1 - Find all the prime numbers less than or equal to &#39;n&#39;</title>
+      <link>https://www.eventslooped.com/posts/interview-question-in-go-1/</link>
+      <pubDate>Wed, 06 May 2020 13:10:43 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/interview-question-in-go-1/</guid>
+      <description>As a means of keeping my logic sharp and helping others prepare for Go interviews I decided to release a solved interview question every week or so.
 In this post, let&amp;rsquo;s write a function in Go that generates us all the primes at or below a specific integer.
-To even attempt this question, we need to know the exact definition of a prime number. According to Wolfram, A prime number is a positive integer p&amp;gt;1 that has no positive integer divisors other than 1 and p itself.</description></item><item><title>Chunked File Upload using TypeScript, React, and Go</title><link>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</link><pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate><guid>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</guid><description>Why you may want to chunk files? The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.
-Let&amp;rsquo;s build a simple app using no additional javascript libraries!</description></item><item><title>Golang Microservices Part 2 - PostgreSQL with gorm</title><link>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</link><pubDate>Sun, 29 Dec 2019 23:57:36 +0700</pubDate><guid>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</guid><description>Setting up GORM Continuing from the app we created in Part 1
+To even attempt this question, we need to know the exact definition of a prime number. According to Wolfram, A prime number is a positive integer p&amp;gt;1 that has no positive integer divisors other than 1 and p itself.</description>
+    </item>
+    
+    <item>
+      <title>Chunked File Upload using TypeScript, React, and Go</title>
+      <link>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</link>
+      <pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</guid>
+      <description>Why you may want to chunk files? The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.
+Let&amp;rsquo;s build a simple app using no additional javascript libraries!</description>
+    </item>
+    
+    <item>
+      <title>Golang Microservices Part 2 - PostgreSQL with gorm</title>
+      <link>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</link>
+      <pubDate>Sun, 29 Dec 2019 23:57:36 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</guid>
+      <description>Setting up GORM Continuing from the app we created in Part 1
 PostgreSQL is one of the most popular database choices today because it is free and has most of the features that the big guns like Microsoft SQL Server and Oracle offer. To connect our microservice to PostgreSQL, we can simplify our life by using an ORM for GO called GORM&amp;hellip; GO-ORM get it?
 via GIPHY
-Let's upgrade the gRPC microservice we created in Part 1 to use an actual database instead of just cache.</description></item><item><title>Sexy Programming Languages to Learn 2020</title><link>https://www.eventslooped.com/posts/sexy-programming-languages-to-learn-2020/</link><pubDate>Sun, 22 Dec 2019 13:55:36 +0700</pubDate><guid>https://www.eventslooped.com/posts/sexy-programming-languages-to-learn-2020/</guid><description>What do I mean by sexy programming languages? I refer to programming languages as sexy if they are not yet mainstream, but have plenty of buzz around them. They usually have a small but very energetic community, but may be lacking mature libraries here and there due to their only recent stardom. This also provides opportunities for ambitious developers to contribute to open-source. Therefore my list will exclude any mature languages like: Java, Python, C#, PHP and JavaScript.</description></item><item><title>Golang Microservices Part 1 - gRPC Communication</title><link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link><pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate><guid>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</guid><description>Summary - Setting up gRPC communication gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient HTTP/2 network protocol as well Google&amp;rsquo;s Protocol Buffers (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the .proto file for nearly every programming language available.</description></item><item><title>KrakenD: Writing Plugins using Golang</title><link>https://www.eventslooped.com/posts/krakend-writing-plugins/</link><pubDate>Sat, 19 Oct 2019 18:59:02 +0700</pubDate><guid>https://www.eventslooped.com/posts/krakend-writing-plugins/</guid><description>Summary KrakenD has caught my attention as a Gateway solution because of its claim at incredible performance and extensibility. It is Open Source and can be tailored to your needs or can be extended in a convenient way with its support for Golang Plugins.
-Plugin, what? Go plugins are a fairly new addition to Golang (support starting with Go 1.8), but they provide a very innovative way to add functionality to a Go application.</description></item><item><title>June/July 2019 in Bangkok Photos</title><link>https://www.eventslooped.com/posts/july-2019-photos/</link><pubDate>Mon, 12 Aug 2019 23:27:19 +0700</pubDate><guid>https://www.eventslooped.com/posts/july-2019-photos/</guid><description>&lt;div class="my-slider">
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-eb9ff5fa-441f-4ddd-8668-2ba2fb25e9a5.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-eb9ff5fa-441f-4ddd-8668-2ba2fb25e9a5.jpg"/>
-&lt;/a>
-&lt;div>Sunny day on top of &lt;a href="https://goo.gl/maps/YYhQMQjTUpQBqfpcA" target="_blank">Cielo Sky Bar&lt;/a>&lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ae17cef3-6a6b-401b-9bc3-2b37d882d545.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ae17cef3-6a6b-401b-9bc3-2b37d882d545.jpg"/>
-&lt;/a>
-&lt;div>Crazy traffic on Sukhumvit near &lt;a href="https://goo.gl/maps/BgCZp193SvHbAjpE7" target="_blank">Central World Shopping Center&lt;/a>&lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-9a5f4e4f-89b7-4221-91c8-f314d522f1f3.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-9a5f4e4f-89b7-4221-91c8-f314d522f1f3.jpg"/>
-&lt;/a>
-&lt;div>I loved the beautiful decorations at &lt;a href="https://goo.gl/maps/sLMv11EzJoXntAf36" target="_blank">Icon Siam Shopping Center.&lt;/a> People traffic here is very intense on the weekends though.&lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ce8a643e-4cf4-41c7-9243-e068812c9523.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ce8a643e-4cf4-41c7-9243-e068812c9523.jpg"/>
-&lt;/a>
-&lt;div>There is a small floating market inside the &lt;a href="https://goo.gl/maps/sLMv11EzJoXntAf36" target="_blank">Icon Siam Shopping Center&lt;/a>. How cool is that!&lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-1841e5cb-f869-4944-9b0d-52e64e282f8e.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-1841e5cb-f869-4944-9b0d-52e64e282f8e.jpg"/>
-&lt;/a>
-&lt;div>Icon Siam has plenty of venues that sell &lt;a href="https://en.wikipedia.org/wiki/Mango_sticky_rice" target="_blank">Mango sticky rice.&lt;/a> If you are visiting Thailand, this is a must-try dessert. &lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-29e62b63-32e4-4d49-bc56-27913a9272b0.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-29e62b63-32e4-4d49-bc56-27913a9272b0.jpg"/>
-&lt;/a>
-&lt;div>If your bank account is too large you can do some serious shopping at Icon Siam. This shopping center is very beautiful, it's worth visiting at least once. &lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg"/>
-&lt;/a>
-&lt;div>Rainy day on &lt;a href="https://goo.gl/maps/Yz5k7shuer2N8KSC7" target="_blank">Khao San Road&lt;/a>. Lots of quirky and unique shops here, although many tourist traps as well. &lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f5db7083-da6e-44d3-bd20-9b4f666f7a89.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f5db7083-da6e-44d3-bd20-9b4f666f7a89.jpg"/>
-&lt;/a>
-&lt;div>I love the vibe of Khao San Road, it may be overrun by scammers in some spots, but I can't deny the uniqueness of this place. &lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-63797432-348a-48eb-9ded-7e99e9b61eb2.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-63797432-348a-48eb-9ded-7e99e9b61eb2.jpg"/>
-&lt;/a>
-&lt;div>&lt;a href="https://goo.gl/maps/RvGQrNs3bHaa8ycn6" target="_blank">Chinatown in Bangkok&lt;/a> is vast, colorful and lively.&lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f3095ebb-fb9e-43d8-a192-0dd2b3813f5e.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f3095ebb-fb9e-43d8-a192-0dd2b3813f5e.jpg"/>
-&lt;/a>
-&lt;div>River-view from one of my favourite restaurants, &lt;a href="https://goo.gl/maps/meAreefEdbREHGLs9" target="_blank">Viva Aviv The River&lt;/a>&lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-c223043b-87d4-4837-a120-547b6e7c28c0.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-c223043b-87d4-4837-a120-547b6e7c28c0.jpg"/>
-&lt;/a>
-&lt;div>Beautiful sunset view of the city&lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-96834bda-025a-4e41-bc74-9ff31251b833.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-96834bda-025a-4e41-bc74-9ff31251b833.jpg"/>
-&lt;/a>
-&lt;div>&lt;a href="https://goo.gl/maps/YVCSww2AXx8tDPWi6" target="_blank">Ratchada Rot Fai Train Night Market&lt;/a> is absolutely amazing. The variety of food at amazing prices is mind-boggling! &lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;div>
-&lt;a href="https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-716f2793-b44a-4000-9347-d364c2d97e66.jpg" target="_blank">
-&lt;img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-716f2793-b44a-4000-9347-d364c2d97e66.jpg"/>
-&lt;/a>
-&lt;div>My workstation setup in Bangkok so far. This is where the magic happens. &lt;/div>
-&lt;div>Taken with: Pixel 2 XL&lt;/div>
-&lt;/div>
-&lt;/div></description></item><item><title>Use Golang to Upload Files to Azure Blob Storage</title><link>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</link><pubDate>Sun, 04 Aug 2019 17:33:01 +0700</pubDate><guid>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</guid><description>If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.
-You will need: The first thing you need to do is make sure you set up your blob storage account in Azure Portal and create a blob container.</description></item><item><title>Make Multiple Api Calls At The Same Time With GoRoutines</title><link>https://www.eventslooped.com/posts/golang-make-multiple-api-calls/</link><pubDate>Mon, 03 Jun 2019 21:16:17 +0700</pubDate><guid>https://www.eventslooped.com/posts/golang-make-multiple-api-calls/</guid><description>Golang is efficient, very efficient. Much of this efficiency is attributed to its unique abstractions when dealing with concurrency. Java for example, maps its threads to OS threads, while Go uses its own goroutines scheduler to further abstract its lightweight goroutines from OS threads. In short, Golang is very frugal with how it uses OS threads; if a goroutine becomes blocked, Go&amp;rsquo;s scheduler will switch in another goroutine in its place to keep the thread busy as much as possible.</description></item><item><title>Becoming a Developer in 2019</title><link>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</link><pubDate>Sun, 12 May 2019 14:41:36 +0700</pubDate><guid>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</guid><description>There has never been a better time to become a web developer than now. The United States Bureau of Labour Statistics predicts an increase of job postings by 15% between 2016-2026, in comparison to 7% average across all occupations. According to ZipRecruiter the current average salary of a Web Developer in United states is $74,080 with top 1% earning $123,000 to $133,000. Among the general specializations of web developers (front-end, back-end and full-stack); full-stack developers on avereage are paid the highest, which is logical since they have to stay up-to date on both back-end and fron-end technologies.</description></item><item><title>Typescript and its future</title><link>https://www.eventslooped.com/posts/typescript-future/</link><pubDate>Sat, 27 Apr 2019 17:21:11 +0700</pubDate><guid>https://www.eventslooped.com/posts/typescript-future/</guid><description>Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&amp;hellip;) with TypeScript support out of the box. By default.
-You can imagine this gave TypeScript a strong boost in popularity.</description></item><item><title>Hugo Blog on Azure</title><link>https://www.eventslooped.com/posts/hugo-blog-on-azure/</link><pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate><guid>https://www.eventslooped.com/posts/hugo-blog-on-azure/</guid><description>Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
+Let&#39;s upgrade the gRPC microservice we created in Part 1 to use an actual database instead of just cache.</description>
+    </item>
+    
+    <item>
+      <title>Sexy Programming Languages to Learn 2020</title>
+      <link>https://www.eventslooped.com/posts/sexy-programming-languages-to-learn-2020/</link>
+      <pubDate>Sun, 22 Dec 2019 13:55:36 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/sexy-programming-languages-to-learn-2020/</guid>
+      <description>What do I mean by sexy programming languages? I refer to programming languages as sexy if they are not yet mainstream, but have plenty of buzz around them. They usually have a small but very energetic community, but may be lacking mature libraries here and there due to their only recent stardom. This also provides opportunities for ambitious developers to contribute to open-source. Therefore my list will exclude any mature languages like: Java, Python, C#, PHP and JavaScript.</description>
+    </item>
+    
+    <item>
+      <title>Golang Microservices Part 1 - gRPC Communication</title>
+      <link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link>
+      <pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</guid>
+      <description>Summary - Setting up gRPC communication gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient HTTP/2 network protocol as well Google&amp;rsquo;s Protocol Buffers (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the .proto file for nearly every programming language available.</description>
+    </item>
+    
+    <item>
+      <title>KrakenD: Writing Plugins using Golang</title>
+      <link>https://www.eventslooped.com/posts/krakend-writing-plugins/</link>
+      <pubDate>Sat, 19 Oct 2019 18:59:02 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/krakend-writing-plugins/</guid>
+      <description>Summary KrakenD has caught my attention as a Gateway solution because of its claim at incredible performance and extensibility. It is Open Source and can be tailored to your needs or can be extended in a convenient way with its support for Golang Plugins.
+Plugin, what? Go plugins are a fairly new addition to Golang (support starting with Go 1.8), but they provide a very innovative way to add functionality to a Go application.</description>
+    </item>
+    
+    <item>
+      <title>June/July 2019 in Bangkok Photos</title>
+      <link>https://www.eventslooped.com/posts/july-2019-photos/</link>
+      <pubDate>Mon, 12 Aug 2019 23:27:19 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/july-2019-photos/</guid>
+      <description>&lt;div class=&#34;my-slider&#34;&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-eb9ff5fa-441f-4ddd-8668-2ba2fb25e9a5.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-eb9ff5fa-441f-4ddd-8668-2ba2fb25e9a5.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;Sunny day on top of &lt;a href=&#34;https://goo.gl/maps/YYhQMQjTUpQBqfpcA&#34; target=&#34;_blank&#34;&gt;Cielo Sky Bar&lt;/a&gt;&lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ae17cef3-6a6b-401b-9bc3-2b37d882d545.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ae17cef3-6a6b-401b-9bc3-2b37d882d545.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;Crazy traffic on Sukhumvit near &lt;a href=&#34;https://goo.gl/maps/BgCZp193SvHbAjpE7&#34; target=&#34;_blank&#34;&gt;Central World Shopping Center&lt;/a&gt;&lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-9a5f4e4f-89b7-4221-91c8-f314d522f1f3.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-9a5f4e4f-89b7-4221-91c8-f314d522f1f3.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;I loved the beautiful decorations at &lt;a href=&#34;https://goo.gl/maps/sLMv11EzJoXntAf36&#34; target=&#34;_blank&#34;&gt;Icon Siam Shopping Center.&lt;/a&gt; People traffic here is very intense on the weekends though.&lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ce8a643e-4cf4-41c7-9243-e068812c9523.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-ce8a643e-4cf4-41c7-9243-e068812c9523.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;There is a small floating market inside the &lt;a href=&#34;https://goo.gl/maps/sLMv11EzJoXntAf36&#34; target=&#34;_blank&#34;&gt;Icon Siam Shopping Center&lt;/a&gt;. How cool is that!&lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-1841e5cb-f869-4944-9b0d-52e64e282f8e.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-1841e5cb-f869-4944-9b0d-52e64e282f8e.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;Icon Siam has plenty of venues that sell &lt;a href=&#34;https://en.wikipedia.org/wiki/Mango_sticky_rice&#34; target=&#34;_blank&#34;&gt;Mango sticky rice.&lt;/a&gt; If you are visiting Thailand, this is a must-try dessert. &lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-29e62b63-32e4-4d49-bc56-27913a9272b0.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-29e62b63-32e4-4d49-bc56-27913a9272b0.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;If your bank account is too large you can do some serious shopping at Icon Siam. This shopping center is very beautiful, it&#39;s worth visiting at least once. &lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-d3e8410b-5bf5-422e-a392-b1b773e151a8.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;Rainy day on &lt;a href=&#34;https://goo.gl/maps/Yz5k7shuer2N8KSC7&#34; target=&#34;_blank&#34;&gt;Khao San Road&lt;/a&gt;. Lots of quirky and unique shops here, although many tourist traps as well. &lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f5db7083-da6e-44d3-bd20-9b4f666f7a89.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f5db7083-da6e-44d3-bd20-9b4f666f7a89.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;I love the vibe of Khao San Road, it may be overrun by scammers in some spots, but I can&#39;t deny the uniqueness of this place. &lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+   &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-63797432-348a-48eb-9ded-7e99e9b61eb2.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-63797432-348a-48eb-9ded-7e99e9b61eb2.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;&lt;a href=&#34;https://goo.gl/maps/RvGQrNs3bHaa8ycn6&#34; target=&#34;_blank&#34;&gt;Chinatown in Bangkok&lt;/a&gt; is vast, colorful and lively.&lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+   &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f3095ebb-fb9e-43d8-a192-0dd2b3813f5e.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-f3095ebb-fb9e-43d8-a192-0dd2b3813f5e.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;River-view from one of my favourite restaurants, &lt;a href=&#34;https://goo.gl/maps/meAreefEdbREHGLs9&#34; target=&#34;_blank&#34;&gt;Viva Aviv The River&lt;/a&gt;&lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-c223043b-87d4-4837-a120-547b6e7c28c0.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-c223043b-87d4-4837-a120-547b6e7c28c0.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;Beautiful sunset view of the city&lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-96834bda-025a-4e41-bc74-9ff31251b833.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-96834bda-025a-4e41-bc74-9ff31251b833.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;&lt;a href=&#34;https://goo.gl/maps/YVCSww2AXx8tDPWi6&#34; target=&#34;_blank&#34;&gt;Ratchada Rot Fai Train Night Market&lt;/a&gt; is absolutely amazing. The variety of food at amazing prices is mind-boggling! &lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+    &lt;div&gt;
+    &lt;a href=&#34;https://aqzodowgen.cloudimg.io/bound/1920x1080/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-716f2793-b44a-4000-9347-d364c2d97e66.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;https://aqzodowgen.cloudimg.io/fit/800x600/n/https://mytechblog.blob.core.windows.net/blog-photos/20190818-716f2793-b44a-4000-9347-d364c2d97e66.jpg&#34;/&gt;
+    &lt;/a&gt;
+    &lt;div&gt;My workstation setup in Bangkok so far. This is where the magic happens. &lt;/div&gt;
+    &lt;div&gt;Taken with: Pixel 2 XL&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use Golang to Upload Files to Azure Blob Storage</title>
+      <link>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</link>
+      <pubDate>Sun, 04 Aug 2019 17:33:01 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/use-golang-to-upload-files-to-azure-blob-storage/</guid>
+      <description>If you are enjoying Go and its community as much as myself but have been using the Azure Cloud Platform for some time already, you will probably want to use Azure Blob Storage at some point. In that case, this blog post is for you.
+You will need: The first thing you need to do is make sure you set up your blob storage account in Azure Portal and create a blob container.</description>
+    </item>
+    
+    <item>
+      <title>Make Multiple Api Calls At The Same Time With GoRoutines</title>
+      <link>https://www.eventslooped.com/posts/golang-make-multiple-api-calls/</link>
+      <pubDate>Mon, 03 Jun 2019 21:16:17 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/golang-make-multiple-api-calls/</guid>
+      <description>Golang is efficient, very efficient. Much of this efficiency is attributed to its unique abstractions when dealing with concurrency. Java for example, maps its threads to OS threads, while Go uses its own goroutines scheduler to further abstract its lightweight goroutines from OS threads. In short, Golang is very frugal with how it uses OS threads; if a goroutine becomes blocked, Go&amp;rsquo;s scheduler will switch in another goroutine in its place to keep the thread busy as much as possible.</description>
+    </item>
+    
+    <item>
+      <title>Becoming a Developer in 2019</title>
+      <link>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</link>
+      <pubDate>Sun, 12 May 2019 14:41:36 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/becoming-a-developer-in-2019/</guid>
+      <description>There has never been a better time to become a web developer than now. The United States Bureau of Labour Statistics predicts an increase of job postings by 15% between 2016-2026, in comparison to 7% average across all occupations. According to ZipRecruiter the current average salary of a Web Developer in United states is $74,080 with top 1% earning $123,000 to $133,000. Among the general specializations of web developers (front-end, back-end and full-stack); full-stack developers on avereage are paid the highest, which is logical since they have to stay up-to date on both back-end and fron-end technologies.</description>
+    </item>
+    
+    <item>
+      <title>Typescript and its future</title>
+      <link>https://www.eventslooped.com/posts/typescript-future/</link>
+      <pubDate>Sat, 27 Apr 2019 17:21:11 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/typescript-future/</guid>
+      <description>Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2&amp;hellip;) with TypeScript support out of the box. By default.
+You can imagine this gave TypeScript a strong boost in popularity.</description>
+    </item>
+    
+    <item>
+      <title>Hugo Blog on Azure</title>
+      <link>https://www.eventslooped.com/posts/hugo-blog-on-azure/</link>
+      <pubDate>Sun, 09 Dec 2018 15:51:09 -0500</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/hugo-blog-on-azure/</guid>
+      <description>Summary I decided to give blogging a try. I setup the most cost-effective solution I could come up with; static-html hosting on cloud blob-storage.
 Initially I tried using Jekyll to generate my static pages, but due to the clunky tooling available (especially on Windows) I looked for other solutions. That is when I found Hugo. They have great documentation, modern CLI and great tooling, regardless of your OS preference.
-Since I already have a Microsoft Azure account, I decided to host my static files there.</description></item></channel></rss>
+Since I already have a Microsoft Azure account, I decided to host my static files there.</description>
+    </item>
+    
+  </channel>
+</rss>

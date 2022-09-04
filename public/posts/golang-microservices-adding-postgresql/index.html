@@ -1,88 +1,311 @@
-<!doctype html><html xmlns=http://www.w3.org/1999/xhtml lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Golang Microservices Part 2 - PostgreSQL with gorm | EventsLooped</title><link href=https://www.eventslooped.com/index.xml rel=alternate type=application/rss+xml title=EventsLooped><link rel=stylesheet href=https://www.eventslooped.com/css/style.min.css><link rel=stylesheet href=https://www.eventslooped.com/css/custom.min.css><link rel=apple-touch-icon sizes=120x120 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><link rel=canonical href=https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/></head><body><section class=section><div class=container><nav id=nav-main class=nav><div id=nav-name class=nav-left><a id=nav-anchor class=nav-item href=https://www.eventslooped.com><h1 id=nav-heading class="title is-4">EventsLooped</h1></a></div><div class=nav-right><nav id=nav-items class="nav-item level is-mobile"><a class=level-item aria-label=github href=https://github.com/inemtsev target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></i></span></a><a class=level-item aria-label=email href=mailto:eventslooped@gmail.com target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></i></span></a><a class=level-item aria-label=linkedin href=https://linkedin.com/in/ilyanemtsev target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path stroke-width="1.8" d="m5.839218 4.101561c0 1.211972-.974141 2.194011-2.176459 2.194011S1.4863 5.313533 1.4863 4.101561c0-1.211094.974141-2.194011 2.176459-2.194011s2.176459.982917 2.176459 2.194011zm.017552 3.94922h-4.388022v14.04167H5.85677V8.050781zm7.005038.0H8.501869v14.04167h4.360816v-7.370999c0-4.098413 5.291077-4.433657 5.291077.0v7.370999h4.377491v-8.89101c0-6.915523-7.829986-6.66365-9.669445-3.259423V8.050781z"/></svg></i></span></a></nav></div></nav><nav class=nav><div class=nav-left><a class=nav-item href=/about-me><h2 class="title is-5">About me</h2></a><a class=nav-item href=/index.html><h2 class="title is-5">Blog</h2></a></div></nav></div></section><section class=section><div class=container><div class="subtitle tags is-6 is-pulled-right"><a class="subtitle is-6" href=/tags/golang/>#golang</a>
-| <a class="subtitle is-6" href=/tags/microservices/>#microservices</a>
-| <a class="subtitle is-6" href=/tags/orm/>#ORM</a></div><h2 class="subtitle is-6">December 29, 2019</h2><h1 class=title>Golang Microservices Part 2 - PostgreSQL with gorm</h1><div class=content><h3 id=setting-up-gorm>Setting up GORM</h3><p><a href=/posts/golang-microservices-grpc-communication>Continuing from the app we created in Part 1</a></p><p>PostgreSQL is one of the most popular database choices today because it is free and has most of the features that the big guns like Microsoft SQL Server and Oracle offer. To connect our microservice to PostgreSQL, we can simplify our life by using an ORM for GO called <a href=https://gorm.io/>GORM</a>&mldr; GO-ORM get it?</p><iframe src=https://giphy.com/embed/fGRLn3m6XvmHeLNOzn width=480 height=480 frameborder=0 class=giphy-embed allowfullscreen></iframe><p><a href=https://giphy.com/gifs/HallmarkChannel-fGRLn3m6XvmHeLNOzn>via GIPHY</a></p><p>Let's upgrade the gRPC microservice we created in Part 1 to use an actual database instead of just cache.</p><h3 id=first-lets-create-our-persistence-model>First, let&rsquo;s create our persistence model</h3><p>We will need to install the <strong>github.com/jinzhu/gorm</strong> package. So run:</p><blockquote><p>go get github.com/jinzhu/gorm</p></blockquote><p>The <strong>BasketballPlayer</strong> model contains all of the data <em>we</em> want to persist. For things like ID and other technicallities we can embed another type, let&rsquo;s call it <strong>BasePersistenceModel</strong>. You are free to use the default gorm.Model, but you will get several columns you may or may not need like <em>updated_at</em>, <em>created_at</em> and <em>deleted_at</em>. You will also not be able to change the type of the column ID. This is why I like to create my own base model.</p><div class=highlight><pre class=chroma><code class=language-go data-lang=go><span class=kd>type</span> <span class=nx>BasePersistenceModel</span> <span class=kd>struct</span> <span class=p>{</span>
-	<span class=nx>ID</span>	<span class=kt>uint64</span> <span class=s>`gorm:&#34;type:int;primary_key&#34;`</span>
-<span class=p>}</span>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<span class=kd>type</span> <span class=nx>BasketballPlayer</span> <span class=kd>struct</span> <span class=p>{</span>
-	<span class=nx>BasePersistenceModel</span> <span class=c1>//gorm.Model can be used if you don&#39;t mind ID being an integer
-</span><span class=c1></span>	<span class=nx>FirstName</span> <span class=kt>string</span>
-	<span class=nx>LastName</span> <span class=kt>string</span>
-	<span class=nx>Age</span> <span class=kt>int32</span>
-	<span class=nx>PhotoUrl</span> <span class=kt>string</span>
-	<span class=nx>PointsPerGame</span> <span class=kt>int32</span>
-	<span class=nx>AssistsPerGame</span> <span class=kt>int32</span>
-	<span class=nx>ReboundsPerGame</span> <span class=kt>int32</span>
-<span class=p>}</span></code></pre></div><p>You may ask, why <strong>int32</strong> is used here instead of the default <strong>int</strong>? Simply, because our generated gRPC model uses int32 and I did not feel like doing any conversion. <a href=https://stackoverflow.com/questions/21491488/what-is-the-difference-between-int-and-int64-in-go>What is the difference?</a></p><p>We have a small problem here, our <em>gRPC model</em> is not the same as our <em>persistence model</em>. Therefore, we will need to be able to convert between these two. Let&rsquo;s add two methods to help us do this:</p><div class=highlight><pre class=chroma><code class=language-go data-lang=go><span class=kd>func</span> <span class=p>(</span><span class=nx>em</span> <span class=o>*</span><span class=nx>BasketballPlayer</span><span class=p>)</span> <span class=nf>GetgRPCModel</span><span class=p>()</span> <span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>Player</span> <span class=p>{</span>
-	<span class=k>return</span> <span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>Player</span><span class=p>{</span>
-		<span class=nx>Id</span><span class=p>:</span>                   <span class=nx>strconv</span><span class=p>.</span><span class=nf>FormatUint</span><span class=p>(</span><span class=nx>em</span><span class=p>.</span><span class=nx>ID</span><span class=p>,</span> <span class=mi>10</span><span class=p>),</span>
-		<span class=nx>FirstName</span><span class=p>:</span>            <span class=nx>em</span><span class=p>.</span><span class=nx>FirstName</span><span class=p>,</span>
-		<span class=nx>LastName</span><span class=p>:</span>             <span class=nx>em</span><span class=p>.</span><span class=nx>LastName</span><span class=p>,</span>
-		<span class=nx>Age</span><span class=p>:</span>                  <span class=nx>em</span><span class=p>.</span><span class=nx>Age</span><span class=p>,</span>
-		<span class=nx>PhotoUrl</span><span class=p>:</span>             <span class=nx>em</span><span class=p>.</span><span class=nx>PhotoUrl</span><span class=p>,</span>
-		<span class=nx>PointsPerGame</span><span class=p>:</span>        <span class=nx>em</span><span class=p>.</span><span class=nx>PointsPerGame</span><span class=p>,</span>
-		<span class=nx>AssistsPerGame</span><span class=p>:</span>       <span class=nx>em</span><span class=p>.</span><span class=nx>AssistsPerGame</span><span class=p>,</span>
-		<span class=nx>ReboundsPerGame</span><span class=p>:</span>      <span class=nx>em</span><span class=p>.</span><span class=nx>ReboundsPerGame</span><span class=p>,</span>
-	<span class=p>}</span>
-<span class=p>}</span>
+<title>Golang Microservices Part 2 - PostgreSQL with gorm | EventsLooped</title>
 
-<span class=kd>func</span> <span class=p>(</span><span class=nx>em</span> <span class=o>*</span><span class=nx>BasketballPlayer</span><span class=p>)</span> <span class=nf>From</span><span class=p>(</span><span class=nx>gRPCModel</span> <span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>Player</span><span class=p>)</span> <span class=p>{</span>
-		<span class=nx>u</span><span class=p>,</span> <span class=nx>e</span> <span class=o>:=</span> <span class=nx>strconv</span><span class=p>.</span><span class=nf>ParseUint</span><span class=p>(</span><span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>Id</span><span class=p>,</span> <span class=mi>10</span><span class=p>,</span> <span class=mi>64</span><span class=p>)</span>
-		<span class=k>if</span> <span class=nx>e</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-			<span class=nb>panic</span><span class=p>(</span><span class=s>&#34;incorrect ID from gRPC&#34;</span><span class=p>)</span>
-		<span class=p>}</span>
 
-		<span class=nx>em</span><span class=p>.</span><span class=nx>ID</span> <span class=p>=</span> <span class=nx>u</span>
-		<span class=nx>em</span><span class=p>.</span><span class=nx>FirstName</span> <span class=p>=</span> <span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>FirstName</span>
-		<span class=nx>em</span><span class=p>.</span><span class=nx>LastName</span> <span class=p>=</span> <span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>LastName</span>
-		<span class=nx>em</span><span class=p>.</span><span class=nx>Age</span> <span class=p>=</span> <span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>Age</span>
-		<span class=nx>em</span><span class=p>.</span><span class=nx>PhotoUrl</span> <span class=p>=</span> <span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>PhotoUrl</span>
-		<span class=nx>em</span><span class=p>.</span><span class=nx>PointsPerGame</span> <span class=p>=</span> <span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>PointsPerGame</span>
-		<span class=nx>em</span><span class=p>.</span><span class=nx>AssistsPerGame</span> <span class=p>=</span> <span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>AssistsPerGame</span>
-		<span class=nx>em</span><span class=p>.</span><span class=nx>ReboundsPerGame</span> <span class=p>=</span> <span class=nx>gRPCModel</span><span class=p>.</span><span class=nx>ReboundsPerGame</span>
-<span class=p>}</span></code></pre></div><p>Putting this all together, we have BasketballPlayer.go below, which we can put in our <strong>models folder</strong>:</p><script type=application/javascript src="https://gist.github.com/inemtsev/57cedc59988e2430bd28ad729367251b.js?file=BasketballPlayer.go"></script><h3 id=finally-lets-update-our-maingo>Finally, let&rsquo;s update our main.go</h3><p><strong>First</strong>, we need to add proper package references to <strong>main.go</strong>. Let&rsquo;s the following:</p><div class=highlight><pre class=chroma><code class=language-go data-lang=go><span class=s>&#34;github.com/jinzhu/gorm&#34;</span>
-<span class=nx>_</span> <span class=s>&#34;github.com/jinzhu/gorm/dialects/postgres&#34;</span></code></pre></div><p>The second line adds support for the database of your choosing. Don&rsquo;t forget to add it, or you will get a cryptic error that isn&rsquo;t easy to understand. <a href=http://gorm.io/docs/connecting_to_the_database.html>Here you will find a list of supported databases by gorm.</a></p><p><strong>Second</strong>, we need to add add a few package-level variables and a way to initialize them:</p><div class=highlight><pre class=chroma><code class=language-go data-lang=go><span class=kd>var</span> <span class=nx>db</span> <span class=o>*</span><span class=nx>gorm</span><span class=p>.</span><span class=nx>DB</span>
-<span class=kd>const</span> <span class=nx>dbPath</span> <span class=p>=</span> <span class=s>&#34;host=34.84.26.219 user=postgres password=somecoolpasswordhere&#34;</span>
 
-<span class=kd>func</span> <span class=nf>init</span><span class=p>()</span> <span class=p>{</span>
-	<span class=kd>var</span> <span class=nx>e</span> <span class=kt>error</span>
-	<span class=nx>db</span><span class=p>,</span> <span class=nx>e</span> <span class=p>=</span> <span class=nx>gorm</span><span class=p>.</span><span class=nf>Open</span><span class=p>(</span><span class=s>&#34;postgres&#34;</span><span class=p>,</span> <span class=nx>dbPath</span><span class=p>)</span>
-	<span class=k>defer</span> <span class=nx>db</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span>
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
 
-	<span class=k>if</span> <span class=nx>e</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-		<span class=nb>panic</span><span class=p>(</span><span class=s>&#34;failed to connect to database&#34;</span><span class=p>)</span>
-	<span class=p>}</span>
 
-	<span class=nx>db</span><span class=p>.</span><span class=nf>AutoMigrate</span><span class=p>(</span><span class=o>&amp;</span><span class=nx>models</span><span class=p>.</span><span class=nx>BasketballPlayer</span><span class=p>{})</span>  <span class=c1>//this will create a table in your database if it isn&#39;t there already
-</span><span class=c1></span><span class=p>}</span></code></pre></div><p><strong>Lastly</strong>, let&rsquo;s update our handler so that it checks cache for data first and if not found, tries to fetch data from database:</p><div class=highlight><pre class=chroma><code class=language-go data-lang=go><span class=kd>func</span> <span class=p>(</span><span class=o>*</span><span class=nx>server</span><span class=p>)</span> <span class=nf>GetBasketballPlayer</span><span class=p>(</span><span class=nx>ctx</span> <span class=nx>context</span><span class=p>.</span><span class=nx>Context</span><span class=p>,</span> <span class=nx>r</span> <span class=o>*</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>PlayerRequest</span><span class=p>)</span> <span class=p>(</span><span class=o>*</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>PlayerResponse</span><span class=p>,</span> <span class=kt>error</span><span class=p>)</span> <span class=p>{</span>
-	<span class=nx>id</span> <span class=o>:=</span> <span class=nx>r</span><span class=p>.</span><span class=nf>GetId</span><span class=p>()</span>
 
-	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Checking cache...&#34;</span><span class=p>)</span>
-	<span class=nx>playerVal</span><span class=p>,</span> <span class=nx>found</span> <span class=o>:=</span> <span class=nx>c</span><span class=p>.</span><span class=nf>Get</span><span class=p>(</span><span class=nx>id</span><span class=p>)</span>
-	<span class=k>if</span> <span class=nx>found</span> <span class=p>{</span>
-		<span class=nx>player</span> <span class=o>:=</span> <span class=nx>playerVal</span><span class=p>.(</span><span class=o>*</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>Player</span><span class=p>)</span>
-		<span class=k>return</span> <span class=o>&amp;</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>PlayerResponse</span><span class=p>{</span>
-			<span class=nx>Result</span><span class=p>:</span> <span class=nx>player</span><span class=p>,</span>
-		<span class=p>},</span> <span class=kc>nil</span>
-	<span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-		<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Checking database...&#34;</span><span class=p>)</span>
-		<span class=nx>db</span><span class=p>,</span> <span class=nx>e</span> <span class=o>:=</span> <span class=nx>gorm</span><span class=p>.</span><span class=nf>Open</span><span class=p>(</span><span class=s>&#34;postgres&#34;</span><span class=p>,</span> <span class=nx>dbPath</span><span class=p>)</span>
-		<span class=k>defer</span> <span class=nx>db</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span>
-		<span class=k>if</span> <span class=nx>e</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-			<span class=nb>panic</span><span class=p>(</span><span class=nx>fmt</span><span class=p>.</span><span class=nf>Sprintf</span><span class=p>(</span><span class=s>&#34;failed to connect to database: %v&#34;</span><span class=p>,</span> <span class=nx>e</span><span class=p>))</span>
-		<span class=p>}</span>
+<link rel="stylesheet" href="https://www.eventslooped.com/css/style.min.css" />
 
-		<span class=kd>var</span> <span class=nx>p</span> <span class=nx>models</span><span class=p>.</span><span class=nx>BasketballPlayer</span>
-		<span class=k>if</span> <span class=nx>e</span> <span class=p>=</span> <span class=nx>db</span><span class=p>.</span><span class=nf>First</span><span class=p>(</span><span class=o>&amp;</span><span class=nx>p</span><span class=p>,</span> <span class=nx>id</span><span class=p>).</span><span class=nx>Error</span><span class=p>;</span> <span class=nx>e</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-			<span class=k>return</span> <span class=kc>nil</span><span class=p>,</span> <span class=nx>fmt</span><span class=p>.</span><span class=nf>Errorf</span><span class=p>(</span><span class=s>&#34;could not find player with id: %v&#34;</span><span class=p>,</span> <span class=nx>id</span><span class=p>)</span>
-		<span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-			<span class=nx>gRPCResult</span> <span class=o>:=</span> <span class=nx>p</span><span class=p>.</span><span class=nf>GetgRPCModel</span><span class=p>()</span>
-			<span class=nx>c</span><span class=p>.</span><span class=nf>Set</span><span class=p>(</span><span class=nx>id</span><span class=p>,</span> <span class=o>&amp;</span><span class=nx>gRPCResult</span><span class=p>,</span> <span class=nx>cache</span><span class=p>.</span><span class=nx>DefaultExpiration</span><span class=p>)</span>
 
-			<span class=k>return</span> <span class=o>&amp;</span><span class=nx>basketBallPlayer</span><span class=p>.</span><span class=nx>PlayerResponse</span><span class=p>{</span>
-				<span class=nx>Result</span><span class=p>:</span>	<span class=o>&amp;</span><span class=nx>gRPCResult</span><span class=p>,</span>
-			<span class=p>},</span> <span class=kc>nil</span>
-		<span class=p>}</span>
-	<span class=p>}</span>
-<span class=p>}</span></code></pre></div><p>Update: I improved caching slightly from Part 1, the code now stores pointers in cache instead of copying full values.</p><p>Putting all the pieces into our app from Part 1 we get:</p><script type=application/javascript src="https://gist.github.com/inemtsev/57cedc59988e2430bd28ad729367251b.js?file=main.go"></script><p>I added one row into the database for testing purposes:</p><p>Sending a request to our API for player with <strong>Id</strong> of <strong>1</strong>, gives us:</p><p><img src=../img/golang-microservices-adding-PostgreSQL/result1.png alt="cache only" loading=lazy></p><p>Sending another request for a player with <strong>Id</strong> of <strong>2</strong> (this one is from our database):</p><p><img src=../img/golang-microservices-adding-PostgreSQL/result2.png alt="cache and db only" loading=lazy></p><p>Now, let&rsquo;s take a look at our Gin API. I made a third request for player with Id of 2 to see if we get the expected speed-up from cache. And we do indeed:</p><p><img src=../img/golang-microservices-adding-PostgreSQL/result3.png alt="cache only" loading=lazy></p><p>Voila! It works as expected!</p><p><img src=../img/golang-microservices-adding-PostgreSQL/JSON-result.png alt="json result" loading=lazy></p><p>Go Warriors! :)</p><iframe src=https://giphy.com/embed/fe6GhFBexWZeMgt5nV width=480 height=270 frameborder=0 class=giphy-embed allowfullscreen></iframe><p><a href=https://giphy.com/gifs/nba-emotion-stephen-curry-fe6GhFBexWZeMgt5nV>via GIPHY</a></p><div class=related><h3>Similar articles:</h3><ul><li><a href=/posts/golang-microservices-grpc-communication/>Golang Microservices Part 1 - gRPC Communication</a></li><li><a href=/posts/krakend-writing-plugins/>KrakenD: Writing Plugins using Golang</a></li><li><a href=/posts/use-golang-to-upload-files-to-azure-blob-storage/>Use Golang to Upload Files to Azure Blob Storage</a></li><li><a href=/posts/golang-make-multiple-api-calls/>Make Multiple Api Calls At The Same Time With GoRoutines</a></li></ul></div></div></div></section><section class=section><div class=container><aside><div id=disqus_thread></div></aside><script type=text/javascript>var disqus_shortname='ilikedos';function disqus(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='//'+disqus_shortname+'.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);}
-disqus();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript rel=nofollow>comments powered by Disqus.</a></noscript></div></section><section class=section><div class="container has-text-centered"><p>&copy; Ilya Nemtsev 2019</p><p>Powered by <a href=https://gohugo.io/>Hugo</a>.</p></div></section><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-140872128-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>
+
+
+
+
+
+<link rel="stylesheet" href="https://www.eventslooped.com/css/custom.min.css" />
+
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/" />
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
+          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
+        </a>
+      </div>
+      <div class="nav-right">
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="email" href='mailto:eventslooped@gmail.com'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="linkedin" href='https://linkedin.com/in/ilyanemtsev'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+      <div class="nav-left"><a class="nav-item" href="/about-me">
+          <h2 class="title is-5">About me</h2>
+        </a><a class="nav-item" href="/index.html">
+          <h2 class="title is-5">Blog</h2>
+        </a></div>
+      
+
+      
+    </nav>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+      
+<a class="subtitle is-6" href="/tags/golang/">#golang</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/microservices/">#microservices</a>
+  
+  | <a class="subtitle is-6" href="/tags/orm/">#ORM</a>
+  
+
+
+      
+    </div>
+    <h2 class="subtitle is-6">December 29, 2019</h2>
+    <h1 class="title">Golang Microservices Part 2 - PostgreSQL with gorm</h1>
+    
+    <div class="content">
+      <h3 id="setting-up-gorm">Setting up GORM</h3>
+<p><a href="/posts/golang-microservices-grpc-communication">Continuing from the app we created in Part 1</a></p>
+<p>PostgreSQL is one of the most popular database choices today because it is free and has most of the features that the big guns like Microsoft SQL Server and Oracle offer. To connect our microservice to PostgreSQL, we can simplify our life by using an ORM for GO called <a href="https://gorm.io/">GORM</a>&hellip; GO-ORM get it?</p>
+<iframe src="https://giphy.com/embed/fGRLn3m6XvmHeLNOzn" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/HallmarkChannel-fGRLn3m6XvmHeLNOzn">via GIPHY</a></p>
+<p>Let's upgrade the gRPC microservice we created in Part 1 to use an actual database instead of just cache. </p>
+<h3 id="first-lets-create-our-persistence-model">First, let&rsquo;s create our persistence model</h3>
+<p>We will need to install the <strong>github.com/jinzhu/gorm</strong> package. So run:</p>
+<blockquote>
+<p>go get github.com/jinzhu/gorm</p>
+</blockquote>
+<p>The <strong>BasketballPlayer</strong> model contains all of the data <em>we</em> want to persist. For things like ID and other technicallities we can embed another type, let&rsquo;s call it <strong>BasePersistenceModel</strong>. You are free to use the default gorm.Model, but you will get several columns you may or may not need like <em>updated_at</em>, <em>created_at</em> and <em>deleted_at</em>. You will also not be able to change the type of the column ID. This is why I like to create my own base model.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">BasePersistenceModel</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ID</span>	<span class="kt">uint64</span> <span class="s">`gorm:&#34;type:int;primary_key&#34;`</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">BasketballPlayer</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">BasePersistenceModel</span> <span class="c1">//gorm.Model can be used if you don&#39;t mind ID being an integer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">FirstName</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">LastName</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Age</span> <span class="kt">int32</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">PhotoUrl</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">PointsPerGame</span> <span class="kt">int32</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">AssistsPerGame</span> <span class="kt">int32</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ReboundsPerGame</span> <span class="kt">int32</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>You may ask, why <strong>int32</strong> is used here instead of the default <strong>int</strong>? Simply, because our generated gRPC model uses int32 and I did not feel like doing any conversion. <a href="https://stackoverflow.com/questions/21491488/what-is-the-difference-between-int-and-int64-in-go">What is the difference?</a></p>
+<p>We have a small problem here, our <em>gRPC model</em> is not the same as our <em>persistence model</em>. Therefore, we will need to be able to convert between these two. Let&rsquo;s add two methods to help us do this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">em</span> <span class="o">*</span><span class="nx">BasketballPlayer</span><span class="p">)</span> <span class="nf">GetgRPCModel</span><span class="p">()</span> <span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">Player</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">Player</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Id</span><span class="p">:</span>                   <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatUint</span><span class="p">(</span><span class="nx">em</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">FirstName</span><span class="p">:</span>            <span class="nx">em</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">LastName</span><span class="p">:</span>             <span class="nx">em</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Age</span><span class="p">:</span>                  <span class="nx">em</span><span class="p">.</span><span class="nx">Age</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">PhotoUrl</span><span class="p">:</span>             <span class="nx">em</span><span class="p">.</span><span class="nx">PhotoUrl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">PointsPerGame</span><span class="p">:</span>        <span class="nx">em</span><span class="p">.</span><span class="nx">PointsPerGame</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">AssistsPerGame</span><span class="p">:</span>       <span class="nx">em</span><span class="p">.</span><span class="nx">AssistsPerGame</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ReboundsPerGame</span><span class="p">:</span>      <span class="nx">em</span><span class="p">.</span><span class="nx">ReboundsPerGame</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">em</span> <span class="o">*</span><span class="nx">BasketballPlayer</span><span class="p">)</span> <span class="nf">From</span><span class="p">(</span><span class="nx">gRPCModel</span> <span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">Player</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">u</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseUint</span><span class="p">(</span><span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;incorrect ID from gRPC&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">ID</span> <span class="p">=</span> <span class="nx">u</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">FirstName</span> <span class="p">=</span> <span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">FirstName</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">LastName</span> <span class="p">=</span> <span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">LastName</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">Age</span> <span class="p">=</span> <span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">Age</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">PhotoUrl</span> <span class="p">=</span> <span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">PhotoUrl</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">PointsPerGame</span> <span class="p">=</span> <span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">PointsPerGame</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">AssistsPerGame</span> <span class="p">=</span> <span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">AssistsPerGame</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">em</span><span class="p">.</span><span class="nx">ReboundsPerGame</span> <span class="p">=</span> <span class="nx">gRPCModel</span><span class="p">.</span><span class="nx">ReboundsPerGame</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>Putting this all together, we have BasketballPlayer.go below, which we can put in our <strong>models folder</strong>:</p>
+<script type="application/javascript" src="https://gist.github.com/inemtsev/57cedc59988e2430bd28ad729367251b.js?file=BasketballPlayer.go"></script>
+
+<h3 id="finally-lets-update-our-maingo">Finally, let&rsquo;s update our main.go</h3>
+<p><strong>First</strong>, we need to add proper package references to <strong>main.go</strong>. Let&rsquo;s the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="s">&#34;github.com/jinzhu/gorm&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">_</span> <span class="s">&#34;github.com/jinzhu/gorm/dialects/postgres&#34;</span></span></span></code></pre></div>
+<p>The second line adds support for the database of your choosing. Don&rsquo;t forget to add it, or you will get a cryptic error that isn&rsquo;t easy to understand. <a href="http://gorm.io/docs/connecting_to_the_database.html">Here you will find a list of supported databases by gorm.</a></p>
+<p><strong>Second</strong>, we need to add add a few package-level variables and a way to initialize them:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">db</span> <span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">dbPath</span> <span class="p">=</span> <span class="s">&#34;host=34.84.26.219 user=postgres password=somecoolpasswordhere&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">e</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">db</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">gorm</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="s">&#34;postgres&#34;</span><span class="p">,</span> <span class="nx">dbPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;failed to connect to database&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">db</span><span class="p">.</span><span class="nf">AutoMigrate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">models</span><span class="p">.</span><span class="nx">BasketballPlayer</span><span class="p">{})</span>  <span class="c1">//this will create a table in your database if it isn&#39;t there already
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></div>
+<p><strong>Lastly</strong>, let&rsquo;s update our handler so that it checks cache for data first and if not found, tries to fetch data from database:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="o">*</span><span class="nx">server</span><span class="p">)</span> <span class="nf">GetBasketballPlayer</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">PlayerRequest</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">PlayerResponse</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">id</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">GetId</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Checking cache...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">playerVal</span><span class="p">,</span> <span class="nx">found</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">found</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">player</span> <span class="o">:=</span> <span class="nx">playerVal</span><span class="p">.(</span><span class="o">*</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">Player</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">&amp;</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">PlayerResponse</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Result</span><span class="p">:</span> <span class="nx">player</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Checking database...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">db</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">gorm</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="s">&#34;postgres&#34;</span><span class="p">,</span> <span class="nx">dbPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">defer</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;failed to connect to database: %v&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="kd">var</span> <span class="nx">p</span> <span class="nx">models</span><span class="p">.</span><span class="nx">BasketballPlayer</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">db</span><span class="p">.</span><span class="nf">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">p</span><span class="p">,</span> <span class="nx">id</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;could not find player with id: %v&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">gRPCResult</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">.</span><span class="nf">GetgRPCModel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">c</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">gRPCResult</span><span class="p">,</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">DefaultExpiration</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="o">&amp;</span><span class="nx">basketBallPlayer</span><span class="p">.</span><span class="nx">PlayerResponse</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">Result</span><span class="p">:</span>	<span class="o">&amp;</span><span class="nx">gRPCResult</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="p">},</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>Update: I improved caching slightly from Part 1, the code now stores pointers in cache instead of copying full values.</p>
+<p>Putting all the pieces into our app from Part 1 we get:</p>
+<script type="application/javascript" src="https://gist.github.com/inemtsev/57cedc59988e2430bd28ad729367251b.js?file=main.go"></script>
+
+<p>I added one row into the database for testing purposes:</p>
+<p>Sending a request to our API for player with <strong>Id</strong> of <strong>1</strong>, gives us:</p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/result1.png" alt="cache only" loading="lazy" /></p>
+<p>Sending another request for a player with <strong>Id</strong> of <strong>2</strong> (this one is from our database):</p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/result2.png" alt="cache and db only" loading="lazy" /></p>
+<p>Now, let&rsquo;s take a look at our Gin API. I made a third request for player with Id of 2 to see if we get the expected speed-up from cache. And we do indeed:</p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/result3.png" alt="cache only" loading="lazy" /></p>
+<p>Voila! It works as expected!</p>
+<p><img src="../img/golang-microservices-adding-PostgreSQL/JSON-result.png" alt="json result" loading="lazy" /></p>
+<p>Go Warriors! :)</p>
+<iframe src="https://giphy.com/embed/fe6GhFBexWZeMgt5nV" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-emotion-stephen-curry-fe6GhFBexWZeMgt5nV">via GIPHY</a></p>
+      
+      <div class="related">
+
+<h3>Similar articles:</h3>
+<ul>
+	
+	<li><a href="/posts/golang-microservices-grpc-communication/">Golang Microservices Part 1 - gRPC Communication</a></li>
+	
+	<li><a href="/posts/krakend-writing-plugins/">KrakenD: Writing Plugins using Golang</a></li>
+	
+	<li><a href="/posts/use-golang-to-upload-files-to-azure-blob-storage/">Use Golang to Upload Files to Azure Blob Storage</a></li>
+	
+	<li><a href="/posts/golang-make-multiple-api-calls/">Make Multiple Api Calls At The Same Time With GoRoutines</a></li>
+	
+</ul>
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+  
+    <script type="text/javascript">
+      var disqus_shortname = 'ilikedos';
+      function disqus() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+  
+      disqus();
+  
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; Ilya Nemtsev 2019</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+    
+  </div>
+</section>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140872128-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Razer on EventsLooped</title><link>https://www.eventslooped.com/tags/razer/</link><description>Recent content in Razer on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Thu, 25 Jun 2020 23:18:52 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/razer/index.xml" rel="self" type="application/rss+xml"/><item><title>Upgrading Razer Blade 15 (Early 2019) RAM SSD</title><link>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</link><pubDate>Thu, 25 Jun 2020 23:18:52 +0700</pubDate><guid>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</guid><description>Why? I decided to upgrade my laptop memory this year. While my coding work rarely pushes memory usage above 75%, I recently started doing a lot of Lightroom editing and occasionally video editing as well. I noticed that I was frequently using 15 of 16 GB of memory and I decided to bump it up to 32 gigs. I also heard that the next generation of SSD is coming out soon and will not be compatible with the interface this laptop is using so I decided to ugprade, the storage on the laptop was well to 1TB.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Razer on EventsLooped</title>
+    <link>https://www.eventslooped.com/tags/razer/</link>
+    <description>Recent content in Razer on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Thu, 25 Jun 2020 23:18:52 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/razer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Upgrading Razer Blade 15 (Early 2019) RAM SSD</title>
+      <link>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</link>
+      <pubDate>Thu, 25 Jun 2020 23:18:52 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/upgrading-razer-early-2019-ram-ssd/</guid>
+      <description>Why? I decided to upgrade my laptop memory this year. While my coding work rarely pushes memory usage above 75%, I recently started doing a lot of Lightroom editing and occasionally video editing as well. I noticed that I was frequently using 15 of 16 GB of memory and I decided to bump it up to 32 gigs. I also heard that the next generation of SSD is coming out soon and will not be compatible with the interface this laptop is using so I decided to ugprade, the storage on the laptop was well to 1TB.</description>
+    </item>
+    
+  </channel>
+</rss>

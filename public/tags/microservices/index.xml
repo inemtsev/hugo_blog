@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>microservices on EventsLooped</title><link>https://www.eventslooped.com/tags/microservices/</link><description>Recent content in microservices on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Sun, 29 Dec 2019 23:57:36 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/microservices/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang Microservices Part 2 - PostgreSQL with gorm</title><link>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</link><pubDate>Sun, 29 Dec 2019 23:57:36 +0700</pubDate><guid>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</guid><description>Setting up GORM Continuing from the app we created in Part 1
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>microservices on EventsLooped</title>
+    <link>https://www.eventslooped.com/tags/microservices/</link>
+    <description>Recent content in microservices on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Sun, 29 Dec 2019 23:57:36 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang Microservices Part 2 - PostgreSQL with gorm</title>
+      <link>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</link>
+      <pubDate>Sun, 29 Dec 2019 23:57:36 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/golang-microservices-adding-postgresql/</guid>
+      <description>Setting up GORM Continuing from the app we created in Part 1
 PostgreSQL is one of the most popular database choices today because it is free and has most of the features that the big guns like Microsoft SQL Server and Oracle offer. To connect our microservice to PostgreSQL, we can simplify our life by using an ORM for GO called GORM&amp;hellip; GO-ORM get it?
 via GIPHY
-Let's upgrade the gRPC microservice we created in Part 1 to use an actual database instead of just cache.</description></item><item><title>Golang Microservices Part 1 - gRPC Communication</title><link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link><pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate><guid>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</guid><description>Summary - Setting up gRPC communication gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient HTTP/2 network protocol as well Google&amp;rsquo;s Protocol Buffers (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the .proto file for nearly every programming language available.</description></item></channel></rss>
+Let&#39;s upgrade the gRPC microservice we created in Part 1 to use an actual database instead of just cache.</description>
+    </item>
+    
+    <item>
+      <title>Golang Microservices Part 1 - gRPC Communication</title>
+      <link>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</link>
+      <pubDate>Fri, 29 Nov 2019 14:55:29 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/golang-microservices-grpc-communication/</guid>
+      <description>Summary - Setting up gRPC communication gRPC is a modern, highly-efficient method of communication between systems built by Google. gRPC uses the new and efficient HTTP/2 network protocol as well Google&amp;rsquo;s Protocol Buffers (Protobuf) method of serialization which allows for more light-weight and predictable communication. Protocol Buffers can be used with any technology stack out there; code can be generated from the .proto file for nearly every programming language available.</description>
+    </item>
+    
+  </channel>
+</rss>

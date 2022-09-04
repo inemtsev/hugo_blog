@@ -1,2 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>file upload on EventsLooped</title><link>https://www.eventslooped.com/tags/file-upload/</link><description>Recent content in file upload on EventsLooped</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&amp;copy; Ilya Nemtsev 2019</copyright><lastBuildDate>Wed, 15 Apr 2020 19:30:11 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/file-upload/index.xml" rel="self" type="application/rss+xml"/><item><title>Chunked File Upload using TypeScript, React, and Go</title><link>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</link><pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate><guid>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</guid><description>Why you may want to chunk files? The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.
-Let&amp;rsquo;s build a simple app using no additional javascript libraries!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>file upload on EventsLooped</title>
+    <link>https://www.eventslooped.com/tags/file-upload/</link>
+    <description>Recent content in file upload on EventsLooped</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Ilya Nemtsev 2019</copyright>
+    <lastBuildDate>Wed, 15 Apr 2020 19:30:11 +0700</lastBuildDate><atom:link href="https://www.eventslooped.com/tags/file-upload/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chunked File Upload using TypeScript, React, and Go</title>
+      <link>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</link>
+      <pubDate>Wed, 15 Apr 2020 19:30:11 +0700</pubDate>
+      
+      <guid>https://www.eventslooped.com/posts/chunked-file-upload-typescript-react-go/</guid>
+      <description>Why you may want to chunk files? The biggest reason for me to upload files in chunks, is because I want to upload very large files; pictures, videos, whatever&amp;hellip; This means, I want to know the status of the upload as it progresses and if I can&amp;rsquo;t finish the upload now, I want to be able to pause, go to my favourite coffee shop and continue on there.
+Let&amp;rsquo;s build a simple app using no additional javascript libraries!</description>
+    </item>
+    
+  </channel>
+</rss>

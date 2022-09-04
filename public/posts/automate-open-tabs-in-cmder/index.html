@@ -1,9 +1,195 @@
-<!doctype html><html xmlns=http://www.w3.org/1999/xhtml lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Automate Open Tabs in Cmder | EventsLooped</title><link href=https://www.eventslooped.com/index.xml rel=alternate type=application/rss+xml title=EventsLooped><link rel=stylesheet href=https://www.eventslooped.com/css/style.min.css><link rel=stylesheet href=https://www.eventslooped.com/css/custom.min.css><link rel=apple-touch-icon sizes=120x120 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><link rel=canonical href=https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/></head><body><section class=section><div class=container><nav id=nav-main class=nav><div id=nav-name class=nav-left><a id=nav-anchor class=nav-item href=https://www.eventslooped.com><h1 id=nav-heading class="title is-4">EventsLooped</h1></a></div><div class=nav-right><nav id=nav-items class="nav-item level is-mobile"><a class=level-item aria-label=github href=https://github.com/inemtsev target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></i></span></a><a class=level-item aria-label=email href=mailto:eventslooped@gmail.com target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></i></span></a><a class=level-item aria-label=linkedin href=https://linkedin.com/in/ilyanemtsev target=_blank rel=noopener><span class=icon><i><svg viewbox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path stroke-width="1.8" d="m5.839218 4.101561c0 1.211972-.974141 2.194011-2.176459 2.194011S1.4863 5.313533 1.4863 4.101561c0-1.211094.974141-2.194011 2.176459-2.194011s2.176459.982917 2.176459 2.194011zm.017552 3.94922h-4.388022v14.04167H5.85677V8.050781zm7.005038.0H8.501869v14.04167h4.360816v-7.370999c0-4.098413 5.291077-4.433657 5.291077.0v7.370999h4.377491v-8.89101c0-6.915523-7.829986-6.66365-9.669445-3.259423V8.050781z"/></svg></i></span></a></nav></div></nav><nav class=nav><div class=nav-left><a class=nav-item href=/about-me><h2 class="title is-5">About me</h2></a><a class=nav-item href=/index.html><h2 class="title is-5">Blog</h2></a></div></nav></div></section><section class=section><div class=container><div class="subtitle tags is-6 is-pulled-right"><a class="subtitle is-6" href=/tags/cmder/>#cmder</a>
-| <a class="subtitle is-6" href=/tags/terminal/>#terminal</a>
-| <a class="subtitle is-6" href=/tags/automation/>#automation</a></div><h2 class="subtitle is-6">June 4, 2020</h2><h1 class=title>Automate Open Tabs in Cmder</h1><div class=content><p>I have been using Cmder for about a year now, it&rsquo;s an excellent console emulator for Windows based on ConEmu emulator, but with a few bells and whistles thrown in. I got it mainly for the tabs and split screen features (which ConEmu also supports), but Cmder looks cooler and has Git support out of the box. At work I like to have git for front-end open on the left side and git for back-end open on the right side; then I have another tab open for yarn commands.</p><p><img alt="Cmder is awesome!" src=../img/automate-open-tabs-in-cmder/intro-pic.png loading=lazy></p><p>Multiple tabs and split screens are great, but they are annoying to reopen every single time. Thanksfully, Cmder has a functionality called <strong>Tasks</strong> which allows the user to bind keyboard combinations to some actions.
-This functionality is hidden in settings, click on the <strong>half-life icon</strong> and then settings.</p><p><img alt="Hidden settings" src=../img/automate-open-tabs-in-cmder/settings.png loading=lazy></p><p>In settings, under <strong>Startup</strong> > <strong>Tasks</strong>, you can already see some default tasks present. Let&rsquo;s add our own:</p><ol><li>Click &ldquo;+&rdquo; to add a task</li><li>Select your new task and give it a better name</li><li>Pick your hotkey combination; I am setting up my blogging environment in this example, so I gave it a Left Alt + Left Shift + W</li><li>Now, we have to provide the parameters on what the task needs to do</li></ol><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>-cur_console:d:<span class=s2>&#34;C:\hugo_blog\themes\kiss\layouts&#34;</span>:t:<span class=s2>&#34;Layout&#34;</span>:C:<span class=s2>&#34;C:\icons\important.ico&#34;</span>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
--cur_console:s1T50H:d:<span class=s2>&#34;C:\hugo_blog\content\posts\img&#34;</span>:t:<span class=s2>&#34;Images&#34;</span>:C:<span class=s2>&#34;C:\icons\photo.ico&#34;</span>
+<title>Automate Open Tabs in Cmder | EventsLooped</title>
 
--cur_console:d:<span class=s2>&#34;C:\hugo_blog&#34;</span> -cur_console:t:<span class=s2>&#34;Root&#34;</span>:C:<span class=s2>&#34;C:\icons\heart.ico&#34;</span> cmd /k <span class=s2>&#34;&#34;</span>%ConEmuDir%<span class=se>\.</span>.<span class=se>\i</span>nit.bat<span class=s2>&#34;&#34;</span></code></pre></div><p>Let&rsquo;s break it down. To create a new tab/screen we need to use the <strong>-curr_console</strong> switch (<a href=https://conemu.github.io/en/NewConsole.html>reference here</a>); we can provide the directory to open using the <strong>:d</strong> sub-switch. If you wish, you can optionally provide a name for the tab using the <strong>:t</strong> sub-switch and even an icon using the <strong>C:</strong> sub-switch. (I found some cool icons on <a href=https://www.iconfinder.com/free_icons>IconFinder</a>)</p><p>The split-screen sub-switch <strong>s:</strong> is a little more confusing. For my purposes I used <strong>s1T50H</strong>, which in English means: Split the <strong>1st</strong> screen by taking <strong>50%</strong>, stacking <strong>horizontally</strong>. To stack the screens vertically just change the <strong>H</strong> to a <strong>V</strong>. <a href=https://conemu.github.io/en/SplitScreen.html#From-your-shell-prompt>ComEmu has some docs on this</a>, it&rsquo;s a little dry to read, but may help further configure your environment.</p><p>Lastly, the <strong>%ConEmuDir%..\init.bat</strong> script is needed to enable the built-in git support for my git-initialized directory.</p><p>The result of our labour. Look at those cute icons! Ok, I&rsquo;m a geek.</p><p><img src=../img/automate-open-tabs-in-cmder/cmder-result.gif alt="Task result" loading=lazy></p><div class=related></div></div></div></section><section class=section><div class=container><aside><div id=disqus_thread></div></aside><script type=text/javascript>var disqus_shortname='ilikedos';function disqus(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='//'+disqus_shortname+'.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);}
-disqus();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript rel=nofollow>comments powered by Disqus.</a></noscript></div></section><section class=section><div class="container has-text-centered"><p>&copy; Ilya Nemtsev 2019</p><p>Powered by <a href=https://gohugo.io/>Hugo</a>.</p></div></section><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-140872128-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>
+
+
+<link href="https://www.eventslooped.com/index.xml" rel="alternate" type="application/rss+xml" title="EventsLooped" />
+
+
+
+<link rel="stylesheet" href="https://www.eventslooped.com/css/style.min.css" />
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://www.eventslooped.com/css/custom.min.css" />
+
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://www.eventslooped.com/posts/automate-open-tabs-in-cmder/" />
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.eventslooped.com">
+          <h1 id="nav-heading" class="title is-4">EventsLooped</h1>
+        </a>
+      </div>
+      <div class="nav-right">
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/inemtsev'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="email" href='mailto:eventslooped@gmail.com'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="linkedin" href='https://linkedin.com/in/ilyanemtsev'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+      <div class="nav-left"><a class="nav-item" href="/about-me">
+          <h2 class="title is-5">About me</h2>
+        </a><a class="nav-item" href="/index.html">
+          <h2 class="title is-5">Blog</h2>
+        </a></div>
+      
+
+      
+    </nav>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+      
+<a class="subtitle is-6" href="/tags/cmder/">#cmder</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/terminal/">#terminal</a>
+  
+  | <a class="subtitle is-6" href="/tags/automation/">#automation</a>
+  
+
+
+      
+    </div>
+    <h2 class="subtitle is-6">June 4, 2020</h2>
+    <h1 class="title">Automate Open Tabs in Cmder</h1>
+    
+    <div class="content">
+      <p>I have been using Cmder for about a year now, it&rsquo;s an excellent console emulator for Windows based on ConEmu emulator, but with a few bells and whistles thrown in. I got it mainly for the tabs and split screen features (which ConEmu also supports), but Cmder looks cooler and has Git support out of the box. At work I like to have git for front-end open on the left side and git for back-end open on the right side; then I have another tab open for yarn commands.</p>
+<p><img alt="Cmder is awesome!" src="../img/automate-open-tabs-in-cmder/intro-pic.png" loading="lazy" /></p>
+<p>Multiple tabs and split screens are great, but they are annoying to reopen every single time. Thanksfully, Cmder has a functionality called <strong>Tasks</strong> which allows the user to bind keyboard combinations to some actions.
+This functionality is hidden in settings, click on the <strong>half-life icon</strong> and then settings.</p>
+<p><img alt="Hidden settings" src="../img/automate-open-tabs-in-cmder/settings.png" loading="lazy" /></p>
+<p>In settings, under <strong>Startup</strong> &gt; <strong>Tasks</strong>, you can already see some default tasks present. Let&rsquo;s add our own:</p>
+<ol>
+<li>Click &ldquo;+&rdquo; to add a task</li>
+<li>Select your new task and give it a better name</li>
+<li>Pick your hotkey combination; I am setting up my blogging environment in this example, so I gave it a Left Alt + Left Shift + W</li>
+<li>Now, we have to provide the parameters on what the task needs to do</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-cur_console:d:<span class="s2">&#34;C:\hugo_blog\themes\kiss\layouts&#34;</span>:t:<span class="s2">&#34;Layout&#34;</span>:C:<span class="s2">&#34;C:\icons\important.ico&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-cur_console:s1T50H:d:<span class="s2">&#34;C:\hugo_blog\content\posts\img&#34;</span>:t:<span class="s2">&#34;Images&#34;</span>:C:<span class="s2">&#34;C:\icons\photo.ico&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-cur_console:d:<span class="s2">&#34;C:\hugo_blog&#34;</span> -cur_console:t:<span class="s2">&#34;Root&#34;</span>:C:<span class="s2">&#34;C:\icons\heart.ico&#34;</span> cmd /k <span class="s2">&#34;&#34;</span>%ConEmuDir%<span class="se">\.</span>.<span class="se">\i</span>nit.bat<span class="s2">&#34;&#34;</span></span></span></code></pre></div>
+<p>Let&rsquo;s break it down. To create a new tab/screen we need to use the <strong>-curr_console</strong> switch (<a href="https://conemu.github.io/en/NewConsole.html">reference here</a>); we can provide the directory to open using the <strong>:d</strong> sub-switch. If you wish, you can optionally provide a name for the tab using the <strong>:t</strong> sub-switch and even an icon using the <strong>C:</strong> sub-switch. (I found some cool icons on <a href="https://www.iconfinder.com/free_icons">IconFinder</a>)</p>
+<p>The split-screen sub-switch <strong>s:</strong> is a little more confusing. For my purposes I used <strong>s1T50H</strong>, which in English means: Split the <strong>1st</strong> screen by taking <strong>50%</strong>, stacking <strong>horizontally</strong>. To stack the screens vertically just change the <strong>H</strong> to a <strong>V</strong>. <a href="https://conemu.github.io/en/SplitScreen.html#From-your-shell-prompt">ComEmu has some docs on this</a>, it&rsquo;s a little dry to read, but may help further configure your environment.</p>
+<p>Lastly, the <strong>%ConEmuDir%..\init.bat</strong> script is needed to enable the built-in git support for my git-initialized directory.</p>
+<p>The result of our labour. Look at those cute icons! Ok, I&rsquo;m a geek.</p>
+<p><img src="../img/automate-open-tabs-in-cmder/cmder-result.gif" alt="Task result" loading="lazy" /></p>
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+  
+    <script type="text/javascript">
+      var disqus_shortname = 'ilikedos';
+      function disqus() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+  
+      disqus();
+  
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; Ilya Nemtsev 2019</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+    
+  </div>
+</section>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-140872128-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+
+
+
+
+
+
+</body>
+</html>
+
