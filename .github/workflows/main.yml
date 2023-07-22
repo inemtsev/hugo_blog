@@ -26,16 +26,19 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with: 
-        hugo-version: "0.102.3"
+        hugo-version: "0.111.3"
 
     # Runs a set of commands using the runners shell
     - name: Build
       run: hugo --minify
       
-    - name: Deploy
-      uses: tibor19/static-website-deploy@v1
+    - name: Setup AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with: 
-        enabled-static-website: 'true'
-        folder: 'public'
-        connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ca-central-1
+    - name: Sync files to S3 bucket
+      run: |
+        aws s3 sync ./public s3://eventslooped-com --delete
       
