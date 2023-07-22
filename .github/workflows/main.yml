@@ -26,5 +26,5 @@ jobs:
         aws-region: ca-central-1
     - name: Sync files to S3 bucket
       run: |
-        aws s3 sync ./public s3://eventslooped-com --delete
+        aws s3 sync ./public s3://eventslooped.com --delete
       
