@@ -25,5 +25,5 @@ The classic way would be to build up the complex response object in one of your 
 Without much effort we can create a small DSL that will allow us to write the following very succinctly:
 {{< gist inemtsev 6361f55fd9cd13d0934645ff39bf689a ResultingScheduleDSL.kt >}}
 
-There is nothing stopping you from doing logic, loops, etc - inside your DSL
+There is nothing stopping you from doing logic, loops, etc - inside your DSL:
 {{< gist inemtsev 6361f55fd9cd13d0934645ff39bf689a ResultingScheduleDSL2.kt >}}
