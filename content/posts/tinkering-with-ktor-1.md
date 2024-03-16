@@ -53,7 +53,8 @@ RUN gradle buildFatJar --no-daemon
 
 Note that we named this stage **build**. We will need this later.
 
-The second stage will include the runtime and our packaged app from the first stage. I found a linux with [JRE image here] (https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=17) and used that as my base image for this stage. In most cases you need the JRE (Java Runtime Environment) here, not JDK (Java Development Kit). You can see the details about the image on the website. This one I am using for this example is based on the Ubuntu distribution of Linux, a very common setup.
+The second stage will include the runtime and our packaged app from the first stage. I found a linux with [JRE image here](https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=17) and used that as my base image for this stage. In most cases you need the JRE (Java Runtime Environment) here, not JDK (Java Development Kit). You can see the details about the image on the website. The one I am using for this example is based on the Ubuntu distribution of Linux, a very common setup.
+
 We copy the FatJar from the previous stage by referring to its name "build", expose the port 8080 and set the start of the app. Giving us the resulting second stage:
 
 {{< highlight dockerfile >}}
