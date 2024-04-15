@@ -1,7 +1,7 @@
 ---
 title: "Tinkering With Ktor: Using HTML DSL for page templates"
 date: 2024-03-30T19:02:33+07:00
-draft: true
+draft: false
 tags: ["kotlin","ktor","DSL"]
 sitemap: 
     priority: 0.5

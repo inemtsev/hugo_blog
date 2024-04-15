@@ -5,10 +5,7 @@
       <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
     {{ end }}
   </div>
-</section>
-{{ if .Site.GoogleAnalytics }}
-{{ template "_internal/google_analytics_async.html" . }}
-{{ end }}    
+</section>    
 {{ if .Site.Params.matomoAnalytics }}
 {{- partial "analytics/matomo" . -}}
 {{ end }}
