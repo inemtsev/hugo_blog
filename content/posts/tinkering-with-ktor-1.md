@@ -70,6 +70,8 @@ Finally, run `docker build -t cool-app .`, this builds your container with the t
 
 Voila, your app can run on any system with just docker installed.
 
+By default you can use http://0.0.0.0:8080 to test.
+
 <p>
 <img src="https://eventslooped-images-thumb.s3.ca-central-1.amazonaws.com/resized-l-tinkering-containers.jpg" alt="containers">
 </p>
