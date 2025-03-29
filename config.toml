@@ -2,11 +2,10 @@ baseurl = "https://www.eventslooped.com"
 languageCode = "en"
 title = "EventsLooped"
 theme = "kiss"
-copyright = "&copy; Ilya Nemtsev 2019"
+copyright = "&copy; Ilya Nemtsev 2025"
 disqusShortname = "ilikedos"
-googleAnalytics = "G-5ZMD7C285E"
 # Number of posts per page
-Paginate = 10
+pagination.pagerSize = 10
 enableRobotsTXT = true
 imgPad = 14
 pygmentsUseClasses = true
@@ -56,3 +55,6 @@ publishDir = "docs"
 
 [markup.goldmark.renderer]
 unsafe= true
+
+[services.googleAnalytics]
+ID = "G-5ZMD7C285E"
