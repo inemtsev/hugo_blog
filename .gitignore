@@ -1,1 +1,23 @@
 public/
+docs/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS thumbnails
+._*
+
+# macOS directory metadata
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Hugo specific
+resources/_gen/
+.hugo_build.lock
