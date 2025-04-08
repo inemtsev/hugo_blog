@@ -17,7 +17,7 @@ I decided to upgrade my laptop memory this year. While my coding work rarely pus
 
 This is a high-performance laptop which has served me well for both work and play, I did not want to downgrade any of that so I went for the same speed RAM that was already in this laptop, 2666 MHz. 
 
-<p><img src="{{< param varResizer >}}{{< param varTitle >}}/new_ram_ddr4_2666.jpg" alt="Crucial 16GB 2666mhz" loading="lazy" /></p>
+{{< figure src="new_ram_ddr4_2666.jpg" alt="Crucial 16GB 2666mhz" preset="medium" loading="lazy" >}}
 <p>I got two of these babies</b>
 
 For the SSD I opted for the [Samsung 970 EVO Plus](https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2/ref=sr_1_1?dchild=1&keywords=samsung+evo+plus+1tb&qid=1593243705&sr=8-1), it's one of the fastest drives on the market with plenty of [excellent reviews.](https://www.tomshardware.com/reviews/samsung-970-evo-plus-ssd,5608.html)
@@ -25,19 +25,19 @@ For the SSD I opted for the [Samsung 970 EVO Plus](https://www.amazon.com/Samsun
 ### Installation of RAM and SSD
 
 1. Upgrading this laptop is quite straightforward, if you have the right tools. In particular you need this kind of screw driver bit (I think it's called Torx, but there are several sizes). Be sure to touch a stove or heater or something metal to rid yourself of static electricity. 
-<p><img src="{{< param varResizer >}}{{< param varTitle >}}/torx_screw_bit.jpg" alt="Torx screw bit" loading="lazy" /></p>
+{{< figure src="torx_screw_bit.jpg" alt="Torx screw bit" preset="medium" loading="lazy" >}}
 
 2. First remove the screws. Loosen them bit by bit, avoid taking them out in one go to prevent putting uneven pressure on the screws.
-<p><img src="{{< param varResizer >}}{{< param varTitle >}}/razer_2019_bottom.jpg" alt="Razer screws" loading="lazy" /></p>
+{{< figure src="razer_2019_bottom.jpg" alt="Razer screws" preset="medium" loading="lazy" >}}
 
 3. There are three things that are easily upgradable in this laptop: RAM, SSD Storage (M2 interface), and Wifi adapter.
-<p><img src="{{< param varResizer >}}{{< param varTitle >}}/razer_2019_internals.jpg" alt="Razer screws" loading="lazy" /></p>
+{{< figure src="razer_2019_internals.jpg" alt="Razer screws" preset="medium" loading="lazy" >}}
 
 4. In this particular year of Razer laptops (this doesnt seem to be the case in late 2019 models), there is a ribbon cable that runs across one of the RAM slots which makes it slightly tricky. Thankfully, the ribbon cable is easily removable by pulling back on the tiny lever shown below.
-<p><img src="{{< param varResizer >}}{{< param varTitle >}}/razer_ram_ribbon.jpg" alt="Ram ribbon" loading="lazy" /></p>
+{{< figure src="razer_ram_ribbon.jpg" alt="Ram ribbon" preset="medium" loading="lazy" >}}
 
 5. Once the ribbon is out of the way, you can pop the Ram by pulling outward the metal clips on both sides of the RAM. Putting in the new RAM is a combination of insertion and pulling down the RAM until it clicks into the metal clips. The final result is more RAM!
-<p><img src="{{< param varResizer >}}{{< param varTitle >}}/razer_new_ram.jpg" alt="Installed new RAM!" loading="lazy" /></p>
+{{< figure src="razer_new_ram.jpg" alt="Installed new RAM!" preset="medium" loading="lazy" >}}
 
 6. Before upgrading the SSD make sure you have a way to reinstall Windows since all your data will be gone. I did this by creating a bootable recovery USB drive (you will need at least a 16 gig thumb-drive for this). This is quite simple to do, just search the start menu for **recovery drive** and follow the instructions in the utility (this process will take about an hour, so be sure to go grab a coffee...or a beer)
 
@@ -48,12 +48,14 @@ For the SSD I opted for the [Samsung 970 EVO Plus](https://www.amazon.com/Samsun
 ### The result!
 
 Ram looking good!
-<p><img src="https://www.eventslooped.com/posts/img/{{< param varTitle >}}/result_ram.png" alt="The RAM is working!" loading="lazy" /></p>
+{{< figure src="result_ram.png" alt="The RAM is working!" preset="medium" loading="lazy" >}}
 
 Comparing the speeds of the old SSD vs new one.
-<p><b>Old storage</b></p>
-<p><img src="https://www.eventslooped.com/posts/img/{{< param varTitle >}}/result_old_ssd.png" alt="Old SSD is still a beast!" loading="lazy" /></p>
-<p><b>New storage</b></p>
-<p><img src="https://www.eventslooped.com/posts/img/{{< param varTitle >}}/result_new_ssd.png" alt="New SSD is stronger though!" loading="lazy" /></p>
+
+**Old storage**
+{{< figure src="result_old_ssd.png" alt="Old SSD is still a beast!" preset="medium" loading="lazy" >}}
+
+**New storage**
+{{< figure src="result_new_ssd.png" alt="New SSD is stronger though!" preset="medium" loading="lazy" >}}
 
 The result looks excellent, the reads are overall faster and the writes are much much faster. The speed boost was noticable especially when copying or decompressing files or installing new software. 

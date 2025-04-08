@@ -24,7 +24,7 @@
       <h2 class="subtitle is-6 date">{{ .Date.Format "January 2, 2006" }}</h2>
       <h1 class="title"><a href="{{ .Permalink }}">{{ .Title }}{{ partial "taxonomies_count" . }}</a>{{ if .Draft }} ::Draft{{ end }}</h1>
       <div class="content">
-        {{ .Summary | safeHTML }}
+        {{ .Summary | plainify | safeHTML }}
         {{ if .Truncated }}
         <a class="button is-link" href="{{ .Permalink }}" style="height:28px">
           Read more

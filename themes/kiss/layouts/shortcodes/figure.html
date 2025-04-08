@@ -1,0 +1,27 @@
+{{ $original := .Page.Resources.GetMatch (.Get "src") }}
+{{ if not $original }}
+    {{ $original = .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
+{{ end }}
+{{ if $original }}
+    {{ $image := $original }}
+    {{ if eq (.Get "preset") "medium" }}
+        {{ $image = $original.Fit "800x600" }}
+    {{ else if eq (.Get "preset") "thumbnail" }}
+        {{ $image = $original.Fit "300x200" }}
+    {{ else if eq (.Get "preset") "large" }}
+        {{ $image = $original.Fit "1200x900" }}
+    {{ end }}
+    <figure>
+        <img src="{{ $image.RelPermalink }}" 
+             {{ with .Get "alt" }}alt="{{ . }}"{{ end }}
+             {{ with .Get "class" }}class="{{ . }}"{{ end }}
+             {{ with .Get "loading" }}loading="{{ . }}"{{ end }}
+             width="{{ $image.Width }}"
+             height="{{ $image.Height }}">
+        {{ with .Get "caption" }}
+            <figcaption>{{ . }}</figcaption>
+        {{ end }}
+    </figure>
+{{ else }}
+    {{ errorf "Image '%s' not found in page resources" (.Get "src") }}
+{{ end }} 

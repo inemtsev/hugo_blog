@@ -3,12 +3,14 @@ languageCode = "en"
 title = "EventsLooped"
 theme = "kiss"
 copyright = "&copy; Ilya Nemtsev 2025"
-disqusShortname = "ilikedos"
 # Number of posts per page
 pagination.pagerSize = 10
 enableRobotsTXT = true
 imgPad = 14
 pygmentsUseClasses = true
+
+[params]
+disqusShortname = "ilikedos"
 
 [params.assets]
 customCSS = ["css/custom.css"]
@@ -51,10 +53,74 @@ platforms = ["twitter","github","email","linkedin"]
 [taxonomies]
 tag ="tags"
 
-publishDir = "docs"
-
 [markup.goldmark.renderer]
 unsafe= true
 
 [services.googleAnalytics]
 ID = "G-5ZMD7C285E"
+
+[imaging]
+quality = 75
+resampleFilter = "Lanczos"
+
+[imaging.config]
+format = "webp"
+quality = 75
+
+# Define image processing presets
+[[imaging.presets]]
+name = "thumbnail"
+width = 300
+height = 200
+
+[[imaging.presets]]
+name = "medium"
+width = 800
+height = 600
+
+[[imaging.presets]]
+name = "large"
+width = 1200
+height = 900
+
+[security.exec]
+allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^babel$']
+
+[security.funcs]
+getenv = ['^HUGO_']
+
+[security.http]
+methods = ['(?i)GET|POST']
+urls = ['.*']
+
+[build]
+writeStats = true
+
+[module]
+[[module.mounts]]
+source = "content"
+target = "content"
+
+[[module.mounts]]
+source = "static"
+target = "static"
+
+[[module.mounts]]
+source = "layouts"
+target = "layouts"
+
+[[module.mounts]]
+source = "data"
+target = "data"
+
+[[module.mounts]]
+source = "assets"
+target = "assets"
+
+[[module.mounts]]
+source = "i18n"
+target = "i18n"
+
+[[module.mounts]]
+source = "archetypes"
+target = "archetypes"
