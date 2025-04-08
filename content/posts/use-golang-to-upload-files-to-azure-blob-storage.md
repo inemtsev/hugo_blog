@@ -19,7 +19,7 @@ Your **Azure Access Key** can be found under Blob Storage Account > Access Keys.
 ### Das Code:
 First, let's create a method that gives us all the credentials we need for uploading files. In production you will want to use a more secure method of handling credentials, but for this example hard-coding will do. 
 
-{{< highlight go >}}
+```go
 func GetAccountInfo() (string, string, string, string) {
 	azrKey := "<your_azure_access_key>"
 	azrBlobAccountName := "mytechblog"
@@ -28,22 +28,22 @@ func GetAccountInfo() (string, string, string, string) {
 
 	return azrKey, azrBlobAccountName, azrPrimaryBlobServiceEndpoint, azrBlobContainer
 }
-{{< / highlight >}}
+```
 
 Next, let's come up with a file name structure for our blobs. Since my sample app will upload all jpeg images in a folder, this small method will do the trick for me; a combination of date and  UUID. (The code below uses the package [github.com/gofrs/uuid](github.com/gofrs/uuid), you will need to install it to use uuid.NewV4())
 
-{{< highlight go >}}
+```go
 func GetBlobName() string {
 	t := time.Now()
 	uuid, _ := uuid.NewV4()
 
 	return fmt.Sprintf("%s-%v.jpg", t.Format("20060102"), uuid)
 }
-{{< / highlight >}}
+```
 
 Finally, let's build the Uploader. This will require Azure Blob SDK: [github.com/Azure/azure-storage-blob-go/azblob](github.com/Azure/azure-storage-blob-go/azblob). 
 
-{{< highlight go >}}
+```go
 // The below method assumes you already have the byte array ready to go
 func UploadBytesToBlob(b []byte) (string, error) {
 	azrKey, accountName, endPoint, container := GetAccountInfo()    // This is our account info method
@@ -69,6 +69,6 @@ func UploadBytesToBlob(b []byte) (string, error) {
 	_, errU := azblob.UploadBufferToBlockBlob(ctx, b, blockBlobUrl, o)  
 	return blockBlobUrl.String(), errU
 }
-{{< / highlight >}}
+```
 
 You can see a fully working example in [Github](https://github.com/inemtsev/go_blob_uploader/blob/master/main.go). 

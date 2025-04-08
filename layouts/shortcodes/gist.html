@@ -1,0 +1,5 @@
+{{- if .IsNamedParams -}}
+<script type="application/javascript" src="https://gist.github.com/{{ .Get "user" }}/{{ .Get "id" }}.js{{ if .Get "file" }}?file={{ .Get "file" }}{{ end }}"></script>
+{{- else -}}
+<script type="application/javascript" src="https://gist.github.com/{{ .Get 0 }}/{{ .Get 1 }}.js{{ if .Get 2 }}?file={{ .Get 2 }}{{ end }}"></script>
+{{- end -}} 

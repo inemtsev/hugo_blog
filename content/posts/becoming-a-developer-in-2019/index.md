@@ -14,24 +14,17 @@ There has never been a better time to become a web developer than now. The Unite
 
 A person that likes to problem solve, create things, pays attention to detail and does not get frustrated easily. Do I need to be good at math? It depends. Most jobs in web development do not require any math knowledge beyond 9th grade, however people who are bettter at math tend to pick up more advanced concepts like Big Data and Machine Learning more easily. This does not mean that if you didn't study hard sciences or computer science you cannot become a web developer; I know several talented web developers that had background in Music or the Arts for example. Do I need a degree? Not at all, but like with any training, it helps. Some big name companies may toss your resume if you don't have a degree, but most will overlook this deficiency if you have done interesting side projects or even better, if you have experience. 
 
-<p>
-    <img alt="Average wages by education" src="../img/becoming-a-web-developer-in-2019/general-wages-by-college-level-degrees.jpg" loading="lazy" />
-    <div>Source: Microsoft Visual Studio Magazine</div>
-</p>
+{{< figure src="general-wages-by-college-level-degrees.jpg" alt="Average wages by education" caption="Source: Microsoft Visual Studio Magazine" loading="lazy" >}}
 
 My experience in the industry, taught me that education is not the greatest factor in becomming a successful web developer. There are plenty of developers that have degrees and are terrible at what they do and there are plenty of developers without a degree who are legends in the field. Getting a university degree in this field will certainly be a boost, but what you do after that is really up to you. If you are passionate about learning, after 2-3 years of experience whether you have a degree or not, strarts to matter much less. **So what are the success factors in web development?** Enthusiasm, grit and easy-going personality. **Enthusiasm** is an obvious one; developers who keep themselves up-to-date on their own time and read about their field, tend to have broader skillsets which translate into higher salaries. **Grit** is important in many fields, especially those that require prolonged periods of thought; developers who do not easily give up on a problem tend to learn more quickly, develop better mental endurance and usually progress faster in their careers. Last, but equally important, is **personality**. If you are the type that does not work well with others, you may struggle in this field in the long-term. Developers who have a good personality are generally open-minded, flexible and are a pleasure to work with. They check their ego at the door and value the input and opinions of others. Listening to the opinions of others allows them to learn more quickly and co-workers tend to speak well of them, leading to promotions and salary increases. To put it simply, developers that do not think it is important to be 'right' all the time, have better careers. 
 
 So, if you read the above and think you have what it takes, read on.
-<p>
-    <img alt="Chuck Norris approves" src="../img/becoming-a-web-developer-in-2019/chuck_norris_approves.gif" loading="lazy" />
-</p>
+{{< figure src="chuck_norris_approves.gif" alt="Chuck Norris approves" loading="lazy" >}}
 
 ### Choosing what to learn
 
 Noobie developers spend a bit too much time on this, decision of choice has always been a time-waster. The important thing is to start learning and doing as soon as possible. As long as you choose one of the more popular tech stacks, you should have no trouble job-wise; plus once you know one you can always switch later. To become a full-stack developer you will need to learn at least one front-end framework and one back-end framework. Back-end frameworks run on the server, talk to the database and crunch data. Front-end frameworks generate the UI and run in the browser. What are the top tech stack as of 2019 you may ask?
-<p>
-    <img alt="The problem is choice" src="../img/becoming-a-web-developer-in-2019/problem-is-choice.jpg" loading="lazy" />
-</p>
+{{< figure src="problem-is-choice.jpg" alt="The problem is choice" loading="lazy" >}}
 
 #### Top back-end frameworks (From most recommended to least)
 
@@ -42,10 +35,7 @@ Noobie developers spend a bit too much time on this, decision of choice has alwa
 
 **Python with Django framework:** Python has one of the fastest growing communities on the internet and is considered one of the hottest languages in the industry right now. Websites like [Instagram](https://www.instagram.com/), [Pinterest](https://www.pinterest.ca/) and [Disqus](https://disqus.com/) are great examples of websites running on Django. While not quite as mature as Java and C# based frameworks, Python community is very active and the open source community is very strong. 
 
-<p>
-    <img alt="Python's extraordinary growth" src="../img/becoming-a-web-developer-in-2019/language_projections.png" loading="lazy" />
-    <div>Source: https://stackoverflow.blog/2017/09/06/incredible-growth-python/
-</p>
+{{< figure src="language_projections.png" alt="Python's extraordinary growth" caption="Source: https://stackoverflow.blog/2017/09/06/incredible-growth-python/" loading="lazy" >}}
 
 **C# and ASP.NET Core:** C# which runs on the .NET Framework has been around for almost as long as Java and is a very mature platform with one of the [best documentations](https://docs.microsoft.com/en-us/dotnet/csharp/) in the industry. C# is known for its friendly community and excellent tools developed by Microsoft, which in recent years have mostly been free. ASP.NET framework has undergone a radical transformation in recent years, it has been rebuilt from scratch as ASP.NET Core and is now fully Open Source. The new framework has brought about massive performance improvements and cross-platform capabilities; thus it is recommended that ASP.NET Core is used for all new projects. C#'s popularity was held back by not embracing the Open Source community in its earlier years, but after Open Sourcing the C# compiler and more recently the .NET Framework there is plenty to get excited about. Popular website that run on ASP.NET include: [Stackoverflow](https://www.stackoverflow.com), [MarketWatch](https://www.marketwatch.com) and [VisualStudio.com](https://www.visualstudio.com). 
 
@@ -54,10 +44,7 @@ Noobie developers spend a bit too much time on this, decision of choice has alwa
 **PHP:** Is a very mature language that has come a long way since its debut over a decade ago. It is not known to be a very elegant programming language, but it is very easy to pick up and the online community is absolutely massive. Historically PHP web-frameworks have not been known to be very performant, but this has changed in 2015 with the release of PHP 7, which essentially doubled its performance. Recent benchmarks show that PHP 7.X.X is on par with Node.js in requests served per second. Currently, it appears that the PHP community is here to stay and with giants like Wordpress and Yahoo using it, support will be around for a long time. [Laravel](https://laravel.com/) and [Zend](http://www.zend.com/) are popular web-frameworks that use PHP and either one will serve you well if you choose to go down the PHP path. 
 
 **Ruby on Rails:** Ruby on Rails web framework which uses Ruby as its programming language, is a perfect example of a technology that imploded and fell behind. On the surface Ruby is a fantastic language, it is known for being very readable, easy to understand and easy to write. Unfortunately, there are some aspects of Ruby on Rails framework that reduced its adoption significantly. First, its very opinionated community has lost many of its significant open source contributors. Second, its mediocre performance is significantly behind any of the web frameworks listed above. It was for this reason Twitter, has moved away from Ruby on Rails to Java/Scala. Similarly, linkedIn also moved away from Ruby on Rails and on to Node.js. Unless, you already have an offer ready for a job using Ruby on Rails, I do not recommend starting with this framework in 2019. 
-<p>
-    <img alt="Ruby on Rails is dying" src="../img/becoming-a-web-developer-in-2019/ruby-on-rails-trends.jpg" loading="lazy" />
-    <div>Source: https://naturaily.com/blog/who-gives-f-about-rails</div>
-</p>
+{{< figure src="ruby-on-rails-trends.jpg" alt="Ruby on Rails is dying" caption="Source: https://naturaily.com/blog/who-gives-f-about-rails" loading="lazy" >}}
 
 **Summary:** 
 
@@ -88,10 +75,7 @@ Jobs on LinkedIn (New York State) | 1000+ | 1000+ | 300
 Jobs on Indeed (Hong Kong) | 282 | 184 | 80
 Jobs on LinkedIn (Hong Kong) | 57 | 119 | 30
 
-<p>
-    <img alt="Trends of major js frameworks" src="../img/becoming-a-web-developer-in-2019/js_framework_trend.PNG" loading="lazy" />
-    <div> Source: Google Trends</div>
-</p>
+{{< figure src="js_framework_trend.PNG" alt="Trends of major js frameworks" caption="Source: Google Trends" loading="lazy" >}}
 
 ### So, I picked my learning path, now what?
 

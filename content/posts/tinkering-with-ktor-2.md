@@ -20,13 +20,13 @@ There are a bunch of templating engines available for Ktor, each one with its ow
 
 Add this dependency to your `build.gradle.kts`:
 
-{{< highlight kotlin >}}
+```kotlin
 implementation("io.ktor:ktor-server-html-builder:$ktor_version")
-{{< / highlight >}}
+```
 
 Now, you can add this kind of route to render a basic html page, nothing fancy:
 
-{{< highlight kotlin >}}
+```kotlin
 get("/index") {
             call.respondHtml(HttpStatusCode.OK) {
                 attributes["lang"] = "en"
@@ -40,13 +40,13 @@ get("/index") {
                 }
             }
         }
-{{< / highlight >}}
+```
 
 All the html "elements" here are simply functions that populate the outer block. The element "head" for example is a function and the body of this element is its lambda parameter. 
 
 If we simplify the definition of head function, it can look something like this:
 
-{{< highlight kotlin >}}
+```kotlin
 fun HTML.head(contents: HEAD.() -> Unit) {
     // create the instance which we will populate with lambda
     val head = HEAD()
@@ -57,13 +57,13 @@ fun HTML.head(contents: HEAD.() -> Unit) {
     // where children is some mutable list in HTML
     this.children.add(head)
 }
-{{< / highlight >}}
+```
 
 The real code found in **kotlinx.html** is a bit more abstract, but this should give you some clues on how these DSLs are constructed.
 
 If we now try to run our `fun main()` and hit our `/index` endpoint we will get a simple html page with this source:
 
-{{< highlight html >}}
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,7 +75,7 @@ If we now try to run our `fun main()` and hit our `/index` endpoint we will get 
     <p>Let's tinker with Ktor</p>
   </body>
 </html>
-{{< / highlight >}}
+```
 
 ### Basic setup
 
@@ -83,8 +83,7 @@ We can already render a basic page, but what if we wanted to create a template o
 
 Let's create another file **CompanyTemplate.kt** with the following basic template:
 
-{{< highlight kotlin >}}
-
+```kotlin
 class CompanyTemplate : Template<HTML> {
     val titleText = Placeholder<TITLE>()
     val headScripts = Placeholder<HEAD>()
@@ -107,15 +106,13 @@ class CompanyTemplate : Template<HTML> {
         }
     }
 }
-
-{{< / highlight >}}
+```
 
 Take note of the generic type of **Placeholder type**, it needs to match where that piece of code is going to be placed. For example, `Placeholder<BODY>` will need to be placed within the `body {}` function using the `insert()` function.
 
 To make use of this template we have to use the call.respondHtmlTemplate() function in this way:
 
-{{< highlight kotlin >}}
-
+```kotlin
 get("/index2") {
             call.respondHtmlTemplate(CompanyTemplate()) {
                 titleText { +"Let's tinker with Ktor" }
@@ -133,15 +130,13 @@ get("/index2") {
                 }
             }
         }
-
-{{< / highlight >}}
+```
 
 You can see that the 5 sections populated here, match the 5 placeholders we defined in the CompanyTemplate class. We can take this a step further and hide away the code in the above snippet into a separate file and create a **ViewModel** to carry this data.
 
 Create a ViewModel to represent requirements of the template:
 
-{{< highlight kotlin >}}
-
+```kotlin
 data class CompanyTemplateViewModel(
     val titleText: String,
     val header: String,
@@ -149,13 +144,11 @@ data class CompanyTemplateViewModel(
     val footer: String,
     val headScripts: List<String>
 )
-
-{{< / highlight >}}
+```
 
 Now, let's refactor our template populating code into a Provider. Since we are using functions to build these structures we can use loops and other logical operators freely:
 
-{{< highlight kotlin >}}
-
+```kotlin
 object CompanyTemplateProvider {
     fun getTemplate(viewModel: CompanyTemplateViewModel): CompanyTemplate {
         val template =
@@ -179,13 +172,11 @@ object CompanyTemplateProvider {
         return template
     }
 }
-
-{{< / highlight >}}
+```
 
 Finally, let's update our usage in route logic:
 
-{{< highlight kotlin >}}
-
+```kotlin
 get("/index2") {
             val vm = CompanyTemplateViewModel(
                 titleText = "Let's tinker with Ktor",
@@ -195,11 +186,9 @@ get("/index2") {
                 headScripts = listOf("/js/my-company-scripts.js")
             )
 
-
             call.respondHtmlTemplate(CompanyTemplateProvider.getTemplate(vm)) {}
         }
-
-{{< / highlight >}}
+```
 
 Voila! Now we can reuse this template neatly across various routes.
 

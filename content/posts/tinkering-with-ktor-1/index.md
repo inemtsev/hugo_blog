@@ -17,13 +17,13 @@ I'll assume the reader already has JVM 17 or higher installed (my machine has 17
 
 JetBrains IntelliJ *Ultimate* has a template for getting started with Ktor, but let's use the free option and start with the [Ktor project generator here.](https://start.ktor.io/)
 
-I added the following basic plugins to enable kotlinx serializer and routing:
-<p>
-<img src="https://eventslooped-images-thumb.s3.ca-central-1.amazonaws.com/resized-s-ktor-template-1.png" alt="Ktor template step 1" height="500px"/>
-<img src="https://eventslooped-images-thumb.s3.ca-central-1.amazonaws.com/resized-s-ktor-template-2.png" alt="Ktor template plugins" height="500px"/>
-</p>
+Head over to the project generator and:
+1. Fill in your project details (name, package, etc.)
+2. Add these essential plugins:
+   - Routing: for handling HTTP requests
+   - kotlinx.serialization: for JSON serialization/deserialization
 
-This will give you a zip file with everything you need to get started.
+The generator will create a zip file with everything you need to get started.
 
 ### Quick test
 
@@ -31,7 +31,7 @@ Open the extracted folder with IntelliJ, open Application.Kt file and run `fun m
 If your environment is setup correctly, you should get this console result:
 
 <p>
-<img src="https://eventslooped-images-thumb.s3.ca-central-1.amazonaws.com/resized-l-ktor-running.png" alt="Ktor running"/>
+{{< figure src="resized-l-ktor-running.png" alt="Ktor running" preset="medium" loading="lazy" >}}
 </p>
 
 
@@ -42,14 +42,12 @@ Let's use a multi-stage build, in the first stage we build our app and in the se
 
 For the build stage we can use the [Gradle base image with JDK 17.](https://hub.docker.com/_/gradle/tags?page=1&name=17) Then we build a FatJar (Jar with our app's dependencies included in the package) of our application using Gradle. Our first stage then looks like this:
 
-{{< highlight dockerfile >}}
-
+```dockerfile
 FROM gradle:jdk17 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle buildFatJar --no-daemon
-
-{{< / highlight >}}
+```
 
 Note that we named this stage **build**. We will need this later.
 
@@ -57,14 +55,12 @@ The second stage will include the runtime and our packaged app from the first st
 
 We copy the FatJar from the previous stage by referring to its name "build", expose the port 8080 and set the start of the app. Giving us the resulting second stage:
 
-{{< highlight dockerfile >}}
-
+```dockerfile
 FROM eclipse-temurin:17.0.10_7-jre
 COPY --from=build home/gradle/src/build/libs/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
-{{< / highlight >}}
+```
 
 Finally, run `docker build -t cool-app .`, this builds your container with the tag cool-app. Use `docker run -p 8080:8080 cool-app` to run container.
 
@@ -73,7 +69,7 @@ Voila, your app can run on any system with just docker installed.
 By default you can use http://0.0.0.0:8080 to test.
 
 <p>
-<img src="https://eventslooped-images-thumb.s3.ca-central-1.amazonaws.com/resized-l-tinkering-containers.jpg" alt="containers">
+{{< figure src="resized-l-tinkering-containers.jpg" alt="containers" preset="medium" loading="lazy" >}}
 </p>
 
 You can see the final result in this [repository.](https://github.com/inemtsev/ktor-tinker)

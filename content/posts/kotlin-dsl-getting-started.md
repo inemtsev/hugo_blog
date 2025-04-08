@@ -18,12 +18,70 @@ One of the more interesting features of Kotlin is the ability to create your own
 ### The Goal
 
 Suppose you would like your endpoint to return the following structure to represent a list of meetings in your day
-{{< gist inemtsev 6361f55fd9cd13d0934645ff39bf689a result.json >}}
+```json
+{
+  "year": 15,
+  "month": 12,
+  "day": 2022,
+  "isOutOfOffice": false,
+  "events": [
+    {
+      "name": "Standup",
+      "timeStart": 9,
+      "timeEnd": 10,
+      "people": []
+    },
+    {
+      "name": "1-1",
+      "timeStart": 11,
+      "timeEnd": 12,
+      "people": [
+        {
+          "name": "John Brown",
+          "isOrganizer": true
+        },
+        {
+          "name": "Chris Grossman",
+          "isOrganizer": false
+        },
+        {
+          "name": "Sally Wallace",
+          "isOrganizer": false
+        }
+      ]
+    }
+  ]
+}
+```
 
 The classic way would be to build up the complex response object in one of your services or mappers. But, there may be a better way. Let's try to obtain this structure by building up a DSL.
 
 Without much effort we can create a small DSL that will allow us to write the following very succinctly:
-{{< gist inemtsev 6361f55fd9cd13d0934645ff39bf689a ResultingScheduleDSL.kt >}}
+```kotlin
+val dayInTheOffice = day(2022, 12, 15, false) {
+                event("Standup", 9, 10)
+                event("1-1", 11, 12) {
+                    person("John Brown", true)
+                    person("Chris Grossman", false)
+                    person("Sally Wallace", false)
+                }
+            }
+```
 
 There is nothing stopping you from doing logic, loops, etc - inside your DSL:
-{{< gist inemtsev 6361f55fd9cd13d0934645ff39bf689a ResultingScheduleDSL2.kt >}}
+```kotlin
+val dayInTheOffice = day(2022, 12, 15, false) {
+                eventTimes.forEach { e ->
+                    val people = eventPeople[e.nameOfEvent]
+                    event(
+                        meetingName = e.nameOfEvent,
+                        startHour = e.startHour,
+                        endHour = e.endHour
+                    ) {
+                        people?.let {
+                            people.forEach { p -> person(name = p.name, isOrganizer = p.isOrganizer) }
+                        }
+                    }
+                }
+            }
+```

@@ -16,7 +16,7 @@ I refer to programming languages as **sexy** if they are not yet mainstream, but
 
 **Google-backed** programming language has been around since 2011, but its use has only skyrocketed in 2019 after the launch of **Flutter** framework version 1.0. Flutter allows developers to develop cross-platform mobile applications with performance that is faster than React Native and approaching the speeds of platform-native apps. Dart has also been well received by the open source community, there are numerous interesting projects in Github that are using Dart, everything including web servers to desktop apps. 
 
-<img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/sexy-programming-languages-to-learn-2020/multi-platform-mobile.jpg" alt="cross-platform mobile development"/>
+<img src="https://aqzodowgen.cloudimg.io/fit/800x600/n/https://www.eventslooped.com/posts/img/sexy-programming-languages-to-learn-2020/multi-platform-mobile.jpg" alt="cross-platform mobile development" />
 <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@7shifts?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from 7shifts"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">7shifts</span></a>
 
 <p>According to my research, the best resources for learning Dart are: </p>
@@ -58,10 +58,10 @@ Swift has made waves when it appeared in 2014, finally replacing the aging Objec
  - Strict compiler that checks your code style
  
  Community around Rust is very enthusiastic and most developers that use it claim to love it. See for yourself, here are results from Stackoverflow's survey of most loved programming languages: 
- <img src="../img/sexy-programming-languages-to-learn-2020/SO-most-loved-languages.png" alt="most loved programming languages" loading="lazy" />
+ {{< figure src="SO-most-loved-languages.png" alt="most loved programming languages" loading="lazy" >}}
 
  Plenty of desktop applications are currently being written in Rust, including their own Mozilla Firefox. However, there is plenty of enthusiastic developers contributing to its web frameworks as well, and there are good reasons for it, take a look at benchmarks maintained by techempower.com: 
- <img src="../img/sexy-programming-languages-to-learn-2020/techempower-benchmarks.PNG" alt="fastest web frameworks" loading="lazy" />
+ {{< figure src="techempower-benchmarks.PNG" alt="fastest web frameworks" loading="lazy" >}}
 
 <p>Best resources I could find for picking up Rust: </p>
 
@@ -88,13 +88,13 @@ Swift has made waves when it appeared in 2014, finally replacing the aging Objec
 
 **Google-backed** programming language takes an ultra-modern approach to programming. Instead of adding new features to what is already popular, Go gets rid of many older concepts of programming languages. Lack of inheritance is one such example, which forces the developer to use composition instead. After removing everything the founders considered legacy, and adding modern approaches to managing concurrency and memory, a new, concise, clean programming language was born. Some may even call it sexy ;)
 
- <img src="../img/sexy-programming-languages-to-learn-2020/gopher-dance.gif" alt="Happy Gopher!" loading="lazy" />
+ {{< figure src="gopher-dance.gif" alt="Happy Gopher!" loading="lazy" >}}
 
 Several big names in the industry make use of Go; Uber, Lift, Grab and Shopify are just some examples. Docker is built in Go as well. In terms of maturity Go is the most popular out of the 5 programming languages, approaching the levels of mainstream. 
 
 Go is generally loved by its developers (as seen the Rust chart above) and developers that know Go are quite well paid:
 
-<img src="../img/sexy-programming-languages-to-learn-2020/SO-highest-paid-languages.PNG" alt="Highest paid developers" loading="lazy" />
+{{< figure src="SO-highest-paid-languages.PNG" alt="Highest paid developers" loading="lazy" >}}
 <p>The best resources I can find for learning Golang: </p>
 
 1) [Todd McLeod's Udemy Course (one of my fav courses)](https://www.udemy.com/course/learn-how-to-code/)
@@ -105,7 +105,7 @@ Go is generally loved by its developers (as seen the Rust chart above) and devel
 
 Google Trends comparing these 5 programming languages: 
 
-<img src="../img/sexy-programming-languages-to-learn-2020/GT-trends.PNG" alt="Trend of sexy programming langauges" loading="lazy" />
+{{< figure src="GT-trends.PNG" alt="Trend of sexy programming langauges" loading="lazy" >}}
 
 I hope this helps you decide how to spice up your resume or your side projects :)
 

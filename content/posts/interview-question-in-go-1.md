@@ -19,6 +19,38 @@ To even attempt this question, we need to know the exact definition of a **prime
 
 We will still have an outer loop that iterates **i** from **2** to **n**. But, the *inner loop* does not need to divide by all numbers less than itself, we can simply divide by all the primes we have found so far and that would be enough. Let's code that in Go :)
 
-{{< gist inemtsev 0de328c22c71c72ef4fda3b4e2e47d9e "main.go" >}}
+```go
+package main
+
+import "fmt"
+
+func main() {
+        maxPrime := 10000
+        fmt.Printf("Printing primes less than %v", maxPrime)
+        fmt.Println()
+        primes := getPrimes(maxPrime)
+        fmt.Println(primes)
+}
+
+func getPrimes(maxNum int) []int {
+        primes := make([]int, 0, maxNum)        // create a slice big enough for all potential prime numbers
+
+        for i := 2; i <= maxNum; i++ {  // go through all the numbers less than the input
+                isPrime := true
+                for _, p := range primes {      // check the number against all the primes we found so far
+                        if i % p == 0 {
+                                isPrime = false // if it fails the test, no need to check further
+                                break
+                        }
+                }
+
+                if isPrime == true {
+                        primes = append(primes, i)      // if it passes the test, we add it to our list of primes
+                }
+        }
+
+        return primes
+}
+```
 
 <iframe src="https://giphy.com/embed/3o7qE8cQUUCsrRQ1ry" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/rockthisboat-rockthisboat-premiere-season2-3o7qE8cQUUCsrRQ1ry">via GIPHY</a></p>

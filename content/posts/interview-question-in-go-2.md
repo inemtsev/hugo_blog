@@ -14,6 +14,34 @@ What is a **palindrome**? [Webster dictionary](https://www.merriam-webster.com/d
 There are a few approaches to solving this problem, we can reverse the array of characters and compare the resulting string for example. The more efficient way of doing this is to compare the characters from the beginning and from the end one-by-one. This way we can quit comparison as soon as we find a non-matching character. 
 
 Let's convert this to Go code :)
-{{< gist inemtsev c0910f101437ddfceaddf58bf4e116ea "main.go" >}}
+```go
+package main
+
+import "fmt"
+
+func main() {
+        fmt.Println(checkPalindrome("abba"))
+        fmt.Println(checkPalindrome("Superman"))
+        fmt.Println(checkPalindrome("racecar"))
+        fmt.Println(checkPalindrome("madam"))
+}
+
+func checkPalindrome(testString string) bool {
+        isPalindrome := true
+        sLength := len(testString)
+
+        for i := 0; i < sLength/2; i++ {
+                currCharFwd := testString[i]    // character to compare going forward
+                currCharBwd := testString[sLength-1-i]  // character to compare going from the end
+
+                if currCharFwd != currCharBwd {
+                        isPalindrome = false    // we found a non-match, it's not a palindrome
+                        break   // no need to compare further
+                }
+        }
+
+        return isPalindrome
+}
+```
 
 <iframe src="https://giphy.com/embed/3o6MbmRKD8vNq7eSvC" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-10-the-simpsons-10x22-3o6MbmRKD8vNq7eSvC">via GIPHY</a></p>

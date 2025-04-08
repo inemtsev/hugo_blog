@@ -34,7 +34,33 @@ If you receive an error "make command not found" install build essentials using 
 ### Configuring a basic setup
 Once you have KrakenD built, let's take a look at the settings. These are contained in **krakend.json**. Most of the functionality you will need from a Gateway is configurable from this file. I suggest using the online [KrakenDesigner](https://www.krakend.io/docs/configuration/overview/) to generate your own configuration file. I created a basic configuration like this. Here I simply take the GitHub username as a parameter and call api.github.com as my downstream service to obtain a user's profile in json format. 
 
-{{< gist inemtsev cc0ca70682d198abf00c0b1a8f246d57 "krakend.json" >}}
+```json
+{
+  "version": 2,
+  "extra_config": {},
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "json",
+  "name": "CoolUserService",
+  "endpoints": [
+    {
+      "endpoint": "api/get-user/{userId}",
+      "method": "GET",
+      "extra_config": {},
+      "output_encoding": "json",
+      "concurrent_calls": 1,
+      "querystring_params": [],
+      "backend": [
+        {
+          "method": "GET",
+          "host": [ "https://api.github.com" ],
+          "url_pattern": "/users/{userId}"
+        }
+      ]
+    }
+  ]
+}
+```
 
 You can test your configuration via the following command with debugging:
 
@@ -44,7 +70,81 @@ You can test your configuration via the following command with debugging:
 
 Let's create a sample plugin that makes a call to Github API gets another user's data and attaches the response as a header to the downstream service. 
 
-{{< gist inemtsev cc0ca70682d198abf00c0b1a8f246d57 "headerModPlugin.go" >}}
+```go
+package main
+
+import (
+        "context"
+        "errors"
+        "fmt"
+        "io/ioutil"
+        "net/http"
+        "time"
+)
+
+func init() {
+        fmt.Println("headerModPlugin plugin is loaded!")
+}
+
+func main() {}
+
+// HandlerRegisterer is the name of the symbol krakend looks up to try and register plugins
+var HandlerRegisterer registrable = registrable("headerModPlugin")
+
+type registrable string
+
+const outputHeaderName = "X-Friend-User"
+const pluginName = "headerModPlugin"
+
+func (r registrable) RegisterHandlers(f func(
+        name string,
+        handler func(
+                context.Context,
+                map[string]interface{},
+                http.Handler) (http.Handler, error),
+)) {
+        f(pluginName, r.registerHandlers)
+}
+
+func (r registrable) registerHandlers(ctx context.Context, extra map[string]interface{}, handler http.Handler) (http.Handler, error) {
+        attachUserID, ok := extra["attachuserid"].(string)
+        if !ok {
+                panic(errors.New("incorrect config").Error())
+        }
+
+        client := &http.Client{Timeout: 3 * time.Second}
+        return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+                rq, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://api.github.com/users/%v", attachUserID), nil)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusBadRequest)
+                        return
+                }
+
+                rq.Header.Set("Content-Type", "application/json")
+
+                rs, err := client.Do(rq)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusNotAcceptable)
+                        return
+                }
+                defer rs.Body.Close()
+
+                rsBodyBytes, err := ioutil.ReadAll(rs.Body)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusNotAcceptable)
+                        return
+                }
+
+                r2 := new(http.Request)
+                *r2 = *r
+
+                r2.Header.Set(outputHeaderName, string(rsBodyBytes))
+
+                handler.ServeHTTP(w, r2)
+        }), nil
+}
+```
 
 Some things to notice here:
 
@@ -53,8 +153,8 @@ Some things to notice here:
 
 Let's configure our plugin. Add the following lines to the root of your configuration: 
 
-{{< highlight json>}}
- "plugin": {
+```json
+"plugin": {
     "pattern": ".so",
     "folder": "./"
   },
@@ -64,17 +164,15 @@ Let's configure our plugin. Add the following lines to the root of your configur
       "attachuserid": "rsc"
    }
   }
-{{< / highlight>}}
+```
 
 Lastly, KrakenD by default removes all headers from the request for performance and security reasons. This behavior can be turned off, but we will simply add an exception for our plugin's header to our config by addin these lines under the **endpoint** part of our configuration:
 
-{{< highlight json>}}
-
+```json
 "headers_to_pass": [
   "X-Friend-User"
 ],
-
-{{< / highlight>}}
+```
 
 Your final configuration should look something [like this.](https://gist.githubusercontent.com/inemtsev/cc0ca70682d198abf00c0b1a8f246d57/raw/cbe53ee769c7a70fb135efb93ddfebe93dbd3eea/krakend_with_plugin.json)
 

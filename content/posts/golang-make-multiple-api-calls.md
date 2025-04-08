@@ -15,7 +15,7 @@ So, how do we use Golang to make multiple http calls concurrently? If you have u
 
 Let's start with a simple console app that make calls to a few GitHub profiles and checks whether the connection was successful or not. At first, there are no goroutines here and all the calls are made consecutively; booo not very efficient. 
 
-{{< highlight go >}}
+```go
 package main
 
 import "fmt"
@@ -48,7 +48,7 @@ func checkUrl(url string) {
 		fmt.Println("Success reaching the website:", url)
 	}
 }
-{{< / highlight >}}
+```
 
 First, we need to add something called **channel**. Since Golang functions running in their own goroutines are just simple functions, we need a way through which inner goroutines can tell their result to the outer goroutine; this is done using channels. We initialize them simply by: **c := make(chan string)**
 We are able to send the resulting value(s) to our channel using the **<-** arrow, and we assign the value from the channel using this arrow as well. 
@@ -57,7 +57,7 @@ Second, we need to add a tracker of sorts, to keep track of how many values we s
 
 Implementing these two ideas, results in the following: 
 
-{{< highlight go >}}
+```go
 import (
 	"fmt"
 	"net/http"
@@ -108,5 +108,5 @@ func checkUrl(url string, c chan string, wg *sync.WaitGroup) {
 		c <- "Success reaching the website:" + url    // pump the result into the channel
 	}
 }
-{{< / highlight >}}
+```
 

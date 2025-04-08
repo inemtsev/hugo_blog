@@ -11,16 +11,10 @@ sitemap:
 Before Angular team decided to turn the its community upside down with the release of Angular 2 in 2016, I did not think Typescript would take off beyond a small loyal group. Having been developed internally my Microsoft, the open source community was wary. But then, the unlikely thing happened, Microsoft and Google joined forces to create Angular (2...) with TypeScript support out of the box. By default. 
 
 You can imagine this gave TypeScript a strong boost in popularity. 
-<p>
-    <img alt="Typescript, 5 year trend" src="../img/typescript-future/typescript-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}" loading="lazy" />
-    <div>Source: Google Trends for TypeScript</div>
-</p>
+{{< figure src="typescript-trend.png" alt="Typescript, 5 year trend" width="600" caption="Source: Google Trends for TypeScript" loading="lazy" >}}
 
 Angular received some initial backlash from the drastic changes that were introduced, not just due to Typescript, but also from drastic changes in syntax. The initial disappointment of AngularJS fans overshadowed the drastic improvements in performance and new features like Dependency Injection and Lazy Loading of components. 
-<p>
-    <img alt="Angular, 5 year trend" src="../img/typescript-future/angular-trend.png" style="width:600px; display: block; padding: {{ .params.imgpad }}" loading="lazy" />
-    <div>Source: Google Trends for Angular</div>
-</p>
+{{< figure src="angular-trend.png" alt="Angular, 5 year trend" width="600" caption="Source: Google Trends for Angular" loading="lazy" >}}
 
 And yet, Angular survived and is doing quite well. This was helped in part by the oncoming pressure from Javascript ES2015/ES6, developers had to learn new things and learn they did. 
 

@@ -15,8 +15,7 @@ Ktor isn't just a small and snappy framework, it features a simple, yet effectiv
 
 Let's say, we want to see how long does it take for server to process a request until it responds. We can create a new plugin in `plugins/MeasureTimeToResponse.kt` with the following code:
 
-{{< highlight kotlin >}}
-
+```kotlin
 val MeasureTimeToResponse = createApplicationPlugin(name = "MeasureTransformationBenchmarkPlugin") {
     val timeToResponseKey = AttributeKey<Long>("timeToResponseKey")
 
@@ -32,21 +31,18 @@ val MeasureTimeToResponse = createApplicationPlugin(name = "MeasureTransformatio
         println("Time to response: ${responseTime - callTime} ms") // or use some cool logger
     }
 }
-
-{{< / highlight >}}
+```
 
 Finally, we enable this plugin by installing it in `Application.kt`
 
-{{< highlight kotlin >}}
-
+```kotlin
 fun Application.module() {
     configureHTTP()
     configureSerialization()
     configureRouting()
     install(MeasureTimeToResponse) // yay
 }
-
-{{< / highlight >}}
+```
 
 Voila! We now get this in our console for every request: `Time to response: 8 ms`
 
@@ -56,16 +52,14 @@ Ktor provides several hooks like: *onCall*, *onCallRespond* and others. We can e
 
 Imagine you have a very complicated http pipeline with various transformations. It may become difficult to imagine what the *final* response will look like. Well, we can log the final response after all the steps using the *ResponseBodyReadyForSend* hook:
 
-{{< highlight kotlin >}}
-
+```kotlin
 val FinalResponseLogger = createApplicationPlugin(name = "FinalResponseLogger") {
     on(ResponseBodyReadyForSend) { call, finalResponse ->
         val responseContent = finalResponse as? TextContent
         responseContent?.let { println("Final response: ${responseContent.text}") }
     }
 }
-
-{{< / highlight >}}
+```
 
 You might notice that we cast to TextContent here, the reason for this is that finalResponse is of type **OutgoingContent** here, which does not allow us to read the body (if you try to use toString, you will simply get the first few characters). However, we can cast this to **TextContent** for valid responses and this will give us access we need.
 
