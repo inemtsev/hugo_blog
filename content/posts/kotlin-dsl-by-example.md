@@ -143,6 +143,7 @@ data class Stage (
 
 Let's create a few types of jobs that can run in our pipeline: Basic, Parallel and Deployment. These can be modelled with:
 
+```kotlin
 sealed class Job {
     abstract val name: String
 
@@ -169,6 +170,7 @@ sealed class Job {
         val rollbackOnFailure: Boolean = true
     ): Job()
 }
+```
 
 These also needs some builders, you can customize them to your business' needs:
 
