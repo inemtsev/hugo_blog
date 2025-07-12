@@ -10,5 +10,5 @@ sitemap:
 My name is Ilya, and I am a Full Stack Software Engineer working in Bangkok, Thailand. I grew up in Canada, and I completed my Undergraduate studies in Applied Mathematics. I am a completely self-taught programmer and I am still hungry for more. Hopefully you find something interesting in my blog posts.
 
 <p>
-    <img alt="Ilya Nemtsev - 2024" src="https://eventslooped-images.s3.ca-central-1.amazonaws.com/selfie_p.JPG">
+    {{< figure src="bkk_2024.JPG" alt="Ilya BKK 2024" preset="medium" loading="lazy" >}}
 </p>

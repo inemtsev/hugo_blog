@@ -29,8 +29,8 @@ fun pipeline(init: Pipeline.() -> Unit): Pipeline {
 }
 ```
 
-This function will already allow us to use `pipeline { }` syntax. Let's break it down, the **init** parameter of our function
-is actually called a [function type with receiver](https://kotlinlang.org/docs/lambdas.html#function-literals-with-receiver), in other words it's a *lambda* that can be called in the context of a *specific type instance*, in this case Pipeline type.
+This function will already allow us to use `pipeline { }` syntax. Let's break it down: the **init** parameter of our function
+is actually called a {{< elink "https://kotlinlang.org/docs/lambdas.html#function-literals-with-receiver" "function type with receiver" >}}, in other words it's a *lambda* that can be called in the context of a *specific type instance*, in this case Pipeline type.
 DSL definitions can become verbose, so let's use Kotlin's [apply](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/apply.html) and single expression syntax to make it more consise:
 
 ```kotlin
