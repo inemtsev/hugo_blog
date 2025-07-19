@@ -461,4 +461,12 @@ Similarly, messing with our cron notation will give us an error:
 ```
 **Error:** *Exception in thread "main" java.lang.IllegalArgumentException: Invalid cron expression: 0 0*
 
+### Further improvements
+
+We have working code, but we can improve efficiency significantly by using a few optimizations:
+
+- Caching RegEx instances
+- [Inline methods](https://kotlinlang.org/docs/inline-functions.html#noinline) that accept lambdas
+- [Sequences](https://kotlinlang.org/docs/sequences.html) where it makes sense
+
 Full, runnable code [available here](https://github.com/inemtsev/pipeline-demo)
