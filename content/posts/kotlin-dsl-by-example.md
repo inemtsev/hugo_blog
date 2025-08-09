@@ -10,9 +10,9 @@ sitemap:
 ### Summary
 
 One of the more interesting features of Kotlin is the ability to create your own DSL (domain-specific-language). There are many use cases for this:
-- **UI elements:** [Jetpack compose](https://developer.android.com/compose), [kotlinx.html](https://github.com/Kotlin/kotlinx.html)...
+- **UI elements:** [Jetpack Compose](https://developer.android.com/compose), [kotlinx.html](https://github.com/Kotlin/kotlinx.html)...
 - **Configurations:** [Ktor configuration](https://ktor.io/docs/server-configuration-code.html#embedded-custom)
-- **Builder pattern:** In fact, anywhere we can use the builder pattern, we can build a DSL around it. This way we can provide a clear and expressive syntax while tucking away validation/transformation/etc logic.
+- **Builder pattern:** In fact, anywhere we can use the [builder pattern](https://refactoring.guru/design-patterns/builder), we can build a DSL around it. This way we can provide a clear and expressive syntax while tucking away validation/transformation/etc. logic.
 
 ### An Example
 
@@ -30,14 +30,14 @@ fun pipeline(init: Pipeline.() -> Unit): Pipeline {
 ```
 
 This function will already allow us to use `pipeline { }` syntax. Let's break it down: the **init** parameter of our function
-is actually called a {{< elink "https://kotlinlang.org/docs/lambdas.html#function-literals-with-receiver" "function type with receiver" >}}, in other words it's a *lambda* that can be called in the context of a *specific type instance*, in this case Pipeline type.
-DSL definitions can become verbose, so let's use Kotlin's [apply](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/apply.html) and single expression syntax to make it more consise:
+is actually called a {{< elink "https://kotlinlang.org/docs/lambdas.html#function-literals-with-receiver" "function type with receiver" >}}; in other words, it's a *lambda* that can be called in the context of a *specific type instance*, in this case Pipeline type.
+DSL definitions can become verbose, so let's use Kotlin's [apply](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/apply.html) and single expression syntax to make it more concise:
 
 ```kotlin
 fun pipeline(init: Pipeline.() -> Unit) = Pipeline().apply(init)
 ```
 
-In Kotlin, lambda parameters of a function can be brough outside of a paranthesis (see: [Trailing lambda](https://kotlinlang.org/docs/lambdas.html#passing-trailing-lambdas)), like so:
+In Kotlin, lambda parameters of a function can be brought outside of parantheses (see: [Trailing lambda](https://kotlinlang.org/docs/lambdas.html#passing-trailing-lambdas)), like so:
 
 ```kotlin
 val product = items.fold(1) { acc, e -> acc * e }
@@ -55,7 +55,7 @@ val myProjectPipeline = pipeline { // pipeline function creates a Pipeline insta
 
 ### Let's dig deeper
 
-Armed with these patterns, let's build a more complete example. Our CI Pipeline, probably needs some stages and some triggers, so we can start with this structure:
+Armed with these patterns, let's build a more complete example. Our CI pipeline needs some stages and some triggers, so we can start with this structure:
 
 ```kotlin
 class Pipeline {
@@ -89,7 +89,7 @@ pipeline {
 
 ### Complete triggers
 
-Our pipeline needs to have triggers like OnPush, OnPullRequest, OnSchedule and OnTag. Let's add this structure to represent these:
+Our pipeline needs to have triggers such as OnPush, OnPullRequest, OnSchedule and OnTag. Let's add this structure to represent these:
 
 ```kotlin
 sealed class Trigger {
@@ -130,7 +130,7 @@ class TriggersBuilder {
 
 ### Complete stages (Advanced example)
 
-Our pipeline stage, needs a name, jobs to run, environment to target and prerequisite step(s). We can model these via:
+Our pipeline stage needs a name, jobs to run, an environment to target and prerequisite step(s). We can model these via:
 
 ```kotlin
 data class Stage (
@@ -172,7 +172,7 @@ sealed class Job {
 }
 ```
 
-These also needs some builders, you can customize them to your business' needs:
+These also need some builders, you can customize them to your business' needs:
 
 ```kotlin
     class JobBuilder(private val name: String) {
@@ -256,7 +256,7 @@ class StagesBuilder {
         if(name.isBlank()) throw IllegalArgumentException("Stage name must not be blank")
 
         val builder = StageBuilder(name)
-        builder.init() // apply the passed lambda onto the builder
+        builder.init() // apply the passed lambda to the builder
         stages.add(builder.build()) // add result of builder into our internal collection
     }
 }
@@ -272,7 +272,9 @@ class StageBuilder(private val name: String) {
     private val requires = mutableListOf<String>()
     var environment: String? = null
 
-    fun requires(stageName: String) requires.add(stageName)
+    fun requires(stageName: String) { 
+        requires.add(stageName)
+    }
 
     fun parallel(init: ParallelJobBuilder.() -> Unit) {
         val builder = ParallelJobBuilder()
@@ -437,7 +439,7 @@ Running the above example gives:
 }
 ```
 
-Let's test validation, updating the deploy's environment parameter to "Grandma's computer in the basement" gives us an error at runtime:
+Let's test validation. Updating the deploy's environment parameter to "Grandma's computer in the basement" gives us an error at runtime:
 
 ```kotlin
     deploy {
@@ -447,7 +449,7 @@ Let's test validation, updating the deploy's environment parameter to "Grandma's
     }
 ```
 
-**Error:** *Exception in thread "main" java.lang.IllegalArgumentException: Target must be either 'PROD' or 'QA' or 'UAT*
+**Error:** *Exception in thread "main" java.lang.IllegalArgumentException: Target must be either 'PROD' or 'QA' or 'UAT'*
 
 Similarly, messing with our cron notation will give us an error:
 
@@ -469,4 +471,4 @@ We have working code, but we can improve efficiency significantly by using a few
 - [Inline methods](https://kotlinlang.org/docs/inline-functions.html#noinline) that accept lambdas
 - [Sequences](https://kotlinlang.org/docs/sequences.html) where it makes sense
 
-Full, runnable code [available here](https://github.com/inemtsev/pipeline-demo)
+The complete code example is [available here](https://github.com/inemtsev/pipeline-demo)
